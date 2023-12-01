@@ -2,45 +2,48 @@ import React from "react";
 import useLogo from "../hooks/useLogo";
 import { NavLink } from "react-router-dom";
 import { searchIcon, userIcon, cartIcon } from "@/utils/icon_imports";
+import { HeaderLink } from "./Link";
 
 const Header = () => {
   const data = useLogo();
 
   return (
-    <div className="mt-12 flex justify-between items-center">
+    <div className="mt-12 pb-4 border-b-2 border-light_gray flex justify-between items-center">
       <NavLink to="/">
         <img src={data?.url} alt="logo" />
       </NavLink>
       <div className="flex">
-        <div className="pr-12 border-r-2">
+        <div className="pr-12 border-r-2 border-light_gray">
           <ul className="flex gap-16 text-base">
             <li>
-              <NavLink to="#">Shop</NavLink>
+              <HeaderLink to="#">Shop</HeaderLink>
             </li>
             <li>
-              <NavLink to="#">Blog</NavLink>
+              <HeaderLink to="blog">Blog</HeaderLink>
             </li>
             <li>
-              <NavLink to="#">Our Story</NavLink>
+              <HeaderLink className="textDesktop[heading1]" to="#">
+                Our Story
+              </HeaderLink>
             </li>
           </ul>
         </div>
         <div className="ml-12">
           <ul className="flex gap-10 ">
             <li>
-              <NavLink to="#">
+              <HeaderLink to="#">
                 <img src={searchIcon} alt="search" />
-              </NavLink>
+              </HeaderLink>
             </li>
             <li>
-              <NavLink to="#">
+              <HeaderLink to="cart">
                 <img src={cartIcon} alt="cart" />
-              </NavLink>
+              </HeaderLink>
             </li>
             <li>
-              <NavLink to="#">
+              <HeaderLink to="#">
                 <img src={userIcon} alt="user" />
-              </NavLink>
+              </HeaderLink>
             </li>
           </ul>
         </div>
