@@ -7,7 +7,7 @@ const products = `query allProducts {
       salePrice
       quantity
       price
-      new
+      isNew
       isDiscount
       isAvaliable
       image {

@@ -40,7 +40,7 @@ export const AccentLink = ({ children, to }) => {
   return (
     <NavLink
       to={to}
-      className="heading3D font-bold text-accent
+      className="heading4D font-normal text-accent
     hover:text-black"
     >
       {children}

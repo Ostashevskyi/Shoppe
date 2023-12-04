@@ -1,20 +1,27 @@
 import { useQuery } from "graphql-hooks";
 
 const sliderImages = `query MyQuery {
-    allUploads(filter: {title: {matches: {pattern: "slider_image"}}}) {
+  allSliders {
+    sliderImage {
       responsiveImage {
+        alt
+        aspectRatio
         base64
         bgColor
         height
         sizes
         src
         srcSet
+        title
         webpSrcSet
         width
-        aspectRatio
       }
     }
-  }`;
+    sliderPrice
+    sliderTitle
+    id
+  }
+}`;
 
 const useSliderImages = () => {
   const { data } = useQuery(sliderImages);

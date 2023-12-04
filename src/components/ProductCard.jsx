@@ -1,39 +1,75 @@
-import React, { useState } from "react";
-import image from "@/assets/images/img.png";
+import React, { useMemo, useState } from "react";
+import { Image } from "react-datocms/image";
+import { NavLink } from "react-router-dom";
+import { HoverImage } from "./Image";
 
-const ProductCard = () => {
-  const [isAvaliable, setIsAvaliable] = useState(true);
-  const [isNew, setIsNew] = useState(false);
-  const [isDiscount, setIsDiscount] = useState(true);
+const ProductCard = ({ product }) => {
+  const { image } = product;
+  const { responsiveImage } = image;
+
+  const SalePrice = useMemo(() => {
+    return (
+      <div className="flex items-center gap-4 mt-4">
+        <p className="text-errors line-through heading4D font-medium">
+          $ {product.price.toFixed(2)}
+        </p>
+        <p className="text-accent heading4D font-medium">
+          $ {product.salePrice?.toFixed(2)}
+        </p>
+      </div>
+    );
+  }, [product.salePrice, product.discount, product.price]);
+
+  const ProductLabel = useMemo(() => {
+    return (
+      <div
+        className={`w-11 h-6 ${
+          product.isNew ? "bg-white" : "bg-accent"
+        } rounded-md absolute top-4 left-4 flex justify-center items-center`}
+      >
+        {!product.isAvaliable && (
+          <p className="text-white body_smallD font-medium">Sold</p>
+        )}
+        {product.isNew && (
+          <p className="text-black body_smallD font-medium">New</p>
+        )}
+        {product.isDiscount && (
+          <p className="text-white body_smallD font-medium">
+            - %{product.discount}
+          </p>
+        )}
+      </div>
+    );
+  }, [product.isAvaliable, product.isNew, product.isDiscount]);
+
+  const Price = useMemo(() => {
+    return (
+      <p className="text-accent heading4D font-medium mt-4">
+        $ {product["price"].toFixed(2)}
+      </p>
+    );
+  });
 
   return (
-    <div>
+    <div className="mb-20">
       <div className="w-fit relative">
-        <img src={image} alt="img" className="rounded-md mb-6" />
-        <div
-          className={`w-11 h-6 ${
-            isNew ? "bg-white" : "bg-accent"
-          } rounded-md absolute top-4 left-4 flex justify-center items-center`}
-        >
-          {!isAvaliable && (
-            <p className="text-white body_smallD font-medium">Sold</p>
-          )}
-          {isNew && <p className="text-black body_smallD font-medium">New</p>}
-          {isDiscount && (
-            <p className="text-white body_smallD font-medium">- %21</p>
-          )}
-        </div>
+        <HoverImage
+          data={responsiveImage}
+          slug={product.slug}
+          className="rounded-md mb-6"
+        />
+        {(product.isNew || !product.isAvaliable || product.isDiscount) &&
+          ProductLabel}
       </div>
       <div>
-        <p className="mb-4 heading3D">Lira Earrings</p>
-        <div className="flex items-center gap-4">
-          {isDiscount && (
-            <p className="text-errors line-through heading4D font-medium">
-              $ 20,00
-            </p>
-          )}
-          <p className="text-accent heading4D font-medium">$ 20,00</p>
-        </div>
+        <NavLink to={product.slug} className="heading3D">
+          {product.title}
+        </NavLink>
+        {product.isDiscount && SalePrice}
+        {!product.isAvaliable && (
+          <p className="text-accent heading4D font-medium mt-4">Sold Out</p>
+        )}
+        {!product.isNew && product.isAvaliable && !product.isDiscount && Price}
       </div>
     </div>
   );
