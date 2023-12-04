@@ -35,12 +35,35 @@ export const NewsletterInput = () => {
       <input
         placeholder="Give an email, get the newsletter."
         type="email"
-        required={ErrorMessage}
+        required
         className="min-w-[243px] focus:outline-none placeholder:text-dark_gray text-dark_gray"
       />
       <input
         type="submit"
         className="bg-arrow bg-center bg-no-repeat text-transparent"
+      />
+    </form>
+  );
+};
+
+export const SearchInput = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+  return (
+    <form
+      onSubmit={(e) => handleSubmit(e)}
+      className="flex items-center gap-5 border-b-2 border-light_gray pb-3 mb-10"
+    >
+      <input
+        placeholder="Search..."
+        type="text"
+        required
+        className="min-w-[180px] focus:outline-none placeholder:text-dark_gray text-dark_gray"
+      />
+      <input
+        type="submit"
+        className="bg-search bg-center bg-no-repeat text-transparent"
       />
     </form>
   );

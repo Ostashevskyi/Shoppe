@@ -1,13 +1,12 @@
 import React from "react";
 
+import useProducts from "@/hooks/useProducts";
 import useSliderImages from "@/hooks/useSliderImages";
 
-import Header from "@/components/Header";
 import Slider from "@/components/Slider";
+import Wrapper from "@/components/Wrapper";
 import { AccentLink } from "@/components/Link";
-import useProducts from "@/hooks/useProducts";
 import ProductCard from "@/components/ProductCard";
-import Footer from "@/components/Footer";
 
 const Home = () => {
   const sliderImages = useSliderImages();
@@ -18,8 +17,7 @@ const Home = () => {
   const allProducts = product?.allProducts;
 
   return (
-    <div className="max-w-[1248px] m-auto">
-      <Header />
+    <Wrapper>
       <Slider data={data?.allSliders} />
       <div className="mt-16 mb-64">
         <div
@@ -37,7 +35,7 @@ const Home = () => {
         </div>
         <div
           className="flex justify-between flex-wrap 
-          xs: mx-2
+          xs:mx-2
         sm:justify-center"
         >
           {allProducts?.map((el, index) => {
@@ -45,8 +43,7 @@ const Home = () => {
           })}
         </div>
       </div>
-      <Footer />
-    </div>
+    </Wrapper>
   );
 };
 

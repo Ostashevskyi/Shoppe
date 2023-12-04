@@ -26,6 +26,7 @@ export default {
       },
       backgroundImage: {
         arrow: "url('@/assets/images/icons/arrow.svg')",
+        search: "url('@/assets/images/icons/search.svg')",
       },
     },
     fontFamily: {

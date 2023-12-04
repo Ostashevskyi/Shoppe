@@ -1,14 +1,18 @@
 import React from "react";
-import useLogo from "../hooks/useLogo";
+
 import { NavLink } from "react-router-dom";
-import { searchIcon, userIcon, cartIcon } from "@/utils/icon_imports";
+
+import useLogo from "../hooks/useLogo";
+
 import { HeaderLink } from "./Link";
+
+import { searchIcon, userIcon, cartIcon } from "@/utils/icon_imports";
 
 const Header = () => {
   const data = useLogo();
 
   return (
-    <div
+    <header
       className="mt-12 pb-4 border-b-2 border-light_gray flex justify-between items-center
     "
     >
@@ -19,7 +23,7 @@ const Header = () => {
         <div className="pr-12 border-r-2 border-light_gray">
           <ul className="flex gap-16 text-base">
             <li>
-              <HeaderLink to="#">Shop</HeaderLink>
+              <HeaderLink to="/catalog">Shop</HeaderLink>
             </li>
             <li>
               <HeaderLink to="blog">Blog</HeaderLink>
@@ -51,7 +55,7 @@ const Header = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

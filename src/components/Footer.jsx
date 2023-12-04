@@ -11,7 +11,7 @@ import {
 
 const Footer = () => {
   return (
-    <div className="border-t-2 border-t-light_gray pt-12">
+    <footer className="border-t-2 border-t-light_gray pt-12">
       <div className="flex flex-wrap justify-between mb-12">
         <div className="flex items-center gap-10  heading5D space-y-0 uppercase text-dark_gray">
           <NavLink to="contact">Contact</NavLink>
@@ -43,7 +43,7 @@ const Footer = () => {
           </NavLink>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

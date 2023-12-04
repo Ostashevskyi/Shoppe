@@ -1,9 +1,8 @@
 import React, { useMemo, useState } from "react";
-import { Image } from "react-datocms/image";
 import { NavLink } from "react-router-dom";
 import { HoverImage } from "./Image";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, small }) => {
   const { image } = product;
   const { responsiveImage } = image;
 
@@ -35,7 +34,7 @@ const ProductCard = ({ product }) => {
         )}
         {product.isDiscount && (
           <p className="text-white body_smallD font-medium">
-            - %{product.discount}
+            -%{product.discount}
           </p>
         )}
       </div>
@@ -51,7 +50,7 @@ const ProductCard = ({ product }) => {
   });
 
   return (
-    <div className="mb-20">
+    <div className={`mb-20  ${small && "max-w-[300px]"}`}>
       <div className="w-fit relative">
         <HoverImage
           data={responsiveImage}
