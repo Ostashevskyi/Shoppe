@@ -2,4 +2,17 @@ import searchIcon from "@/assets/images/icons/search.svg";
 import userIcon from "@/assets/images/icons/user.svg";
 import cartIcon from "@/assets/images/icons/cart.svg";
 
-export { searchIcon, userIcon, cartIcon };
+import facebookIcon from "@/assets/images/icons/socials/facebook.svg";
+import instagramIcon from "@/assets/images/icons/socials/instagram.svg";
+import linkedinIcon from "@/assets/images/icons/socials/linkedin.svg";
+import twitterIcon from "@/assets/images/icons/socials/twitter.svg";
+
+export {
+  searchIcon,
+  userIcon,
+  cartIcon,
+  facebookIcon,
+  instagramIcon,
+  linkedinIcon,
+  twitterIcon,
+};

@@ -8,7 +8,10 @@ const Header = () => {
   const data = useLogo();
 
   return (
-    <div className="mt-12 pb-4 border-b-2 border-light_gray flex justify-between items-center">
+    <div
+      className="mt-12 pb-4 border-b-2 border-light_gray flex justify-between items-center
+    "
+    >
       <NavLink to="/">
         <img src={data?.url} alt="logo" />
       </NavLink>

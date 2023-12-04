@@ -6,10 +6,12 @@ export default {
   content: ["./index.html", "./src/**/*.{.js,ts,jsx,tsx}"],
   theme: {
     screens: {
-      sm: "480px",
-      md: "768px",
-      lg: "976px",
-      xl: "1440px",
+      xs: { min: "320px", max: "424px" },
+      sm: { min: "425px", max: "767px" },
+      md: { min: "768px", max: "975px" },
+      lg: { min: "976px", max: "1439px" },
+      xl: { min: "1440px", max: "1919px" },
+      xxl: "1920px",
     },
     extend: {
       colors: {
@@ -21,6 +23,9 @@ export default {
         light_gray: "#EFEFEF",
         errors: "#D82700",
         white_50: "rgba(255,255,255,0.5)",
+      },
+      backgroundImage: {
+        arrow: "url('@/assets/images/icons/arrow.svg')",
       },
     },
     fontFamily: {

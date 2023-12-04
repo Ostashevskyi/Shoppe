@@ -11,21 +11,37 @@ export const Input = ({ type, name, pattern, errorMsg }) => {
   return (
     <div>
       <input
-        type={`${type}`}
-        {...register(`${name}`, {
-          pattern: {
-            value: pattern,
-            message: errorMsg,
-          },
-        })}
         placeholder={name}
         required
-        className="border-b-2 border-gray pb-2
+        className="border-b-2 border-gray pb-2 min-w-[243px]
           placeholder:text-dark_gray
           focus:outline-none"
         re
       />
       <ErrorMessage errors={errors} name="email" />
     </div>
+  );
+};
+
+export const NewsletterInput = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+  return (
+    <form
+      onSubmit={(e) => handleSubmit(e)}
+      className="flex items-center gap-32 border-b-2 pb-3"
+    >
+      <input
+        placeholder="Give an email, get the newsletter."
+        type="email"
+        required={ErrorMessage}
+        className="min-w-[243px] focus:outline-none placeholder:text-dark_gray text-dark_gray"
+      />
+      <input
+        type="submit"
+        className="bg-arrow bg-center bg-no-repeat text-transparent"
+      />
+    </form>
   );
 };
