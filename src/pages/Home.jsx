@@ -10,6 +10,7 @@ import ProductCard from "@/components/ProductCard";
 
 const Home = () => {
   const sliderImages = useSliderImages();
+
   const { data } = sliderImages;
 
   const products = useProducts();

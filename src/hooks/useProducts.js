@@ -1,6 +1,7 @@
-import { useQuery } from "graphql-hooks";
+import { gql, useQuery } from "@apollo/client";
 
-const products = `query allProducts {
+const products = gql`
+  query allProducts {
     allProducts {
       title
       slug
@@ -25,7 +26,8 @@ const products = `query allProducts {
       id
       discount
     }
-  }`;
+  }
+`;
 
 const useProducts = () => {
   const { data } = useQuery(products);

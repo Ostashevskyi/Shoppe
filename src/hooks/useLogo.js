@@ -1,13 +1,15 @@
-import { useQuery } from "graphql-hooks";
+import { gql, useQuery } from "@apollo/client";
 
-const logo = `query MyQuery {
-  upload(filter: {title: {eq: "MainLogo"}}) {
-    url
-    id
-    height
-    width
+const logo = gql`
+  query MyQuery {
+    upload(filter: { title: { eq: "MainLogo" } }) {
+      url
+      id
+      height
+      width
+    }
   }
-}`;
+`;
 
 const useLogo = () => {
   const { data } = useQuery(logo);

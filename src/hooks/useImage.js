@@ -1,6 +1,7 @@
-import { useQuery } from "graphql-hooks";
+import { gql, useQuery } from "@apollo/client";
 
-const image = `query MyQuery {
+const image = gql`
+  query MyQuery {
     allUploads {
       responsiveImage {
         alt
@@ -16,7 +17,8 @@ const image = `query MyQuery {
         width
       }
     }
-  }`;
+  }
+`;
 
 const useImage = () => {
   const { data } = useQuery(image);

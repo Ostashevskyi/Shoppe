@@ -1,30 +1,34 @@
-import { useQuery } from "graphql-hooks";
+import { gql, useQuery } from "@apollo/client";
 
-const sliderImages = `query MyQuery {
-  allSliders {
-    sliderImage {
-      responsiveImage {
-        alt
-        aspectRatio
-        base64
-        bgColor
-        height
-        sizes
-        src
-        srcSet
-        title
-        webpSrcSet
-        width
+const sliderImages = gql`
+  query MyQuery {
+    allSliders {
+      sliderImage {
+        responsiveImage {
+          alt
+          aspectRatio
+          base64
+          bgColor
+          height
+          sizes
+          src
+          srcSet
+          title
+          webpSrcSet
+          width
+        }
       }
+      sliderPrice
+      sliderTitle
+      id
     }
-    sliderPrice
-    sliderTitle
-    id
   }
-}`;
+`;
 
 const useSliderImages = () => {
   const { data } = useQuery(sliderImages);
+
+  console.log(data);
 
   return { data };
 };

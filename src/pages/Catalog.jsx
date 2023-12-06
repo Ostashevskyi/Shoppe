@@ -1,15 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+import { useSelector } from "react-redux";
+
 import Wrapper from "../components/Wrapper";
-import { SearchInput } from "../components/Input";
 import Dropdown from "../components/Dropdown";
-import RangeSlider from "../components/RangeSlider";
 import ToggleInput from "../components/Toggle";
-import useProducts from "../hooks/useProducts";
+import { SearchInput } from "../components/Input";
+import RangeSlider from "../components/RangeSlider";
+
+import useFilteredProducts from "@/hooks/useFilteredProducts";
+
 import ProductCard from "@/components/ProductCard";
 
 const Catalog = () => {
-  const { data } = useProducts();
-  const allProducts = data?.allProducts;
+  const { filterType, minPrice, maxPrice, onSale, inStock, title } =
+    useSelector((state) => state.filter);
+
+  const { refetch } = useFilteredProducts({
+    type: filterType,
+    min: minPrice,
+    max: maxPrice,
+    sale: onSale,
+    stock: inStock,
+    title: title,
+  });
+
+  const [allProducts, setAllProducts] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await refetch({
+          type: filterType ? filterType : undefined,
+          min: minPrice,
+          max: maxPrice,
+          sale: onSale,
+          stock: inStock,
+          title: title ? title : "",
+        });
+
+        setAllProducts(data?.allProducts || []);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, [filterType, minPrice, maxPrice, onSale, inStock, refetch, title]);
 
   return (
     <Wrapper>
@@ -27,7 +63,7 @@ const Catalog = () => {
           {allProducts?.map((el, index) => {
             return (
               <div key={index}>
-                <ProductCard product={el} small />;
+                <ProductCard product={el} small />
               </div>
             );
           })}
