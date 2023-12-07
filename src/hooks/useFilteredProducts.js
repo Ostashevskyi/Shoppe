@@ -46,6 +46,7 @@ export const products = gql`
       id
       discount
       productType
+      slug
     }
   }
 `;

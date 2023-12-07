@@ -61,7 +61,7 @@ const ProductCard = ({ product, small }) => {
           ProductLabel}
       </div>
       <div>
-        <NavLink to={product.slug} className="heading3D">
+        <NavLink to={`/products/${product.slug}`} className="heading3D">
           {product.title}
         </NavLink>
         {product.isDiscount && SalePrice}
@@ -72,10 +72,6 @@ const ProductCard = ({ product, small }) => {
       </div>
     </div>
   );
-};
-
-const ProductLabel = () => {
-  return;
 };
 
 export default ProductCard;

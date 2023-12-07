@@ -12,12 +12,16 @@ export const ButtonXS = ({ children }) => {
   );
 };
 
-export const ButtonM = ({ children }) => {
+export const ButtonM = ({ children, disabled }) => {
   return (
     <button
-      className="py-4 px-32 uppercase body_large border font-semibold border-black rounded-md 
-    hover:bg-black hover:text-white
-     active:opacity-80"
+      className={`${
+        disabled &&
+        "bg-gray border-none text-dark_gray hover:bg-gray cursor-default"
+      } w-[360px] h-[53px] justify-center items-center uppercase body_large border font-semibold border-black rounded-md 
+    ${!disabled && "hover:bg-black hover:text-white  active:opacity-80"}
+     `}
+      disabled={disabled}
     >
       {children}
     </button>

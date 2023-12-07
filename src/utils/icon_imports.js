@@ -7,6 +7,9 @@ import instagramIcon from "@/assets/images/icons/socials/instagram.svg";
 import linkedinIcon from "@/assets/images/icons/socials/linkedin.svg";
 import twitterIcon from "@/assets/images/icons/socials/twitter.svg";
 
+import heartIcon from "@/assets/images/icons/heart.svg";
+import mailIcon from "@/assets/images/icons/mail.svg";
+
 export {
   searchIcon,
   userIcon,
@@ -15,4 +18,6 @@ export {
   instagramIcon,
   linkedinIcon,
   twitterIcon,
+  heartIcon,
+  mailIcon,
 };
