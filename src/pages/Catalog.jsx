@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import Wrapper from "../components/Wrapper";
-import Dropdown from "../components/Dropdown";
-import ToggleInput from "../components/Toggle";
+import { CatalogSelect } from "../components/Select";
+import { ToggleCatalog } from "../components/Toggle";
 import { SearchInput } from "../components/Input";
 import RangeSlider from "../components/RangeSlider";
 
@@ -53,10 +53,10 @@ const Catalog = () => {
         <aside>
           <p className="heading1D mb-9">Shop The Latest</p>
           <SearchInput />
-          <Dropdown />
+          <CatalogSelect />
           <RangeSlider />
-          <ToggleInput label="On sale" />
-          <ToggleInput label="In stock" />
+          <ToggleCatalog label="On sale" />
+          <ToggleCatalog label="In stock" />
         </aside>
 
         <main className="flex flex-wrap gap-5">

@@ -4,12 +4,13 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../store/filterSlice";
 
-export const Input = ({ label, register, required, pattern }) => {
+export const Input = ({ label, register, required, pattern, type }) => {
   return (
     <div>
       <input
         {...register(label, { required, pattern })}
-        placeholder={label}
+        placeholder={required ? `${label} *` : label}
+        type={type ? type : "text"}
         className="border-b-2 border-gray pb-2 min-w-[400px] w-full
           placeholder:text-dark_gray
           focus:outline-none"
@@ -88,5 +89,15 @@ export const SearchInput = () => {
         className="bg-search bg-center bg-no-repeat text-transparent cursor-pointer"
       />
     </form>
+  );
+};
+
+export const SubmitInput = ({ label }) => {
+  return (
+    <input
+      type="submit"
+      value={label}
+      className="bg-black min-w-[500px] flex- min-h-[53px] rounded-md text-white uppercase"
+    />
   );
 };

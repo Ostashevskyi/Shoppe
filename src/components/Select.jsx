@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { setFilterType } from "../store/filterSlice";
 
-const Dropdown = () => {
+export const CatalogSelect = () => {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -25,5 +25,3 @@ const Dropdown = () => {
     </select>
   );
 };
-
-export default Dropdown;

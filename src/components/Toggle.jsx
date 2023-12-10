@@ -5,7 +5,7 @@ import Toggle from "react-toggle";
 import "react-toggle/style.css";
 import { setInStock, setOnSale } from "../store/filterSlice";
 
-const ToggleInput = ({ label }) => {
+export const ToggleCatalog = ({ label }) => {
   const [isTrue, setIsTrue] = useState(false);
 
   const dispatch = useDispatch();
@@ -28,5 +28,3 @@ const ToggleInput = ({ label }) => {
     </div>
   );
 };
-
-export default ToggleInput;
