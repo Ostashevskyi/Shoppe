@@ -4,24 +4,36 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../store/filterSlice";
 
-export const Input = ({ name }) => {
-  const {
-    register,
-    formState: { errors },
-  } = useForm();
-
+export const Input = ({ label, register, required, pattern }) => {
   return (
     <div>
       <input
-        placeholder={name}
-        required
-        className="border-b-2 border-gray pb-2 min-w-[243px]
+        {...register(label, { required, pattern })}
+        placeholder={label}
+        className="border-b-2 border-gray pb-2 min-w-[400px] w-full
           placeholder:text-dark_gray
           focus:outline-none"
-        re
       />
-      <ErrorMessage errors={errors} name="email" />
     </div>
+  );
+};
+
+export const InputSelect = ({ label, register, required }) => {
+  return (
+    <>
+      <select
+        {...register(label, { required })}
+        className="border-b-2 border-gray pb-2 min-w-[400px] text-dark_gray placeholder:text-dark_gray focus:outline-none"
+        defaultValue="Subject"
+      >
+        <option value="Subject" hidden>
+          Subject
+        </option>
+        <option value={"Option 1"}>Option 1</option>
+        <option value={"Option 2"}>Option 2</option>
+        <option value={"Option 3"}>Option 3</option>
+      </select>
+    </>
   );
 };
 
@@ -54,14 +66,8 @@ export const SearchInput = () => {
   const {
     register,
     formState: { errors },
-    handleSubmit,
     watch,
   } = useForm();
-
-  const onSubmit = (e, data) => {
-    e.preventDefault();
-    console.log(data);
-  };
 
   const someData = watch("searchFilter");
 
@@ -70,13 +76,7 @@ export const SearchInput = () => {
   }, [someData]);
 
   return (
-    <form
-      className="mb-10 border-b pb-3 border-light_gray flex justify-between items-center"
-      onSubmit={handleSubmit((data) => {
-        console.log(data);
-        // dispatch(setTitle(data.searchFilter));
-      })}
-    >
+    <form className="mb-10 border-b pb-3 border-light_gray flex justify-between items-center">
       <input
         {...register("searchFilter", { required: true })}
         placeholder="Search..."

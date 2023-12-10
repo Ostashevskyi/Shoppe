@@ -14,7 +14,7 @@ const Footer = () => {
     <footer className="border-t-2 border-t-light_gray pt-12">
       <div className="flex flex-wrap justify-between mb-12">
         <div className="flex items-center gap-10  heading5D space-y-0 uppercase text-dark_gray">
-          <NavLink to="contact">Contact</NavLink>
+          <NavLink to="/contact-us">Contact</NavLink>
           <NavLink to="terms-of-services">Terms of services</NavLink>
           <NavLink to="shipping-and-returns">Shipping and returns</NavLink>
         </div>
