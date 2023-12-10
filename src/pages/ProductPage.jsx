@@ -21,12 +21,11 @@ import useSimilarProducts from "../hooks/useSimilarProducts";
 
 const ProductPage = () => {
   const [isActive, setIsActive] = useState(true);
+  const [isActiveImage, setIsActiveImage] = useState(true);
 
   const { item } = useParams();
 
   const { data } = useProduct({ slug: item });
-
-  console.log(data);
 
   const product = data?.product;
 
@@ -44,7 +43,7 @@ const ProductPage = () => {
       <main className="mt-32 mb-64">
         <div className="flex gap-16 mb-32">
           <div className="flex gap-10">
-            <div className="flex flex-col gap-10">
+            <div className="flex flex-col justify-between">
               {images?.map((image, index) => {
                 return <AdditionalImage key={index} data={image} />;
               })}
