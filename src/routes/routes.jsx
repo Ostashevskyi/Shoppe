@@ -5,6 +5,7 @@ import Catalog from "@/pages/Catalog";
 import ContactUs from "@/pages/ContactUs";
 import ProductPage from "@/pages/ProductPage";
 import Login from "@/pages/Login";
+import ForgotPassword from "@/pages/ForgotPassword";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
   { path: "/products/:item", element: <ProductPage /> },
   { path: "/contact-us", element: <ContactUs /> },
   { path: "/login", element: <Login /> },
+  { path: "/reset-password", element: <ForgotPassword /> },
 ]);
 
 export default router;

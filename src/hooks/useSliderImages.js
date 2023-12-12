@@ -28,8 +28,6 @@ const sliderImages = gql`
 const useSliderImages = () => {
   const { data } = useQuery(sliderImages);
 
-  console.log(data);
-
   return { data };
 };
 
