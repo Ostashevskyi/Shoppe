@@ -43,12 +43,12 @@ const Header = () => {
               </HeaderLink>
             </li>
             <li>
-              <HeaderLink to="cart">
+              <HeaderLink to="/cart">
                 <img src={cartIcon} alt="cart" />
               </HeaderLink>
             </li>
             <li>
-              <HeaderLink to="#">
+              <HeaderLink to="/login">
                 <img src={userIcon} alt="user" />
               </HeaderLink>
             </li>

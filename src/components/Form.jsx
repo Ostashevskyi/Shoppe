@@ -1,8 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Input, InputSelect, SubmitInput } from "./Input";
-import { EMAIL_PATTERN } from "../utils/constants";
+import { Input, InputSelect, SubmitInput } from "@/components/Input";
+import { EMAIL_PATTERN } from "@/utils/constants";
 import { NavLink } from "react-router-dom";
+import {
+  InvalidValueMessage,
+  RequiredMessage,
+} from "@/components/AlertMessages";
+
+const onSubmit = (data) => {
+  console.log(data);
+};
 
 export const ContactForm = () => {
   const {
@@ -10,10 +18,6 @@ export const ContactForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
 
   return (
     <form
@@ -23,19 +27,11 @@ export const ContactForm = () => {
       <div className="flex justify-between flex-wrap">
         <div>
           <Input label={"First Name"} register={register} required />
-          {errors["First Name"] && (
-            <p role="alert" className="text-errors">
-              First name is required
-            </p>
-          )}
+          {errors["First Name"] && <RequiredMessage />}
         </div>
         <div>
           <Input label={"Last Name"} register={register} required />
-          {errors["Last Name"] && (
-            <p role="alert" className="text-errors">
-              Last name is required
-            </p>
-          )}
+          {errors["Last Name"] && <RequiredMessage />}
         </div>
       </div>
       <div className="flex justify-between flex-wrap">
@@ -46,16 +42,8 @@ export const ContactForm = () => {
             required
             pattern={EMAIL_PATTERN}
           />
-          {errors["Email"]?.type === "required" && (
-            <p role="alert" className="text-errors">
-              Email is required
-            </p>
-          )}
-          {errors["Email"]?.type === "pattern" && (
-            <p role="alert" className="text-errors">
-              Email is not valid
-            </p>
-          )}
+          {errors["Email"]?.type === "required" && <RequiredMessage />}
+          {errors["Email"]?.type === "pattern" && <InvalidValueMessage />}
         </div>
         <div>
           <InputSelect label={"Subject"} register={register} />
@@ -63,11 +51,7 @@ export const ContactForm = () => {
       </div>
       <div>
         <Input label={"Message"} register={register} required />
-        {errors.Message && (
-          <p role="alert" className="text-errors">
-            Message is required
-          </p>
-        )}
+        {errors.Message && <RequiredMessage />}
       </div>
       <div className="flex justify-center">
         <SubmitInput label={"Send"} />
@@ -83,8 +67,6 @@ export const LoginForm = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
-
   return (
     <form
       className="flex flex-col gap-11 mb-60"
@@ -97,16 +79,8 @@ export const LoginForm = () => {
           required
           pattern={EMAIL_PATTERN}
         />
-        {errors["Email"]?.type === "required" && (
-          <p role="alert" className="text-errors">
-            Email is required
-          </p>
-        )}
-        {errors["Email"]?.type === "pattern" && (
-          <p role="alert" className="text-errors">
-            Email is not valid
-          </p>
-        )}
+        {errors["Email"]?.type === "required" && <RequiredMessage />}
+        {errors["Email"]?.type === "pattern" && <InvalidValueMessage />}
       </div>
       <div>
         <Input
@@ -115,11 +89,7 @@ export const LoginForm = () => {
           required
           type={"password"}
         />
-        {errors["Password"] && (
-          <p role="alert" className="text-errors">
-            Password is required
-          </p>
-        )}
+        {errors["Password"] && <RequiredMessage />}
       </div>
       <div className="flex justify-center items-center flex-col gap-3">
         <SubmitInput label={"Sign in"} />
@@ -138,8 +108,6 @@ export const RegisterForm = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
-
   return (
     <form
       className="flex flex-col gap-11 mb-60"
@@ -147,27 +115,21 @@ export const RegisterForm = () => {
     >
       <div>
         <Input label={"First Name"} register={register} required />
-        {errors["First Name"] && (
-          <p role="alert" className="text-errors">
-            First name is required
-          </p>
-        )}
+        {errors["First Name"] && <RequiredMessage />}
       </div>
       <div>
         <Input label={"Last Name"} register={register} required />
-        {errors["Last Name"] && (
-          <p role="alert" className="text-errors">
-            Last name is required
-          </p>
-        )}
+        {errors["Last Name"] && <RequiredMessage />}
       </div>
       <div>
-        <Input label={"Email"} register={register} required />
-        {errors["Email"] && (
-          <p role="alert" className="text-errors">
-            Email is required
-          </p>
-        )}
+        <Input
+          label={"Email"}
+          register={register}
+          required
+          pattern={EMAIL_PATTERN}
+        />
+        {errors["Email"]?.type === "required" && <RequiredMessage />}
+        {errors["Email"]?.type === "pattern" && <InvalidValueMessage />}
       </div>
       <div>
         <Input
@@ -176,15 +138,36 @@ export const RegisterForm = () => {
           required
           type={"password"}
         />
-        {errors["Email"] && (
-          <p role="alert" className="text-errors">
-            Password is required
-          </p>
-        )}
+        {errors["Email"] && <RequiredMessage />}
       </div>
       <div>
         <SubmitInput label={"Register"} />
       </div>
+    </form>
+  );
+};
+
+export const ForgotPasswordForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-16">
+      <div>
+        <Input
+          label={"Email"}
+          register={register}
+          pattern={EMAIL_PATTERN}
+          required
+        />
+        {errors["Email"]?.type === "required" && <RequiredMessage />}
+        {errors["Email"]?.type === "pattern" && <InvalidValueMessage />}
+      </div>
+
+      <SubmitInput label={"Reset Password"} />
     </form>
   );
 };
