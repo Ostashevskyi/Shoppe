@@ -26,7 +26,7 @@ const Header = () => {
               <HeaderLink to="/catalog">Shop</HeaderLink>
             </li>
             <li>
-              <HeaderLink to="blog">Blog</HeaderLink>
+              <HeaderLink to="/blog">Blog</HeaderLink>
             </li>
             <li>
               <HeaderLink className="textDesktop[heading1]" to="#">
