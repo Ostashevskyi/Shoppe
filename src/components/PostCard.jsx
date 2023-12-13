@@ -1,16 +1,21 @@
 import React from "react";
 import { Image } from "react-datocms/image";
 import { NavLink } from "react-router-dom";
+import { format } from "date-fns";
 
 const PostCard = ({ post }) => {
+  const formattedDate = format(new Date(post.date), "MMMM dd, yyyy");
+
   return (
     <section className="max-w-[450px]">
       <Image data={post.image.responsiveImage} />
       <div className="mb-6">
         <p className="body_medium text-dark_gray mt-5 mb-1">
-          {post.category} - {post.date}
+          {post.category} - {formattedDate}
         </p>
-        <p className="heading3D mb-3">{post.title}</p>
+        <NavLink to={post.slug} className="heading3D mb-3">
+          {post.title}
+        </NavLink>
         <p className="heading5D text-dark_gray">{post.shortDescription}...</p>
       </div>
       <NavLink to={post.slug} className="body_large text-accent">

@@ -20,7 +20,11 @@ export const filterSlice = createSlice({
     },
 
     setFilterType: (state, action) => {
-      state.filterType = action.payload;
+      if (state.filterType === action.payload) {
+        state.filterType = "";
+      } else {
+        state.filterType = action.payload;
+      }
     },
 
     setInStock: (state, action) => {

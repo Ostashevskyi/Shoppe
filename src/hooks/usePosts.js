@@ -1,8 +1,14 @@
 import { useQuery, gql } from "@apollo/client";
 
 const posts = gql`
-  query MyQuery {
-    allPosts {
+  query MyQuery($title: String!, $category: String) {
+    allPosts(
+      filter: {
+        title: { matches: { pattern: $title } }
+        OR: {}
+        category: { eq: $category }
+      }
+    ) {
       title
       tags
       slug
@@ -23,15 +29,18 @@ const posts = gql`
       date
       category
       blogValue(markdown: true)
-      author
+      author {
+        id
+        name
+      }
     }
   }
 `;
 
-const usePosts = () => {
-  const { data } = useQuery(posts);
+const usePosts = (title, category) => {
+  const { data, refetch } = useQuery(posts, { variables: { title, category } });
 
-  return { data };
+  return { data, refetch };
 };
 
 export default usePosts;
