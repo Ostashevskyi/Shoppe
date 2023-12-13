@@ -1,11 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import Home from "@/pages/Home";
+import Blog from "@/pages/Blog";
+import Login from "@/pages/Login";
 import Catalog from "@/pages/Catalog";
 import ContactUs from "@/pages/ContactUs";
 import ProductPage from "@/pages/ProductPage";
-import Login from "@/pages/Login";
 import ForgotPassword from "@/pages/ForgotPassword";
+import Post from "../pages/Post";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -14,6 +16,8 @@ const router = createBrowserRouter([
   { path: "/contact-us", element: <ContactUs /> },
   { path: "/login", element: <Login /> },
   { path: "/reset-password", element: <ForgotPassword /> },
+  { path: "/blog", element: <Blog /> },
+  { path: "/blog/:post", element: <Post /> },
 ]);
 
 export default router;
