@@ -8,6 +8,7 @@ const posts = gql`
         OR: {}
         category: { eq: $category }
       }
+      skip: 1
     ) {
       title
       tags

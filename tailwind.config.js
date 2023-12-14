@@ -36,5 +36,12 @@ export default {
       fill: ["hover", "focus"],
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addVariant }) {
+      addVariant("child-p", "& > p");
+      addVariant("child-image", "& > p > img");
+      addVariant("child-h3", "& > pre");
+      addVariant("child-ul", "& > ul");
+    },
+  ],
 };
