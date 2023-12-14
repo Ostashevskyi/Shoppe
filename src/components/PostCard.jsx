@@ -1,10 +1,10 @@
 import React from "react";
 import { Image } from "react-datocms/image";
 import { NavLink } from "react-router-dom";
-import { format } from "date-fns";
+import { formatDate } from "../utils/formatDate";
 
 const PostCard = ({ post }) => {
-  const formattedDate = format(new Date(post.date), "MMMM dd, yyyy");
+  const formattedDate = formatDate(post.date);
 
   return (
     <section className="max-w-[450px]">

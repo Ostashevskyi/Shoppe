@@ -31,7 +31,7 @@ const ProductPage = () => {
 
   const images = product?.additionalImages;
 
-  // get similar
+  // get similar images
 
   const info = useSimilarProducts({ slug: item });
 
@@ -141,7 +141,13 @@ const ProductPage = () => {
             {isActive ? (
               <p>{product?.description}</p>
             ) : (
-              <div>{parse(product?.additionalInformation)}</div>
+              <div>
+                {parse(
+                  product?.additionalInformation
+                    ? product?.additionalInformation
+                    : ""
+                )}
+              </div>
             )}
           </div>
         </div>
