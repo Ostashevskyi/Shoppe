@@ -1,14 +1,20 @@
 import { useQuery, gql } from "@apollo/client";
 
 const posts = gql`
-  query MyQuery($title: String!, $category: String) {
+  query MyQuery(
+    $title: String!
+    $category: String
+    $first: IntType
+    $skip: IntType
+  ) {
     allPosts(
       filter: {
         title: { matches: { pattern: $title } }
         OR: {}
         category: { eq: $category }
       }
-      skip: 1
+      first: $first
+      skip: $skip
     ) {
       title
       tags
@@ -35,11 +41,16 @@ const posts = gql`
         name
       }
     }
+    _allPostsMeta {
+      count
+    }
   }
 `;
 
-const usePosts = (title, category) => {
-  const { data, refetch } = useQuery(posts, { variables: { title, category } });
+const usePosts = (title, category, first, skip) => {
+  const { data, refetch } = useQuery(posts, {
+    variables: { title, category, first, skip },
+  });
 
   return { data, refetch };
 };
