@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useM, useMemo } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import Wrapper from "@/components/Wrapper";
 import { SearchInput } from "../components/Input";
 import usePosts from "../hooks/usePosts";
