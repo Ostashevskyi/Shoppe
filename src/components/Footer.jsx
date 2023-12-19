@@ -25,7 +25,8 @@ const Footer = () => {
       <div className="flex justify-between mb-20">
         <div>
           <p className="heading5D text-dark_gray">
-            © 2023 Shelly. Terms of use and privacy policy.
+            © 2023 Shelly.{" "}
+            <NavLink to={"/privacy"}>Terms of use and privacy policy</NavLink>.
           </p>
         </div>
         <div className="flex gap-7">

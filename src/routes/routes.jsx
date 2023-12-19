@@ -8,6 +8,7 @@ import ContactUs from "@/pages/ContactUs";
 import ProductPage from "@/pages/ProductPage";
 import ForgotPassword from "@/pages/ForgotPassword";
 import Post from "../pages/Post";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
   { path: "/reset-password", element: <ForgotPassword /> },
   { path: "/blog", element: <Blog /> },
   { path: "/blog/:post", element: <Post /> },
+  { path: "/privacy", element: <PrivacyPolicy /> },
 ]);
 
 export default router;
