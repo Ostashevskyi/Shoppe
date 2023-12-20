@@ -46,7 +46,7 @@ const Header = () => {
               </HeaderLink>
             </li>
             <li>
-              <HeaderLink to="/login">
+              <HeaderLink to="/account">
                 <img src={userIcon} alt="user" />
               </HeaderLink>
             </li>
