@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import Wrapper from "@/components/Wrapper";
 import Dashboard from "@/pages/account/Dashboard";
 import Orders from "@/pages/account/Orders";
+import Downloads from "@/pages/account/Downloads";
 
 const Account = () => {
   const [activeElement, setActiveElement] = useState("Dashboard");
@@ -25,6 +26,8 @@ const Account = () => {
         return <Dashboard />;
       case "Orders":
         return <Orders />;
+      case "Downloads":
+        return <Downloads />;
       default:
         return;
     }
