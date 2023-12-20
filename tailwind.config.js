@@ -42,6 +42,8 @@ export default {
       addVariant("child-image", "& > p > img");
       addVariant("child-h3", "& > pre");
       addVariant("child-ul", "& > ul");
+      addVariant("child-h1", "& > h1");
+      addVariant("child-h4", "& > h4");
     },
   ],
 };
