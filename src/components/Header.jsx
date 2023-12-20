@@ -29,9 +29,7 @@ const Header = () => {
               <HeaderLink to="/blog">Blog</HeaderLink>
             </li>
             <li>
-              <HeaderLink className="textDesktop[heading1]" to="#">
-                Our Story
-              </HeaderLink>
+              <HeaderLink to="/about">Our Story</HeaderLink>
             </li>
           </ul>
         </div>
