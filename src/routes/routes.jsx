@@ -9,6 +9,8 @@ import ProductPage from "@/pages/ProductPage";
 import ForgotPassword from "@/pages/ForgotPassword";
 import Post from "../pages/Post";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
+import About from "../pages/About";
+import PageNotFound from "../pages/404";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -20,6 +22,8 @@ const router = createBrowserRouter([
   { path: "/blog", element: <Blog /> },
   { path: "/blog/:post", element: <Post /> },
   { path: "/privacy", element: <PrivacyPolicy /> },
+  { path: "/about", element: <About /> },
+  { path: "*", element: <PageNotFound /> },
 ]);
 
 export default router;
