@@ -3,6 +3,7 @@ import Wrapper from "@/components/Wrapper";
 import Dashboard from "@/pages/account/Dashboard";
 import Orders from "@/pages/account/Orders";
 import Downloads from "@/pages/account/Downloads";
+import Addresses from "@/pages/account/Addresses";
 
 const Account = () => {
   const [activeElement, setActiveElement] = useState("Dashboard");
@@ -28,6 +29,8 @@ const Account = () => {
         return <Orders />;
       case "Downloads":
         return <Downloads />;
+      case "Addresses":
+        return <Addresses />;
       default:
         return;
     }

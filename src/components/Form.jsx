@@ -7,6 +7,7 @@ import {
   InvalidValueMessage,
   RequiredMessage,
 } from "@/components/AlertMessages";
+import { CountrySelect } from "./Select";
 
 const onSubmit = (data) => {
   console.log(data);
@@ -53,7 +54,7 @@ export const ContactForm = () => {
         <Input label={"Message"} register={register} required />
         {errors.Message && <RequiredMessage />}
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center min-w-[500px]">
         <SubmitInput label={"Send"} />
       </div>
     </form>
@@ -92,7 +93,9 @@ export const LoginForm = () => {
         {errors["Password"] && <RequiredMessage />}
       </div>
       <div className="flex justify-center items-center flex-col gap-3">
-        <SubmitInput label={"Sign in"} />
+        <div className="min-w-[500px]">
+          <SubmitInput label={"Sign in"} />
+        </div>
         <NavLink className="heading5D" to={"/reset-password"}>
           Have you forgotten your password?
         </NavLink>
@@ -140,7 +143,7 @@ export const RegisterForm = () => {
         />
         {errors["Email"] && <RequiredMessage />}
       </div>
-      <div>
+      <div className="min-w-[500px]">
         <SubmitInput label={"Register"} />
       </div>
     </form>
@@ -166,8 +169,66 @@ export const ForgotPasswordForm = () => {
         {errors["Email"]?.type === "required" && <RequiredMessage />}
         {errors["Email"]?.type === "pattern" && <InvalidValueMessage />}
       </div>
+      <div className="min-w-[500px]">
+        <SubmitInput label={"Reset Password"} />
+      </div>
+    </form>
+  );
+};
 
-      <SubmitInput label={"Reset Password"} />
+export const BillingForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-9">
+      <div className="flex justify-between items-center gap-10">
+        <div>
+          <Input label={"First name"} register={register} required small />
+          {errors["First name"] && <RequiredMessage />}
+        </div>
+        <div>
+          <Input label={"Last name"} register={register} required small />
+          {errors["Last name"] && <RequiredMessage />}
+        </div>
+      </div>
+      <Input label={"Company name"} register={register} />
+      <div>
+        <CountrySelect label={"Country"} register={register} required />
+        {errors["County"] && <RequiredMessage />}
+      </div>
+      <div>
+        <Input label={"Street Address"} register={register} required />
+        {errors["Street Address"] && <RequiredMessage />}
+      </div>
+      <div>
+        <Input label={"Postcode / ZIP"} register={register} required />
+        {errors["Postcode / ZIP"] && <RequiredMessage />}
+      </div>
+      <div>
+        <Input label={"Town / City"} register={register} required />
+        {errors["Town / City"] && <RequiredMessage />}
+      </div>
+      <div>
+        <Input label={"Phone"} register={register} required type="tel" />
+        {errors["Phone"] && <RequiredMessage />}
+      </div>
+      <div>
+        <Input
+          label={"Email"}
+          register={register}
+          required
+          pattern={EMAIL_PATTERN}
+        />
+        {errors["Email"]?.type === "required" && <RequiredMessage />}
+        {errors["Email"]?.type === "pattern" && <InvalidValueMessage />}
+      </div>
+      <div className="max-w-[244px]">
+        <SubmitInput label={"Save addresss"} />
+      </div>
     </form>
   );
 };

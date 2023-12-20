@@ -1,19 +1,20 @@
-import { ErrorMessage } from "@hookform/error-message";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../store/filterSlice";
 
-export const Input = ({ label, register, required, pattern, type }) => {
+export const Input = ({ label, register, required, pattern, type, small }) => {
   return (
     <div>
       <input
         {...register(label, { required, pattern })}
         placeholder={required ? `${label} *` : label}
         type={type ? type : "text"}
-        className="border-b-2 border-gray pb-2 min-w-[400px] w-full
+        className={`border-b-2 border-gray pb-2 ${
+          small ? "min-w-[270px]" : "min-w-[400px]"
+        } w-full
           placeholder:text-dark_gray
-          focus:outline-none"
+          focus:outline-none`}
       />
     </div>
   );
@@ -21,20 +22,18 @@ export const Input = ({ label, register, required, pattern, type }) => {
 
 export const InputSelect = ({ label, register, required }) => {
   return (
-    <>
-      <select
-        {...register(label, { required })}
-        className="border-b-2 border-gray pb-2 min-w-[400px] text-dark_gray placeholder:text-dark_gray focus:outline-none"
-        defaultValue="Subject"
-      >
-        <option value="Subject" hidden>
-          Subject
-        </option>
-        <option value={"Option 1"}>Option 1</option>
-        <option value={"Option 2"}>Option 2</option>
-        <option value={"Option 3"}>Option 3</option>
-      </select>
-    </>
+    <select
+      {...register(label, { required })}
+      className="border-b-2 border-gray pb-2 min-w-[400px] text-dark_gray placeholder:text-dark_gray focus:outline-none"
+      defaultValue="Subject"
+    >
+      <option value="Subject" hidden>
+        Subject
+      </option>
+      <option value={"Option 1"}>Option 1</option>
+      <option value={"Option 2"}>Option 2</option>
+      <option value={"Option 3"}>Option 3</option>
+    </select>
   );
 };
 
@@ -97,7 +96,7 @@ export const SubmitInput = ({ label }) => {
     <input
       type="submit"
       value={label}
-      className="bg-black min-w-[500px] flex- min-h-[53px] rounded-md text-white uppercase"
+      className="bg-black w-full flex min-h-[53px] rounded-md text-white uppercase justify-center items-center"
     />
   );
 };
