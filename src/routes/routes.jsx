@@ -7,10 +7,11 @@ import Catalog from "@/pages/Catalog";
 import ContactUs from "@/pages/ContactUs";
 import ProductPage from "@/pages/ProductPage";
 import ForgotPassword from "@/pages/ForgotPassword";
-import Post from "../pages/Post";
-import PrivacyPolicy from "../pages/PrivacyPolicy";
-import About from "../pages/About";
-import PageNotFound from "../pages/404";
+import Post from "@/pages/Post";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import About from "@/pages/About";
+import PageNotFound from "@/pages/404";
+import Account from "@/pages/account/Account";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
   { path: "/privacy", element: <PrivacyPolicy /> },
   { path: "/about", element: <About /> },
   { path: "*", element: <PageNotFound /> },
+  { path: "/account", element: <Account /> },
 ]);
 
 export default router;
