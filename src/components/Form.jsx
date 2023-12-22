@@ -232,3 +232,56 @@ export const BillingForm = () => {
     </form>
   );
 };
+
+export const AccountDetailsForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-9">
+      <div>
+        <Input label={"First name"} register={register} required />
+        {errors["First name"] && <RequiredMessage />}
+      </div>
+      <div>
+        <Input label={"Last name"} register={register} required />
+        {errors["Last name"] && <RequiredMessage />}
+      </div>
+      <div>
+        <Input label={"Display name"} register={register} required />
+        {errors["Display name"] && <RequiredMessage />}
+        <p className="body_smallD mt-2 text-dark_gray">
+          This will be how your name will be displayed in the account section
+          and in reviews.
+        </p>
+      </div>
+      <div className="mb-4">
+        <Input
+          label={"Email"}
+          register={register}
+          required
+          pattern={EMAIL_PATTERN}
+        />
+        {errors["Email"]?.type === "required" && <RequiredMessage />}
+        {errors["Email"]?.type === "pattern" && <InvalidValueMessage />}
+      </div>
+
+      <h3 className="heading5D font-medium">Password Change</h3>
+
+      <Input
+        label={"Current password (leave blank to leave unchanged)"}
+        register={register}
+      />
+      <Input
+        label={"New password (leave blank to leave unchanged)"}
+        register={register}
+      />
+      <Input label={"Confirm new password"} register={register} />
+
+      <SubmitInput label={"Save changes"} />
+    </form>
+  );
+};

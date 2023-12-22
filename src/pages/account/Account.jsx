@@ -4,6 +4,7 @@ import Dashboard from "@/pages/account/Dashboard";
 import Orders from "@/pages/account/Orders";
 import Downloads from "@/pages/account/Downloads";
 import Addresses from "@/pages/account/Addresses";
+import AccountDetails from "@/pages/account/AccountDetails";
 
 const Account = () => {
   const [activeElement, setActiveElement] = useState("Dashboard");
@@ -31,6 +32,8 @@ const Account = () => {
         return <Downloads />;
       case "Addresses":
         return <Addresses />;
+      case "Account Details":
+        return <AccountDetails />;
       default:
         return;
     }
@@ -39,7 +42,9 @@ const Account = () => {
   return (
     <Wrapper>
       <main className="mt-24 mb-52">
-        <h1 className="text-center mb-16">My Account</h1>
+        {activeElement === "Dashboard" && (
+          <h1 className="text-center mb-16 text-3xl font-medium">My Account</h1>
+        )}
         <div>
           <ul className="flex gap-12 border-b border-light_gray mb-10">
             {buttons.map((btn) => {
