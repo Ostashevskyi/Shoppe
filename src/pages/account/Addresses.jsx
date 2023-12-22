@@ -14,7 +14,7 @@ const Addresses = () => {
       <p className="mb-11">
         The following addresses will be used on the checkout page by default.
       </p>
-      <div className="flex justify-between mr-64">
+      <div className="flex justify-between">
         <div>
           <p className="mb-6 heading3D">Billing Address</p>
 
@@ -45,15 +45,29 @@ const Addresses = () => {
         <div>
           <p className="mb-6 heading3D">Shipping Address</p>
 
-          <button
-            onClick={() => setter(setIsShipping, isShipping)}
-            className="body_large text-accent uppercase font-medium mb-3"
-          >
-            Add
-          </button>
-          <p className="body_medium text-dark_gray">
-            You have not set up this type of address yet.
-          </p>
+          {isShipping ? (
+            <div>
+              <BillingForm />
+              <button
+                className="body_large text-accent uppercase font-medium mt-4"
+                onClick={() => setter(setIsShipping, isShipping)}
+              >
+                Close
+              </button>
+            </div>
+          ) : (
+            <div>
+              <button
+                onClick={() => setter(setIsShipping, isShipping)}
+                className="body_large text-accent uppercase font-medium mb-3"
+              >
+                Add
+              </button>
+              <p className="body_medium text-dark_gray">
+                You have not set up this type of address yet.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>
