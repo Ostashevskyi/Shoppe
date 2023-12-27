@@ -1,27 +1,25 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 
 import ReactStars from "react-stars";
 import parse from "html-react-parser";
 import { useParams } from "react-router-dom";
 
-import Counter from "../components/Counter";
-import { ButtonM } from "../components/Button";
-import MailIcon from "../components/icons/MailIcon";
-import { AdditionalImage } from "../components/Image";
-import HeartIcon from "../components/icons/HeartIcon";
-import TwitterIcon from "../components/icons/TwitterIcon";
-import FacebookIcon from "../components/icons/FacebookIcon";
-import InstagramIcon from "../components/icons/InstagramIcon";
-import ProductCard from "@/components/ProductCard";
-
 import useProduct from "../hooks/useProduct";
+import useSimilarProducts from "../hooks/useSimilarProducts";
 
 import Wrapper from "@/components/Wrapper";
-import useSimilarProducts from "../hooks/useSimilarProducts";
+import Counter from "@/components/shared/Counter";
+import MailIcon from "@/components/icons/MailIcon";
+import HeartIcon from "@/components/icons/HeartIcon";
+import { ButtonM } from "@/components/Buttons/ButtonM";
+import TwitterIcon from "@/components/icons/TwitterIcon";
+import ProductCard from "@/components/shared/ProductCard";
+import FacebookIcon from "@/components/icons/FacebookIcon";
+import InstagramIcon from "@/components/icons/InstagramIcon";
+import { AdditionalImage } from "@/components/Images/AdditionalImage";
 
 const ProductPage = () => {
   const [isActive, setIsActive] = useState(true);
-  const [isActiveImage, setIsActiveImage] = useState(true);
 
   const { item } = useParams();
 

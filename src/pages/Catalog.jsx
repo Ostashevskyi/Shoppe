@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 
 import { useSelector } from "react-redux";
 
-import Wrapper from "../components/Wrapper";
-import { CatalogSelect } from "../components/Select";
-import { ToggleCatalog } from "../components/Toggle";
-import { SearchInput } from "../components/Input";
-import RangeSlider from "../components/RangeSlider";
+import Wrapper from "@/components/Wrapper";
 
 import useFilteredProducts from "@/hooks/useFilteredProducts";
 
-import ProductCard from "@/components/ProductCard";
+import RangeSlider from "@/components/shared/RangeSlider";
+import ProductCard from "@/components/shared/ProductCard";
+import { ToggleCatalog } from "@/components/shared/Toggle";
+import { SearchInput } from "@/components/Inputs/SearchInput";
+import { CatalogSelect } from "@/components/Selects/CatalogSelect";
 
 const Catalog = () => {
   const { filterType, minPrice, maxPrice, onSale, inStock, title } =

@@ -1,12 +1,17 @@
 import React, { useEffect, useState, useMemo } from "react";
-import Wrapper from "@/components/Wrapper";
-import { SearchInput } from "../components/Input";
-import usePosts from "../hooks/usePosts";
-import PostCard from "../components/PostCard";
+
 import { useDispatch, useSelector } from "react-redux";
-import { setFilterType } from "../store/filterSlice";
-import Pagination from "../components/Pagination";
-import { POSTS_ON_PAGE } from "../utils/constants";
+
+import usePosts from "@/hooks/usePosts";
+
+import { setFilterType } from "@/store/filterSlice";
+
+import { POSTS_ON_PAGE } from "@/utils/constants";
+
+import Wrapper from "@/components/Wrapper";
+import PostCard from "@/components/shared/PostCard";
+import Pagination from "@/components/shared/Pagination";
+import { SearchInput } from "@/components/Inputs/SearchInput";
 
 const Blog = () => {
   const { title, filterType } = useSelector((state) => state.filter);

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Wrapper from "@/components/Wrapper";
-import { supabase } from "../auth/client";
-import { ButtonM } from "@/components/Button";
+
 import { NavLink } from "react-router-dom";
+
+import { supabase } from "../auth/client";
+
+import Wrapper from "@/components/Wrapper";
+import { ButtonM } from "@/components/Buttons/ButtonM";
 
 const ConfirmEmail = () => {
   const [session, setSession] = useState();
