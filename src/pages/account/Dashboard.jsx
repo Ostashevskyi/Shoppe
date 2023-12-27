@@ -1,12 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { supabase } from "../../auth/client";
 
 const Dashboard = () => {
   const { user } = useSelector((state) => state.user);
-
-  const { id } = user;
 
   const { user_metadata } = user;
 

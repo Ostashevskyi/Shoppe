@@ -8,7 +8,6 @@ import AccountDetails from "@/pages/account/AccountDetails";
 import Logout from "./Logout";
 import { supabase } from "../../auth/client";
 import { useNavigate, useNavigation } from "react-router-dom";
-import { getSession } from "../../auth/getSession";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../store/userSlice";
 
