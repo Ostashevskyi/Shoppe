@@ -1,13 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { supabase } from "../../auth/client";
 
 const Dashboard = () => {
   const { user } = useSelector((state) => state.user);
 
-  const { user_metadata } = user;
+  const { id } = user;
 
-  // const { first_name, last_name } = user_metadata;
+  const { user_metadata } = user;
 
   const first_name = user_metadata?.first_name;
   const last_name = user_metadata?.last_name;
@@ -26,14 +27,14 @@ const Dashboard = () => {
         <NavLink className="text-accent" to="#">
           recent orders
         </NavLink>
-        , manage your{" "}
+        , manage your
         <NavLink className="text-accent" to="#">
           shipping and billing addresses
         </NavLink>
-        , and edit your{" "}
+        , and edit your
         <NavLink className="text-accent" to="#">
           password and account details
-        </NavLink>{" "}
+        </NavLink>
         .
       </p>
     </div>

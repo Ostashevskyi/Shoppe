@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Input, InputSelect, SubmitInput } from "@/components/Input";
 import { EMAIL_PATTERN } from "@/utils/constants";
@@ -15,18 +15,6 @@ import { useDispatch } from "react-redux";
 
 const onSubmit = (data) => {
   console.log(data);
-};
-
-const signUpSubmit = (data) => {
-  const userInfo = {
-    email: data.Email,
-    password: data.Password,
-    firstName: data["First Name"],
-    lastName: data["Last Name"],
-    displayName: data["Display Name"],
-  };
-
-  signUpUser({ userInfo });
 };
 
 export const ContactForm = () => {
@@ -84,17 +72,19 @@ export const LoginForm = () => {
     formState: { errors },
   } = useForm();
 
+  const [error, setError] = useState();
+
   const navigate = useNavigate();
 
   const loginUser = async (email, password) => {
     try {
-      const { data } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signInWithPassword({
         email: email,
         password: password,
       });
 
       if (error) {
-        console.error("Login error:", error.message);
+        setError(error);
         // Handle error appropriately
       } else {
         console.log("Login successful");
@@ -102,7 +92,7 @@ export const LoginForm = () => {
         // Redirect or perform actions after successful login
       }
     } catch (error) {
-      console.error("Login error:", error.message);
+      setError(error);
       // Handle error appropriately
     }
   };
@@ -133,6 +123,7 @@ export const LoginForm = () => {
         />
         {errors["Password"] && <RequiredMessage />}
       </div>
+      {error ? <p>{error.message}</p> : ""}
       <div className="flex justify-center items-center flex-col gap-3">
         <div className="min-w-[500px]">
           <SubmitInput label={"Sign in"} />
@@ -151,6 +142,21 @@ export const RegisterForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const navigate = useNavigate();
+
+  const signUpSubmit = (data) => {
+    const userInfo = {
+      email: data.Email,
+      password: data.Password,
+      firstName: data["First Name"],
+      lastName: data["Last Name"],
+      displayName: data["Display Name"],
+    };
+
+    signUpUser({ userInfo });
+    navigate("/confirm_email");
+  };
 
   return (
     <form
@@ -186,7 +192,7 @@ export const RegisterForm = () => {
           required
           type={"password"}
         />
-        {errors["Email"] && <RequiredMessage />}
+        {errors["Password"] && <RequiredMessage />}
       </div>
       <div className="min-w-[500px]">
         <SubmitInput label={"Register"} />

@@ -19,6 +19,7 @@ export const Input = ({
         placeholder={required ? `${label} *` : label}
         type={type ? type : "text"}
         value={value && value}
+        minLength={type === "password" ? 6 : 1}
         className={`border-b-2 border-gray pb-2 ${
           small ? "min-w-[270px]" : "min-w-[400px]"
         } w-full

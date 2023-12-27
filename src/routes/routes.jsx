@@ -12,6 +12,7 @@ import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import About from "@/pages/About";
 import PageNotFound from "@/pages/404";
 import Account from "@/pages/account/Account";
+import ConfirmEmail from "../pages/ConfirmEmail";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
   { path: "/about", element: <About /> },
   { path: "*", element: <PageNotFound /> },
   { path: "/account", element: <Account /> },
+  { path: "/confirm_email", element: <ConfirmEmail /> },
 ]);
 
 export default router;

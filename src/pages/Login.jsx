@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Wrapper from "@/components/Wrapper";
 import { LoginForm, RegisterForm } from "../components/Form";
 import { supabase } from "../auth/client";
@@ -13,6 +13,7 @@ export const signUpUser = async ({ userInfo }) => {
         last_name: userInfo.lastName,
         display_name: userInfo.displayName,
       },
+      emailRedirectTo: "http://localhost:5173/confirm_email",
     },
   });
 };

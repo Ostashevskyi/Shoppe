@@ -15,3 +15,11 @@ export const InvalidValueMessage = () => {
     </p>
   );
 };
+
+export const MinLengthMessage = () => {
+  return (
+    <p role="alert" className="text-errors">
+      Min length is 6
+    </p>
+  );
+};
