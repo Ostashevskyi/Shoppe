@@ -1,11 +1,15 @@
 import React, { useEffect } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
-import { onPageSkip, setActivePage } from "../store/paginationSlice";
-import { POSTS_ON_PAGE } from "../utils/constants";
-import { ButtonPagination } from "./Button";
+
+import { onPageSkip, setActivePage } from "@/store/paginationSlice";
+
+import { POSTS_ON_PAGE } from "../../utils/constants";
+
+import { PaginationButton } from "@/components/Buttons/PaginationButton";
 
 const Pagination = ({ count }) => {
-  const items = [...Array(count ? Math.ceil(count / 4) : 0).keys()];
+  const items = [...Array(count ? Math.ceil(count / POSTS_ON_PAGE) : 0).keys()];
 
   const { activePage } = useSelector((state) => state.pagination);
   const { title, filterType } = useSelector((state) => state.filter);
@@ -34,7 +38,7 @@ const Pagination = ({ count }) => {
   return (
     <div className="flex gap-2 items-center justify-center">
       {activePage !== 1 && items.length > 0 && (
-        <ButtonPagination func={onPreviousPage}>{"<-"}</ButtonPagination>
+        <PaginationButton func={onPreviousPage}>{"<-"}</PaginationButton>
       )}
       {items.map((num) => {
         return (
@@ -54,7 +58,7 @@ const Pagination = ({ count }) => {
         );
       })}
       {activePage !== items.length && items.length > 0 && (
-        <ButtonPagination func={onNextPage}>{"->"}</ButtonPagination>
+        <PaginationButton func={onNextPage}>{"->"}</PaginationButton>
       )}
     </div>
   );

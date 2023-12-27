@@ -1,6 +1,7 @@
 import React from "react";
+
 import Wrapper from "@/components/Wrapper";
-import { ForgotPasswordForm } from "@/components/Form";
+import { ForgotPasswordForm } from "@/components/Forms/ForgotPasswordForm";
 
 const ForgotPassword = () => {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { Image } from "react-datocms/image";
 import { NavLink } from "react-router-dom";
-import { formatDate } from "../utils/formatDate";
+import { formatDate } from "../../utils/formatDate";
 
 const PostCard = ({ post }) => {
   const formattedDate = formatDate(post.date);

@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { NewsletterInput } from "./Input";
+import { NewsletterInput } from "@/components/Inputs/NewsletterInput";
 
 import {
   facebookIcon,
@@ -15,8 +15,8 @@ const Footer = () => {
       <div className="flex flex-wrap justify-between mb-12">
         <div className="flex items-center gap-10  heading5D space-y-0 uppercase text-dark_gray">
           <NavLink to="/contact-us">Contact</NavLink>
-          <NavLink to="terms-of-services">Terms of services</NavLink>
-          <NavLink to="shipping-and-returns">Shipping and returns</NavLink>
+          <NavLink to="/terms-of-services">Terms of services</NavLink>
+          <NavLink to="/shipping-and-returns">Shipping and returns</NavLink>
         </div>
         <div>
           <NewsletterInput />
@@ -25,8 +25,11 @@ const Footer = () => {
       <div className="flex justify-between mb-20">
         <div>
           <p className="heading5D text-dark_gray">
-            © 2023 Shelly.{" "}
-            <NavLink to={"/privacy"}>Terms of use and privacy policy</NavLink>.
+            © 2023 Shelly.
+            <NavLink to={"/privacy"} className="ml-2">
+              Terms of use and privacy policy
+            </NavLink>
+            .
           </p>
         </div>
         <div className="flex gap-7">

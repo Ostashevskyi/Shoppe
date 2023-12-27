@@ -1,6 +1,8 @@
 import React from "react";
-import { AccountDetailsForm } from "../../components/Form";
+
 import { useSelector } from "react-redux";
+
+import { AccountDetailsForm } from "@/components/Forms/AccountDetailsForm";
 
 const AccountDetails = () => {
   const { user } = useSelector((state) => state.user);

@@ -2,9 +2,9 @@ import React from "react";
 
 import { NavLink } from "react-router-dom";
 
-import useLogo from "../hooks/useLogo";
+import useLogo from "@/hooks/useLogo";
 
-import { HeaderLink } from "./Link";
+import { HeaderLink } from "@/components/shared/Links";
 
 import { searchIcon, userIcon, cartIcon } from "@/utils/icon_imports";
 

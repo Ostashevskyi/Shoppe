@@ -1,6 +1,7 @@
 import React from "react";
+
 import Wrapper from "@/components/Wrapper";
-import { ContactForm } from "../components/Form";
+import { ContactForm } from "@/components/Forms/ContactForm";
 
 const ContactUs = () => {
   return (
