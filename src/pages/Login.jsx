@@ -1,6 +1,22 @@
 import React, { useState } from "react";
 import Wrapper from "@/components/Wrapper";
 import { LoginForm, RegisterForm } from "../components/Form";
+import { supabase } from "../auth/client";
+
+export const signUpUser = async ({ userInfo }) => {
+  await supabase.auth.signUp({
+    email: userInfo.email,
+    password: userInfo.password,
+    options: {
+      data: {
+        first_name: userInfo.firstName,
+        last_name: userInfo.lastName,
+        display_name: userInfo.displayName,
+      },
+      emailRedirectTo: "http://localhost:5173/confirm_email",
+    },
+  });
+};
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
