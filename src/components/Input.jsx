@@ -3,13 +3,22 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { setTitle } from "../store/filterSlice";
 
-export const Input = ({ label, register, required, pattern, type, small }) => {
+export const Input = ({
+  label,
+  register,
+  required,
+  pattern,
+  type,
+  small,
+  value,
+}) => {
   return (
     <div>
       <input
         {...register(label, { required, pattern })}
         placeholder={required ? `${label} *` : label}
         type={type ? type : "text"}
+        value={value && value}
         className={`border-b-2 border-gray pb-2 ${
           small ? "min-w-[270px]" : "min-w-[400px]"
         } w-full

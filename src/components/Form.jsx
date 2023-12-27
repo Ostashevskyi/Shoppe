@@ -8,9 +8,25 @@ import {
   RequiredMessage,
 } from "@/components/AlertMessages";
 import { CountrySelect } from "./Select";
+import { signUpUser } from "../pages/Login";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "../auth/client";
+import { useDispatch } from "react-redux";
 
 const onSubmit = (data) => {
   console.log(data);
+};
+
+const signUpSubmit = (data) => {
+  const userInfo = {
+    email: data.Email,
+    password: data.Password,
+    firstName: data["First Name"],
+    lastName: data["Last Name"],
+    displayName: data["Display Name"],
+  };
+
+  signUpUser({ userInfo });
 };
 
 export const ContactForm = () => {
@@ -68,10 +84,35 @@ export const LoginForm = () => {
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
+
+  const loginUser = async (email, password) => {
+    try {
+      const { data } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password,
+      });
+
+      if (error) {
+        console.error("Login error:", error.message);
+        // Handle error appropriately
+      } else {
+        console.log("Login successful");
+        navigate("/");
+        // Redirect or perform actions after successful login
+      }
+    } catch (error) {
+      console.error("Login error:", error.message);
+      // Handle error appropriately
+    }
+  };
+
   return (
     <form
       className="flex flex-col gap-11 mb-60"
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit((data) => {
+        loginUser(data.Email, data.Password);
+      })}
     >
       <div>
         <Input
@@ -114,7 +155,7 @@ export const RegisterForm = () => {
   return (
     <form
       className="flex flex-col gap-11 mb-60"
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(signUpSubmit)}
     >
       <div>
         <Input label={"First Name"} register={register} required />
@@ -123,6 +164,10 @@ export const RegisterForm = () => {
       <div>
         <Input label={"Last Name"} register={register} required />
         {errors["Last Name"] && <RequiredMessage />}
+      </div>
+      <div>
+        <Input label={"Display Name"} register={register} required />
+        {errors["Display Name"] && <RequiredMessage />}
       </div>
       <div>
         <Input
@@ -233,7 +278,11 @@ export const BillingForm = () => {
   );
 };
 
-export const AccountDetailsForm = () => {
+export const AccountDetailsForm = ({ user }) => {
+  const { user_metadata, email } = user;
+
+  const { first_name, last_name, display_name } = user_metadata;
+
   const {
     register,
     handleSubmit,
@@ -243,15 +292,30 @@ export const AccountDetailsForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-9">
       <div>
-        <Input label={"First name"} register={register} required />
+        <Input
+          label={"First name"}
+          register={register}
+          required
+          value={first_name}
+        />
         {errors["First name"] && <RequiredMessage />}
       </div>
       <div>
-        <Input label={"Last name"} register={register} required />
+        <Input
+          label={"Last name"}
+          register={register}
+          required
+          value={last_name}
+        />
         {errors["Last name"] && <RequiredMessage />}
       </div>
       <div>
-        <Input label={"Display name"} register={register} required />
+        <Input
+          label={"Display name"}
+          register={register}
+          required
+          value={display_name}
+        />
         {errors["Display name"] && <RequiredMessage />}
         <p className="body_smallD mt-2 text-dark_gray">
           This will be how your name will be displayed in the account section
@@ -264,6 +328,7 @@ export const AccountDetailsForm = () => {
           register={register}
           required
           pattern={EMAIL_PATTERN}
+          value={email}
         />
         {errors["Email"]?.type === "required" && <RequiredMessage />}
         {errors["Email"]?.type === "pattern" && <InvalidValueMessage />}

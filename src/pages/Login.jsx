@@ -1,6 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Wrapper from "@/components/Wrapper";
 import { LoginForm, RegisterForm } from "../components/Form";
+import { supabase } from "../auth/client";
+
+export const signUpUser = async ({ userInfo }) => {
+  await supabase.auth.signUp({
+    email: userInfo.email,
+    password: userInfo.password,
+    options: {
+      data: {
+        first_name: userInfo.firstName,
+        last_name: userInfo.lastName,
+        display_name: userInfo.displayName,
+      },
+    },
+  });
+};
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
