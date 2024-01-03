@@ -39,7 +39,7 @@ export const RegisterForm = () => {
           last_name: data["Last Name"],
           display_name: data["Display Name"],
         },
-        emailRedirectTo,
+        // emailRedirectTo,
       },
     });
 
