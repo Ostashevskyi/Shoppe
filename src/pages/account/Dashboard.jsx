@@ -13,26 +13,7 @@ const Dashboard = () => {
   return (
     <div>
       <p className="heading5D">
-        Hello {first_name} {last_name} (not {first_name}?
-        <NavLink className="text-accent ml-2" to="#">
-          Log out
-        </NavLink>
-        )
-      </p>
-      <p>
-        From your account dashboard you can view your{" "}
-        <NavLink className="text-accent" to="#">
-          recent orders
-        </NavLink>
-        , manage your
-        <NavLink className="text-accent" to="#">
-          shipping and billing addresses
-        </NavLink>
-        , and edit your
-        <NavLink className="text-accent" to="#">
-          password and account details
-        </NavLink>
-        .
+        Hello {first_name} {last_name}
       </p>
     </div>
   );

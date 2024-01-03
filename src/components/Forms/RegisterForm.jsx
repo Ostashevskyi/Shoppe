@@ -5,7 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 import { supabase } from "@/auth/client";
 
-import { EMAIL_PATTERN } from "@/utils/constants";
+import {
+  EMAIL_PATTERN,
+  EMAIL_REDIRECT_DEV,
+  EMAIL_REDIRECT_PROD,
+} from "@/utils/constants";
 
 import { Input } from "@/components/Inputs/Input";
 import { SubmitInput } from "@/components/Inputs/SubmitInput";
@@ -20,6 +24,11 @@ export const RegisterForm = () => {
 
   const navigate = useNavigate();
 
+  const emailRedirectTo =
+    import.meta.env.VITE_STATUS === "development"
+      ? EMAIL_REDIRECT_DEV
+      : EMAIL_REDIRECT_PROD;
+
   const signUpSubmit = async (data) => {
     await supabase.auth.signUp({
       email: data.Email,
@@ -30,7 +39,7 @@ export const RegisterForm = () => {
           last_name: data["Last Name"],
           display_name: data["Display Name"],
         },
-        emailRedirectTo: "http://localhost:5173/confirm_email",
+        emailRedirectTo,
       },
     });
 
