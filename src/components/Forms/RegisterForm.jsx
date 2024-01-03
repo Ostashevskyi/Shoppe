@@ -24,10 +24,10 @@ export const RegisterForm = () => {
 
   const navigate = useNavigate();
 
-  const emailRedirectTo =
-    import.meta.env.VITE_STATUS === "development"
-      ? EMAIL_REDIRECT_DEV
-      : EMAIL_REDIRECT_PROD;
+  // const emailRedirectTo =
+  //   import.meta.env.VITE_STATUS === "development"
+  //     ? EMAIL_REDIRECT_DEV
+  //     : EMAIL_REDIRECT_PROD;
 
   const signUpSubmit = async (data) => {
     await supabase.auth.signUp({
