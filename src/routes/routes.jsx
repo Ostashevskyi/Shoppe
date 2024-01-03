@@ -27,7 +27,7 @@ const router = createBrowserRouter([
   { path: "/about", element: <About /> },
   { path: "*", element: <PageNotFound /> },
   { path: "/account", element: <Account /> },
-  { path: "/confirm_email", element: <ConfirmEmail /> },
+  { path: "/confirm_email/", element: <ConfirmEmail /> },
 ]);
 
 export default router;

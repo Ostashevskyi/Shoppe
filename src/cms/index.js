@@ -1,5 +1,4 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { GraphQLClient } from "graphql-hooks";
 
 export const client = new ApolloClient({
   uri: "https://graphql.datocms.com/",
