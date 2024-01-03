@@ -7,6 +7,7 @@ import { EMAIL_PATTERN } from "@/utils/constants";
 import { Input } from "@/components/Inputs/Input";
 import { SubmitInput } from "@/components/Inputs/SubmitInput";
 import { ErrorMessage } from "@/components/shared/ErrorMessage";
+import { CountrySelect } from "@/components/Selects/CountrySelect";
 
 export const BillingForm = () => {
   const {
