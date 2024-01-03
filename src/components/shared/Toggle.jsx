@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import Toggle from "react-toggle";
 
 import "react-toggle/style.css";
-import { setInStock, setOnSale } from "../store/filterSlice";
+import { setInStock, setOnSale } from "../../store/filterSlice";
 
 export const ToggleCatalog = ({ label }) => {
   const [isTrue, setIsTrue] = useState(false);

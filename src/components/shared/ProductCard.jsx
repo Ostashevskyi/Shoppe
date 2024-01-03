@@ -1,6 +1,8 @@
 import React, { useMemo } from "react";
+
 import { NavLink } from "react-router-dom";
-import { HoverImage } from "./Image";
+
+import { HoverImage } from "@/components/Images/HoverImage";
 
 const ProductCard = ({ product, small }) => {
   const { image } = product;

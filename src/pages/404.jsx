@@ -1,7 +1,9 @@
 import React from "react";
-import Wrapper from "@/components/Wrapper";
-import { ButtonM, ButtonXS } from "../components/Button";
+
 import { NavLink } from "react-router-dom";
+
+import Wrapper from "@/components/Wrapper";
+import { ButtonXS } from "@/components/Buttons/ButtonXS";
 
 const PageNotFound = () => {
   return (

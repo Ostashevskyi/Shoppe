@@ -3,10 +3,10 @@ import React from "react";
 import useProducts from "@/hooks/useProducts";
 import useSliderImages from "@/hooks/useSliderImages";
 
-import Slider from "@/components/Slider";
 import Wrapper from "@/components/Wrapper";
-import { AccentLink } from "@/components/Link";
-import ProductCard from "@/components/ProductCard";
+import Slider from "@/components/shared/Slider";
+import { AccentLink } from "@/components/shared/Links";
+import ProductCard from "@/components/shared/ProductCard";
 
 const Home = () => {
   const sliderImages = useSliderImages();

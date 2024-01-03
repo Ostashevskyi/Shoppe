@@ -4,7 +4,8 @@ import "swiper/css/bundle";
 import { Pagination } from "swiper/modules";
 import { Image } from "react-datocms/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { ButtonSlider } from "./Button";
+
+import { SliderButton } from "@/components/Buttons/SliderButton";
 
 const Slider = ({ data }) => {
   return (
@@ -24,7 +25,7 @@ const Slider = ({ data }) => {
                 <p className="heading1D ">{el.sliderTitle}</p>
                 <p className="heading2D">$ {el.sliderPrice.toFixed(2)} </p>
               </div>
-              <ButtonSlider>View Product</ButtonSlider>
+              <SliderButton>View Product</SliderButton>
             </div>
           </SwiperSlide>
         );

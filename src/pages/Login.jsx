@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+
 import Wrapper from "@/components/Wrapper";
-import { LoginForm, RegisterForm } from "../components/Form";
+import { LoginForm } from "@/components/Forms/LoginForm";
+import { RegisterForm } from "@/components/Forms/RegisterForm";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
