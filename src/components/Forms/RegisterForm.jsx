@@ -3,13 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-import { supabase } from "@/auth/client";
-
-import {
-  EMAIL_PATTERN,
-  EMAIL_REDIRECT_DEV,
-  EMAIL_REDIRECT_PROD,
-} from "@/utils/constants";
+import { EMAIL_PATTERN } from "@/utils/constants";
 
 import { Input } from "@/components/Inputs/Input";
 import { SubmitInput } from "@/components/Inputs/SubmitInput";
@@ -22,34 +16,14 @@ export const RegisterForm = () => {
     formState: { errors },
   } = useForm();
 
-  const navigate = useNavigate();
-
-  // const emailRedirectTo =
-  //   import.meta.env.VITE_STATUS === "development"
-  //     ? EMAIL_REDIRECT_DEV
-  //     : EMAIL_REDIRECT_PROD;
-
-  const signUpSubmit = async (data) => {
-    await supabase.auth.signUp({
-      email: data.Email,
-      password: data.Password,
-      options: {
-        data: {
-          first_name: data["First Name"],
-          last_name: data["Last Name"],
-          display_name: data["Display Name"],
-        },
-        // emailRedirectTo,
-      },
-    });
-
-    navigate("/confirm_email");
+  const onSubmit = (data) => {
+    console.log(data);
   };
 
   return (
     <form
+      onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col gap-11 mb-60"
-      onSubmit={handleSubmit(signUpSubmit)}
     >
       <div>
         <Input label={"First Name"} register={register} required />
