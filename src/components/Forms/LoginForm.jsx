@@ -4,8 +4,6 @@ import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-import { supabase } from "@/auth/client";
-
 import { EMAIL_PATTERN } from "@/utils/constants";
 
 import { Input } from "@/components/Inputs/Input";
@@ -22,27 +20,6 @@ export const LoginForm = () => {
   const [error, setError] = useState();
 
   const navigate = useNavigate();
-
-  const loginUser = async (email, password) => {
-    try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: password,
-      });
-
-      if (error) {
-        setError(error);
-        // Handle error appropriately
-      } else {
-        console.log("Login successful");
-        navigate("/");
-        // Redirect or perform actions after successful login
-      }
-    } catch (error) {
-      setError(error);
-      // Handle error appropriately
-    }
-  };
 
   return (
     <form

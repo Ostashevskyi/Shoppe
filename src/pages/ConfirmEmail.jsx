@@ -2,19 +2,11 @@ import React, { useEffect, useState } from "react";
 
 import { NavLink } from "react-router-dom";
 
-import { supabase } from "../auth/client";
-
 import Wrapper from "@/components/Wrapper";
 import { ButtonM } from "@/components/Buttons/ButtonM";
 
 const ConfirmEmail = () => {
   const [session, setSession] = useState();
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
-  }, []);
 
   return (
     <Wrapper>
