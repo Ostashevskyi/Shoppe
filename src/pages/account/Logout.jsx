@@ -1,16 +1,17 @@
 import React from "react";
-import { supabase } from "../../auth/client";
-import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Logout = () => {
-  const navigate = useNavigate();
-
-  const logoutUser = async () => {
-    await supabase.auth.signOut({});
-    navigate("/login");
-  };
-
-  return <button onClick={() => logoutUser()}>Logout</button>;
+  const { logout } = useAuth0();
+  return (
+    <button
+      onClick={() =>
+        logout({ logoutParams: { returnTo: window.location.origin } })
+      }
+    >
+      Logout
+    </button>
+  );
 };
 
 export default Logout;

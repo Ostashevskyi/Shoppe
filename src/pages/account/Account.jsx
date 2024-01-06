@@ -1,15 +1,19 @@
 import React, { useState, useMemo, useEffect } from "react";
-import Wrapper from "@/components/Wrapper";
-import Dashboard from "@/pages/account/Dashboard";
+
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useNavigation } from "react-router-dom";
+
 import Orders from "@/pages/account/Orders";
+import Dashboard from "@/pages/account/Dashboard";
 import Downloads from "@/pages/account/Downloads";
 import Addresses from "@/pages/account/Addresses";
 import AccountDetails from "@/pages/account/AccountDetails";
+
 import Logout from "./Logout";
-import { supabase } from "../../auth/client";
-import { useNavigate, useNavigation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../../store/userSlice";
+
+import { useAuth0 } from "@auth0/auth0-react";
+
+import Wrapper from "@/components/Wrapper";
 
 const Account = () => {
   const [activeElement, setActiveElement] = useState("Dashboard");
@@ -46,22 +50,13 @@ const Account = () => {
     }
   }, [activeElement]);
 
-  const { user } = useSelector((state) => state.user);
+  const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      dispatch(setUser(user));
-    });
-  }, []);
-
-  const display = useMemo(() => {
+  const noPermission = useMemo(() => {
     return (
       <div>
         <h1>You have no permission</h1>
-        <button onClick={() => navigate("/login")}>Log in</button>
+        <button onClick={() => loginWithRedirect()}>Log in</button>
       </div>
     );
   }, []);
@@ -69,7 +64,8 @@ const Account = () => {
   return (
     <Wrapper>
       <main className="mt-24 mb-52">
-        {user ? (
+        {isLoading && <p>Loading...</p>}
+        {isAuthenticated && !isLoading && (
           <div>
             {activeElement === "Dashboard" && (
               <h1 className="text-center mb-16 text-3xl font-medium">
@@ -97,32 +93,8 @@ const Account = () => {
             </div>
             <div>{displayElems}</div>
           </div>
-        ) : (
-          display
         )}
-        {/* <div> */}
-        {/* {activeElement === "Dashboard" && (
-          <h1 className="text-center mb-16 text-3xl font-medium">My Account</h1>
-        )}
-        </div>
-        <div>
-          <ul className="flex gap-12 border-b border-light_gray mb-10">
-            {buttons.map((btn) => {
-              return (
-                <li
-                  key={btn.id}
-                  className={`${
-                    activeElement === btn.title &&
-                    "border-b border-black pb-8 translate-y-px"
-                  }`}
-                >
-                  <button onClick={(e) => handleClick(e)}>{btn.title}</button>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-        <div>{displayElems}</div> */}
+        {!isAuthenticated && !isLoading && noPermission}
       </main>
     </Wrapper>
   );
