@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import flterReducer from "@/store/filterSlice";
 import paginationReducer from "@/store/paginationSlice";
-import authSlice from "@/store/authSlice";
+import billingAddressesReducer from "@/store/billingAddressesSlice";
+import closeFormsSlice from "@/store/closeFormsSlice";
 
 export const store = configureStore({
   reducer: {
     filter: flterReducer,
     pagination: paginationReducer,
-    user: authSlice,
+    billingAddresses: billingAddressesReducer,
+    closeForm: closeFormsSlice,
   },
 });

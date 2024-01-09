@@ -13,7 +13,7 @@ import MailIcon from "@/components/icons/MailIcon";
 import HeartIcon from "@/components/icons/HeartIcon";
 import { ButtonM } from "@/components/Buttons/ButtonM";
 import TwitterIcon from "@/components/icons/TwitterIcon";
-import ProductCard from "@/components/shared/ProductCard";
+import ProductCard from "@/components/Cards/ProductCard";
 import FacebookIcon from "@/components/icons/FacebookIcon";
 import InstagramIcon from "@/components/icons/InstagramIcon";
 import { AdditionalImage } from "@/components/Images/AdditionalImage";
