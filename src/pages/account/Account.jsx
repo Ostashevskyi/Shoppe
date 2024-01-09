@@ -50,13 +50,13 @@ const Account = () => {
     }
   }, [activeElement]);
 
-  const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
+  const { isAuthenticated, isLoading, loginWithPopup } = useAuth0();
 
   const noPermission = useMemo(() => {
     return (
       <div>
         <h1>You have no permission</h1>
-        <button onClick={() => loginWithRedirect()}>Log in</button>
+        <button onClick={() => loginWithPopup()}>Log in</button>
       </div>
     );
   }, []);
