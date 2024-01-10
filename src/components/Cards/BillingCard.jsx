@@ -1,11 +1,18 @@
-import React, { useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useUserID } from "../../hooks/useUserID";
-import { supabase } from "../../database";
-import { useDispatch } from "react-redux";
-import { deleteBillingAddress } from "../../store/billingAddressesSlice";
+import React from "react";
 
-const BillingCard = ({ address }) => {
+import { useDispatch } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
+
+import { supabase } from "@/database";
+
+import { useUserID } from "@/hooks/useUserID";
+
+import DeleteIcon from "@/components/icons/Delete";
+
+import { deleteBillingAddress } from "@/store/billingAddressesSlice";
+import { deleteShippingAddress } from "@/store/shippingAddressesSlice";
+
+const FormCard = ({ address, formType }) => {
   const { preset_name, isDefault, id } = address;
 
   const { user } = useAuth0();
@@ -14,12 +21,20 @@ const BillingCard = ({ address }) => {
   const handleChange = async (e) => {
     try {
       await supabase
-        .from("billing_addresses")
+        .from(
+          `${
+            formType === "billing" ? "billing_addresses" : "shipping_addresses"
+          }`
+        )
         .update({ isDefault: false })
         .eq("user_id", userID);
 
       const { error } = await supabase
-        .from("billing_addresses")
+        .from(
+          `${
+            formType === "billing" ? "billing_addresses" : "shipping_addresses"
+          }`
+        )
         .update({ isDefault: true })
         .eq("preset_name", e.target.id, "user_id", userID);
 
@@ -34,11 +49,13 @@ const BillingCard = ({ address }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="border rounded-md p-2 flex gap-4">
+    <div className="border rounded-md p-2 flex gap-4 items-center">
       <div>
         <input
           type="radio"
-          name="billing_presets"
+          name={`${
+            formType === "billing" ? "billing_presets" : "shipping_presets"
+          }`}
           id={preset_name}
           onChange={(e) => handleChange(e)}
           defaultChecked={isDefault}
@@ -47,17 +64,19 @@ const BillingCard = ({ address }) => {
       <div>
         <p>{preset_name}</p>
       </div>
-      <div>
-        <button
-          onClick={() => {
-            dispatch(deleteBillingAddress({ userID, id }));
-          }}
-        >
-          Delete
-        </button>
-      </div>
+      <button
+        onClick={() => {
+          dispatch(
+            formType === "billing"
+              ? deleteBillingAddress({ userID, id })
+              : deleteShippingAddress({ userID, id })
+          );
+        }}
+      >
+        <DeleteIcon fillColor={"none"} />
+      </button>
     </div>
   );
 };
 
-export default BillingCard;
+export default FormCard;
