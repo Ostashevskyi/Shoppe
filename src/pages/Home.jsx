@@ -6,7 +6,7 @@ import useSliderImages from "@/hooks/useSliderImages";
 import Wrapper from "@/components/Wrapper";
 import Slider from "@/components/shared/Slider";
 import { AccentLink } from "@/components/shared/Links";
-import ProductCard from "@/components/shared/ProductCard";
+import ProductCard from "@/components/Cards/ProductCard";
 
 const Home = () => {
   const sliderImages = useSliderImages();

@@ -9,7 +9,7 @@ import { setFilterType } from "@/store/filterSlice";
 import { POSTS_ON_PAGE } from "@/utils/constants";
 
 import Wrapper from "@/components/Wrapper";
-import PostCard from "@/components/shared/PostCard";
+import PostCard from "@/components/Cards/PostCard";
 import Pagination from "@/components/shared/Pagination";
 import { SearchInput } from "@/components/Inputs/SearchInput";
 
