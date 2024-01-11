@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { Image } from "react-datocms/image";
 
 import Search from "@/components/icons/SearchIcon";
+import AddToCartButton from "@/components/Buttons/AddToCartButton";
 
 export const HoverImage = ({ data, slug }) => {
   return (
@@ -14,9 +15,7 @@ export const HoverImage = ({ data, slug }) => {
           translate-y-20 transition-transform bg-white_50 py-5 px-8
           group-hover:translate-y-0"
       >
-        <button className="uppercase font-bold body_large active:opacity-70">
-          Add to cart
-        </button>
+        <AddToCartButton buttonType={"hover"} product={data} />
         <Search />
       </div>
     </div>

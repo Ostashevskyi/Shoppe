@@ -4,19 +4,18 @@ import ReactStars from "react-stars";
 import parse from "html-react-parser";
 import { useParams } from "react-router-dom";
 
-import useProduct from "../hooks/useProduct";
-import useSimilarProducts from "../hooks/useSimilarProducts";
+import useProduct from "@/hooks/useProduct";
+import useSimilarProducts from "@/hooks/useSimilarProducts";
 
 import Wrapper from "@/components/Wrapper";
-import Counter from "@/components/shared/Counter";
 import MailIcon from "@/components/icons/MailIcon";
 import HeartIcon from "@/components/icons/HeartIcon";
-import { ButtonM } from "@/components/Buttons/ButtonM";
 import TwitterIcon from "@/components/icons/TwitterIcon";
 import ProductCard from "@/components/Cards/ProductCard";
 import FacebookIcon from "@/components/icons/FacebookIcon";
 import InstagramIcon from "@/components/icons/InstagramIcon";
 import { AdditionalImage } from "@/components/Images/AdditionalImage";
+import AddToCartButton from "@/components/Buttons/AddToCartButton";
 
 const ProductPage = () => {
   const [isActive, setIsActive] = useState(true);
@@ -90,8 +89,8 @@ const ProductPage = () => {
               {product?.shortDescription}
             </p>
             <div className="flex items-center justify-between gap-6 mb-20">
-              <Counter />
-              <ButtonM disabled={!product?.isAvaliable}>Add to cart</ButtonM>
+              {/* <Counter /> */}
+              <AddToCartButton buttonType={"button"} product={product} />
             </div>
             <div className="flex items-center mb-9">
               <div className="pr-10 border-r-2 border-light_gray">

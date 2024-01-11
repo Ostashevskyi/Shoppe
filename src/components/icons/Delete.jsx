@@ -4,46 +4,19 @@ const DeleteIcon = ({ fillColor }) => {
   return (
     <div className="cursor-pointer">
       <svg
-        width="24px"
-        height="24px"
-        viewBox="0 0 24 24"
-        fill="none"
+        fill="#000000"
+        height="12px"
+        width="12px"
+        version="1.1"
+        id="Capa_1"
         xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 490 490"
+        xmlSpace="preserve"
       >
-        <path
-          d="M10 12V17"
-          stroke="#000000"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M14 12V17"
-          stroke="#000000"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M4 7H20"
-          stroke="#000000"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M6 10V18C6 19.6569 7.34315 21 9 21H15C16.6569 21 18 19.6569 18 18V10"
-          stroke="#000000"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z"
-          stroke="#000000"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+        <polygon
+          points="456.851,0 245,212.564 33.149,0 0.708,32.337 212.669,245.004 0.708,457.678 33.149,490 245,277.443 456.851,490 
+	489.292,457.678 277.331,245.004 489.292,32.337 "
         />
       </svg>
     </div>
