@@ -6,6 +6,8 @@ import paginationReducer from "@/store/paginationSlice";
 import shoppingCartSlice from "@/store/shoppingCartSlice";
 import billingAddressesReducer from "@/store/billingAddressesSlice";
 import shippingAddressesReducer from "@/store/shippingAddressesSlice";
+import counterSlice from "@/store/counterSlice";
+import productsSlice from "@/store/productsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -15,5 +17,7 @@ export const store = configureStore({
     shippingAddresses: shippingAddressesReducer,
     closeForm: closeFormsSlice,
     shoppingCart: shoppingCartSlice,
+    counter: counterSlice,
+    products: productsSlice,
   },
 });

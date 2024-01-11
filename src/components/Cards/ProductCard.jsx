@@ -55,7 +55,7 @@ const ProductCard = ({ product, small }) => {
     <div className={`mb-20  ${small && "max-w-[300px]"}`}>
       <div className="w-fit relative">
         <HoverImage
-          data={responsiveImage}
+          data={product}
           slug={product.slug}
           className="rounded-md mb-6"
         />

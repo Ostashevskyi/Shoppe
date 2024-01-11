@@ -14,6 +14,8 @@ const AddToCartButton = ({ buttonType, product }) => {
       name: product.title,
       quantity: 1,
       user_id: userID,
+      price: product.isDiscount ? product.salePrice : product.price,
+      total_price: product.isDiscount ? product.salePrice : product.price,
     });
 
     error && console.log(error);

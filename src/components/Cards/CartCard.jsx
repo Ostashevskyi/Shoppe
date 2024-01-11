@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useCartProduct from "../../hooks/useCartProduct";
 import Counter from "@/components/shared/Counter";
 import DeleteIcon from "../icons/Delete";
 import { useDispatch } from "react-redux";
-import { deleteShoppingCart } from "../../store/shoppingCartSlice";
+import { deleteShoppingCart } from "@/store/shoppingCartSlice";
 
 const CartCard = ({ productInfo, userID, id }) => {
   const { name } = productInfo;
@@ -39,7 +39,7 @@ const CartCard = ({ productInfo, userID, id }) => {
         </div>
       </div>
       <div className="flex items-start gap-12">
-        <Counter />
+        <Counter product={productInfo} userID={userID} id={id} />
         <button onClick={() => deleteCartProduct(userID, id)}>
           <DeleteIcon />
         </button>

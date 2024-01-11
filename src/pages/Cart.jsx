@@ -22,7 +22,7 @@ const Cart = () => {
     <Wrapper>
       <main className="mb-48">
         <p className="heading1D mt-24 mb-16 text-center">Shopping Cart</p>
-        <div>
+        <div className="flex">
           <section>
             {shoppingCart?.map((product) => (
               <CartCard
@@ -33,7 +33,13 @@ const Cart = () => {
               />
             ))}
           </section>
-          <section></section>
+          <section>
+            <p>Cart totals</p>
+            <div>
+              <p>Subtotal</p>
+              <p></p>
+            </div>
+          </section>
         </div>
       </main>
     </Wrapper>
