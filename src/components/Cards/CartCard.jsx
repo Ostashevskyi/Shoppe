@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import useCartProduct from "../../hooks/useCartProduct";
 import Counter from "@/components/shared/Counter";
 import DeleteIcon from "../icons/Delete";

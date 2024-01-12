@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "@/database";
+import { useDispatch } from "react-redux";
+import { getShoppingCartSubTotal } from "@/store/shoppingCartSlice";
 
 const Counter = ({ product, userID, id }) => {
   const [quantity, setQuantity] = useState();
 
+  const dispatch = useDispatch();
+
   const increaseQunatity = async (value) => {
-    console.log(quantity);
     const { data, error } = await supabase
       .from("shopping_cart")
       .update({
@@ -16,6 +19,7 @@ const Counter = ({ product, userID, id }) => {
       .select();
 
     setQuantity(data[0]?.quantity);
+    dispatch(getShoppingCartSubTotal({ userID }));
 
     if (error) {
       console.log(error.message);
@@ -33,6 +37,8 @@ const Counter = ({ product, userID, id }) => {
       .select();
 
     setQuantity(data[0]?.quantity);
+
+    dispatch(getShoppingCartSubTotal({ userID }));
 
     if (error) {
       console.log(error.message);
@@ -54,6 +60,7 @@ const Counter = ({ product, userID, id }) => {
 
   useEffect(() => {
     getQuantityOfProduct(userID, id);
+    dispatch(getShoppingCartSubTotal({ userID }));
   }, []);
 
   return (

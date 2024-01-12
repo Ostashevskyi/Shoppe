@@ -3,11 +3,11 @@ import { supabase } from "../database";
 
 export const getShoppingCart = createAsyncThunk(
   "shoppingCart/getShoppingCart",
-  async (userID, { rejectWithValue }) => {
+  async ({ userID }, { rejectWithValue }) => {
     try {
       const { data, error } = await supabase
         .from("shopping_cart")
-        .select("")
+        .select()
         .eq("user_id", userID);
 
       if (error) {
@@ -24,18 +24,47 @@ export const getShoppingCart = createAsyncThunk(
 export const deleteShoppingCart = createAsyncThunk(
   "shoppingCart/deleteShoppingCart",
   async ({ userID, id }, { rejectWithValue, dispatch }) => {
-    console.log(userID, id);
     try {
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from("shopping_cart")
         .delete()
         .eq("id", id, "user_id", userID);
 
       if (error) {
         throw Error(error);
-      } else {
-        return (await dispatch(getShoppingCart(userID))).payload;
       }
+
+      await dispatch(getShoppingCartSubTotal({ userID }));
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getShoppingCartSubTotal = createAsyncThunk(
+  "shoppingCart/getShoppingCartTotal",
+  async ({ userID }, { rejectWithValue, dispatch }) => {
+    try {
+      const { data, error } = await supabase
+        .from("shopping_cart")
+        .select("total_price")
+        .eq("user_id", userID);
+
+      if (error) {
+        throw Error(error);
+      }
+
+      const subtotalPrice = data
+        .map((el) => Object.values(el))
+        .flat()
+        .reduce((prev, next) => prev + next);
+
+      const shoppingCart = (await dispatch(getShoppingCart({ userID })))
+        .payload;
+
+      return { subtotalPrice, shoppingCart };
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -45,35 +74,41 @@ export const deleteShoppingCart = createAsyncThunk(
 const shoppingCartSlice = createSlice({
   name: "shoppingCart",
   initialState: {
-    status: "",
+    getAddressesStatus: "",
+    getTotalPriceStatus: "",
     error: "",
     shoppingCart: [],
+    subTotalPrice: 0,
+    shippingPrice: 5,
+    totalPrice: 0,
   },
   extraReducers: (builder) => {
     /// getAddresses
     builder.addCase(getShoppingCart.fulfilled, (state, action) => {
+      console.log("b");
       state.shoppingCart = action.payload;
-      state.status = "fulfilled";
+      state.getAddressesStatus = "fulfilled";
     });
     builder.addCase(getShoppingCart.rejected, (state, action) => {
       state.error = action.payload;
-      state.status = "rejected";
+      state.getAddressesStatus = "rejected";
     });
     builder.addCase(getShoppingCart.pending, (state) => {
-      state.status = "pending";
+      state.getAddressesStatus = "pending";
     });
 
-    /// deleteAdress
-    builder.addCase(deleteShoppingCart.fulfilled, (state, action) => {
-      state.shoppingCart = action.payload;
-      state.status = "fulfilled";
+    /// getTotalPrice
+    builder.addCase(getShoppingCartSubTotal.fulfilled, (state, action) => {
+      state.subTotalPrice = action.payload.subtotalPrice;
+      state.totalPrice = action.payload.subtotalPrice + state.shippingPrice;
+      state.shoppingCart = action.payload.shoppingCart;
+      state.getTotalPriceStatus = "fulfilled";
     });
-    builder.addCase(deleteShoppingCart.rejected, (state, action) => {
-      state.error = action.payload;
-      state.status = "rejected";
-    });
-    builder.addCase(deleteShoppingCart.pending, (state) => {
-      state.status = "pending";
+    builder.addCase(getShoppingCartSubTotal.rejected, (state, action) => {
+      state.subTotalPrice = 0;
+      state.totalPrice = 0;
+      state.shoppingCart = action.payload.shoppingCart;
+      state.getTotalPriceStatus = "rejected";
     });
   },
 });
