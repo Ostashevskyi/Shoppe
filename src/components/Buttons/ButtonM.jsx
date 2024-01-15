@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ButtonM = ({ children, disabled }) => {
+export const ButtonM = ({ children, disabled, onClick }) => {
   return (
     <button
       className={`${
@@ -10,6 +10,7 @@ export const ButtonM = ({ children, disabled }) => {
       ${!disabled && "hover:bg-black hover:text-white  active:opacity-80"}
        `}
       disabled={disabled}
+      onClick={() => onClick()}
     >
       {children}
     </button>

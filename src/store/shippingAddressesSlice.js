@@ -41,6 +41,19 @@ export const deleteShippingAddress = createAsyncThunk(
   }
 );
 
+export const getDefaultShippingAddress = createAsyncThunk(
+  "shippingAddresses/getDefaultShippingAddress",
+  async ({ userID }, { rejectWithValue, dispatch }) => {
+    try {
+      const defaultShippingAddress = (
+        await dispatch(getShippingAddresses(userID))
+      ).payload.filter((el) => el.isDefault);
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const shippingAddressesSlice = createSlice({
   name: "shippingAddresses",
   initialState: {

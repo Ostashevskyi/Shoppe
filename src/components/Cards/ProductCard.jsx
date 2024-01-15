@@ -5,9 +5,6 @@ import { NavLink } from "react-router-dom";
 import { HoverImage } from "@/components/Images/HoverImage";
 
 const ProductCard = ({ product, small }) => {
-  const { image } = product;
-  const { responsiveImage } = image;
-
   const SalePrice = useMemo(() => {
     return (
       <div className="flex items-center gap-4 mt-4">
@@ -55,7 +52,7 @@ const ProductCard = ({ product, small }) => {
     <div className={`mb-20  ${small && "max-w-[300px]"}`}>
       <div className="w-fit relative">
         <HoverImage
-          data={responsiveImage}
+          data={product}
           slug={product.slug}
           className="rounded-md mb-6"
         />

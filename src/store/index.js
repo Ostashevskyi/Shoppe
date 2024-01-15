@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
+
 import flterReducer from "@/store/filterSlice";
+import closeFormsSlice from "@/store/closeFormsSlice";
 import paginationReducer from "@/store/paginationSlice";
+import shoppingCartSlice from "@/store/shoppingCartSlice";
 import billingAddressesReducer from "@/store/billingAddressesSlice";
 import shippingAddressesReducer from "@/store/shippingAddressesSlice";
-import closeFormsSlice from "@/store/closeFormsSlice";
+import counterSlice from "@/store/counterSlice";
+import productsSlice from "@/store/productsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +16,8 @@ export const store = configureStore({
     billingAddresses: billingAddressesReducer,
     shippingAddresses: shippingAddressesReducer,
     closeForm: closeFormsSlice,
+    shoppingCart: shoppingCartSlice,
+    counter: counterSlice,
+    products: productsSlice,
   },
 });
