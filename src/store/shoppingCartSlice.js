@@ -25,7 +25,7 @@ export const deleteShoppingCart = createAsyncThunk(
   "shoppingCart/deleteShoppingCart",
   async ({ userID, id }, { rejectWithValue, dispatch }) => {
     try {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from("shopping_cart")
         .delete()
         .eq("id", id, "user_id", userID);
@@ -35,8 +35,6 @@ export const deleteShoppingCart = createAsyncThunk(
       }
 
       await dispatch(getShoppingCartSubTotal({ userID }));
-
-      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -45,7 +43,7 @@ export const deleteShoppingCart = createAsyncThunk(
 
 export const getShoppingCartSubTotal = createAsyncThunk(
   "shoppingCart/getShoppingCartTotal",
-  async ({ userID }, { rejectWithValue, dispatch }) => {
+  async ({ userID }, { rejectWithValue }) => {
     try {
       const { data, error } = await supabase
         .from("shopping_cart")
@@ -61,10 +59,33 @@ export const getShoppingCartSubTotal = createAsyncThunk(
         .flat()
         .reduce((prev, next) => prev + next);
 
-      const shoppingCart = (await dispatch(getShoppingCart({ userID })))
-        .payload;
+      return subtotalPrice;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
-      return { subtotalPrice, shoppingCart };
+export const addShoppingCart = createAsyncThunk(
+  "shoppingCart/addShoppingCart",
+  async ({ userID, product }, { rejectWithValue }) => {
+    try {
+      const { data, error } = await supabase
+        .from("shopping_cart")
+        .insert({
+          name: product.title,
+          quantity: 1,
+          user_id: userID,
+          price: product.isDiscount ? product.salePrice : product.price,
+          total_price: product.isDiscount ? product.salePrice : product.price,
+        })
+        .select();
+
+      if (error) {
+        throw Error(error);
+      }
+
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -74,8 +95,9 @@ export const getShoppingCartSubTotal = createAsyncThunk(
 const shoppingCartSlice = createSlice({
   name: "shoppingCart",
   initialState: {
-    getAddressesStatus: "",
+    getShoppingCartStatus: "",
     getTotalPriceStatus: "",
+    addShoppingCartStatus: "",
     error: "",
     shoppingCart: [],
     subTotalPrice: 0,
@@ -85,30 +107,40 @@ const shoppingCartSlice = createSlice({
   extraReducers: (builder) => {
     /// getAddresses
     builder.addCase(getShoppingCart.fulfilled, (state, action) => {
-      console.log("b");
       state.shoppingCart = action.payload;
-      state.getAddressesStatus = "fulfilled";
+      state.getShoppingCartStatus = "fulfilled";
     });
     builder.addCase(getShoppingCart.rejected, (state, action) => {
       state.error = action.payload;
-      state.getAddressesStatus = "rejected";
+      state.getShoppingCartStatus = "rejected";
     });
     builder.addCase(getShoppingCart.pending, (state) => {
-      state.getAddressesStatus = "pending";
+      state.getShoppingCartStatus = "pending";
     });
 
     /// getTotalPrice
     builder.addCase(getShoppingCartSubTotal.fulfilled, (state, action) => {
-      state.subTotalPrice = action.payload.subtotalPrice;
-      state.totalPrice = action.payload.subtotalPrice + state.shippingPrice;
-      state.shoppingCart = action.payload.shoppingCart;
+      state.subTotalPrice = action.payload;
+      state.totalPrice = action.payload + state.shippingPrice;
       state.getTotalPriceStatus = "fulfilled";
     });
     builder.addCase(getShoppingCartSubTotal.rejected, (state, action) => {
       state.subTotalPrice = 0;
       state.totalPrice = 0;
-      state.shoppingCart = action.payload.shoppingCart;
       state.getTotalPriceStatus = "rejected";
+    });
+
+    /// addProduct
+    builder.addCase(addShoppingCart.fulfilled, (state, action) => {
+      state.shoppingCart = action.payload;
+      state.addShoppingCartStatus = "fulfilled";
+    });
+    builder.addCase(addShoppingCart.rejected, (state, action) => {
+      state.error = action.payload;
+      state.addShoppingCartStatus = "rejected";
+    });
+    builder.addCase(addShoppingCart.pending, (state) => {
+      state.addShoppingCartStatus = "pending";
     });
   },
 });

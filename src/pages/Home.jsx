@@ -7,14 +7,14 @@ import Wrapper from "@/components/Wrapper";
 import Slider from "@/components/shared/Slider";
 import { AccentLink } from "@/components/shared/Links";
 import ProductCard from "@/components/Cards/ProductCard";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getProducts } from "../store/productsSlice";
+import { getShoppingCart } from "../store/shoppingCartSlice";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useUserID } from "../hooks/useUserID";
+import { useUserID } from "@/hooks/useUserID";
 
 const Home = () => {
   const sliderImages = useSliderImages();
-
   const { user } = useAuth0();
   const userID = useUserID(user);
 
@@ -24,13 +24,12 @@ const Home = () => {
   const product = products?.data;
   const allProducts = product?.allProducts;
 
-  // const { products } = useSelector((state) => state.products);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProducts());
-  });
+    dispatch(getShoppingCart({ userID }));
+  }, [dispatch]);
 
   return (
     <Wrapper>
