@@ -49,7 +49,7 @@ const FormCard = ({ address, formType }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="border rounded-md p-2 flex gap-4 items-center">
+    <div className="border rounded-md p-2 flex justify-between items-center min-w-[155px]">
       <div>
         <input
           type="radio"

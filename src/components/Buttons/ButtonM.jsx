@@ -10,7 +10,7 @@ export const ButtonM = ({ children, disabled, onClick }) => {
       ${!disabled && "hover:bg-black hover:text-white  active:opacity-80"}
        `}
       disabled={disabled}
-      onClick={() => onClick()}
+      onClick={onClick}
     >
       {children}
     </button>

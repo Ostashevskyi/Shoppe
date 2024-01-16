@@ -1,50 +1,49 @@
 import React, { useEffect } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
-
-import { onPageSkip, setActivePage } from "@/store/paginationSlice";
-
-import { POSTS_ON_PAGE } from "../../utils/constants";
-
+import { setActiveOrderPage, setTotalOrder } from "../../store/paginationSlice";
+import { ORDERS_ON_PAGE } from "../../utils/constants";
 import { PaginationButton } from "@/components/Buttons/PaginationButton";
 
-const Pagination = ({ count }) => {
-  const items = [...Array(count ? Math.ceil(count / POSTS_ON_PAGE) : 0).keys()];
+const OrdersPagination = ({ count }) => {
+  const items = [
+    ...Array(count ? Math.ceil(count / ORDERS_ON_PAGE) : 0).keys(),
+  ];
 
-  const { activePage } = useSelector((state) => state.pagination);
-  const { title, filterType } = useSelector((state) => state.filter);
+  const { activeOrderPage } = useSelector((state) => state.pagination);
 
   useEffect(() => {
-    if (title || filterType) {
-      dispatch(setActivePage(1));
-    }
-    dispatch(onPageSkip(POSTS_ON_PAGE * activePage - POSTS_ON_PAGE));
-  }, [activePage, title, filterType]);
+    dispatch(
+      setTotalOrder({
+        min: activeOrderPage === 1 ? 0 : activeOrderPage * 5 - ORDERS_ON_PAGE,
+        max: activeOrderPage === 1 ? 4 : activeOrderPage * 5 - 1,
+      })
+    );
+  }, [activeOrderPage]);
 
   const dispatch = useDispatch();
 
   const onNextPage = () => {
-    dispatch(setActivePage(activePage + 1));
+    dispatch(setActiveOrderPage(activeOrderPage + 1));
   };
 
   const onPreviousPage = () => {
-    dispatch(setActivePage(activePage - 1));
+    dispatch(setActiveOrderPage(activeOrderPage - 1));
   };
 
   const onSelectedPage = (e) => {
-    dispatch(setActivePage(+e.target.innerHTML));
+    dispatch(setActiveOrderPage(+e.target.innerHTML));
   };
 
   return (
     <div className="flex gap-2 items-center justify-center">
-      {activePage !== 1 && items.length > 0 && (
+      {activeOrderPage !== 1 && items.length > 0 && (
         <PaginationButton func={onPreviousPage}>{"<-"}</PaginationButton>
       )}
       {items.map((num) => {
         return (
           <button
             className={`w-[40px] h-[40px]  rounded-md border  ${
-              activePage === num + 1
+              activeOrderPage === num + 1
                 ? "bg-black text-white"
                 : "bg-white text-black border-light_gray"
             }`}
@@ -57,11 +56,11 @@ const Pagination = ({ count }) => {
           </button>
         );
       })}
-      {activePage !== items.length && items.length > 0 && (
+      {activeOrderPage !== items.length && items.length > 0 && (
         <PaginationButton func={onNextPage}>{"->"}</PaginationButton>
       )}
     </div>
   );
 };
 
-export default Pagination;
+export default OrdersPagination;

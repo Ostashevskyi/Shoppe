@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useId } from "react";
 
 import useProducts from "@/hooks/useProducts";
 import useSliderImages from "@/hooks/useSliderImages";
@@ -12,6 +12,7 @@ import { getProducts } from "../store/productsSlice";
 import { getShoppingCart } from "../store/shoppingCartSlice";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useUserID } from "@/hooks/useUserID";
+import { ordersNumberGenerator } from "../utils/ordersNumberGenerator";
 
 const Home = () => {
   const sliderImages = useSliderImages();

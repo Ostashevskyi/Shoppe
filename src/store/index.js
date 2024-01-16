@@ -8,6 +8,7 @@ import billingAddressesReducer from "@/store/billingAddressesSlice";
 import shippingAddressesReducer from "@/store/shippingAddressesSlice";
 import counterSlice from "@/store/counterSlice";
 import productsSlice from "@/store/productsSlice";
+import orderSlice from "./orderSlice";
 
 export const store = configureStore({
   reducer: {
@@ -19,5 +20,6 @@ export const store = configureStore({
     shoppingCart: shoppingCartSlice,
     counter: counterSlice,
     products: productsSlice,
+    orders: orderSlice,
   },
 });

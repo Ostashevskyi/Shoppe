@@ -41,6 +41,24 @@ export const deleteShoppingCart = createAsyncThunk(
   }
 );
 
+export const delelteAllShoppingCart = createAsyncThunk(
+  "shoppingCart/delteAllShoppingCart",
+  async ({ userID }, { rejectWithValue }) => {
+    try {
+      const { error } = await supabase
+        .from("shopping_cart")
+        .delete()
+        .eq("user_id", userID);
+
+      if (error) {
+        throw Error(error);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const getShoppingCartSubTotal = createAsyncThunk(
   "shoppingCart/getShoppingCartTotal",
   async ({ userID }, { rejectWithValue }) => {
