@@ -7,15 +7,37 @@ import { useUserID } from "@/hooks/useUserID";
 import CartCard from "../components/Cards/CartCard";
 import { ButtonXL } from "@/components/Buttons/ButtonXL";
 import { NavLink } from "react-router-dom";
+import { putOrders } from "../store/orderSlice";
 
 const Cart = () => {
   const { user } = useAuth0();
+  const email = user?.email;
 
   const userID = useUserID(user);
   const dispatch = useDispatch();
 
   const { shoppingCart, subTotalPrice, shippingPrice, totalPrice } =
     useSelector((state) => state.shoppingCart);
+
+  const handlePutOrders = (
+    userID,
+    email,
+    totalPrice,
+    shoppingCart,
+    subTotalPrice,
+    shippingPrice
+  ) => {
+    dispatch(
+      putOrders(
+        userID,
+        email,
+        totalPrice,
+        shoppingCart,
+        subTotalPrice,
+        shippingPrice
+      )
+    );
+  };
 
   useEffect(() => {
     dispatch(getShoppingCart({ userID }));
@@ -40,7 +62,20 @@ const Cart = () => {
           <p>Total</p>
           <p>$ {totalPrice.toFixed(2)}</p>
         </div>
-        <ButtonXL>PROCEED TO CHECKOUT</ButtonXL>
+        <ButtonXL
+          onClick={() =>
+            handlePutOrders({
+              userID,
+              email,
+              totalPrice,
+              shoppingCart,
+              subTotalPrice,
+              shippingPrice,
+            })
+          }
+        >
+          PROCEED TO CHECKOUT
+        </ButtonXL>
       </section>
     );
   }, [subTotalPrice]);

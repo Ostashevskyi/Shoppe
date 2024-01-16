@@ -10,12 +10,12 @@ import { POSTS_ON_PAGE } from "@/utils/constants";
 
 import Wrapper from "@/components/Wrapper";
 import PostCard from "@/components/Cards/PostCard";
-import Pagination from "@/components/shared/Pagination";
 import { SearchInput } from "@/components/Inputs/SearchInput";
+import BlogPagination from "../components/Paginations/BlogPagination";
 
 const Blog = () => {
   const { title, filterType } = useSelector((state) => state.filter);
-  const { totalSkip } = useSelector((state) => state.pagination);
+  const { totalBlogSkip } = useSelector((state) => state.pagination);
   const [allPosts, setAllPosts] = useState();
   const [countOfPosts, setCountOfPosts] = useState();
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const Blog = () => {
     category: filterType,
     title: title,
     first: POSTS_ON_PAGE,
-    skip: totalSkip,
+    skip: totalBlogSkip,
   });
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const Blog = () => {
           title: title ? title : "",
           category: filterType ? filterType : undefined,
           first: POSTS_ON_PAGE,
-          skip: totalSkip,
+          skip: totalBlogSkip,
         });
 
         setAllPosts(data?.allPosts || []);
@@ -44,7 +44,7 @@ const Blog = () => {
       }
     };
     fetchData();
-  }, [filterType, title, refetch, totalSkip]);
+  }, [filterType, title, refetch, totalBlogSkip]);
 
   const [activeBtn, setActiveBtn] = useState();
 
@@ -119,7 +119,7 @@ const Blog = () => {
               })}
             </div>
             {allPosts?.length === 0 && NotFoundMessage}
-            <Pagination
+            <BlogPagination
               count={filterType || title ? allPosts?.length : countOfPosts}
             />
           </main>

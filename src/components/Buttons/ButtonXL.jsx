@@ -1,11 +1,12 @@
 import React from "react";
 
-export const ButtonXL = ({ children }) => {
+export const ButtonXL = ({ children, onClick }) => {
   return (
     <button
       className={`px-32 py-4 uppercase border border-black body_large font-semibold bg-black text-white rounded-md
       hover:bg-white hover:text-black
         active:bg-Light_gray`}
+      onClick={onClick}
     >
       {children}
     </button>

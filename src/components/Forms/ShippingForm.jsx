@@ -33,6 +33,9 @@ export const ShippingForm = () => {
         preset_name: data["Preset name"],
         first_name: data["First name"],
         last_name: data["Last name"],
+        card_number: data["Card number"],
+        expiration_date: data["Expiration date"],
+        cvv: data["CVV"],
         country: data["Country"],
         street_address: data["Street Address"],
         postcode: data["Postcode / ZIP"],
@@ -71,6 +74,18 @@ export const ShippingForm = () => {
           <Input label={"Last name"} register={register} required small />
           {errors["Last name"] && <ErrorMessage required />}
         </div>
+      </div>
+      <div>
+        <Input label={"Card number"} register={register} required />
+        {errors["Card number"] && <ErrorMessage required />}
+      </div>
+      <div>
+        <Input label={"Expiration date"} register={register} required />
+        {errors["Expiration date"] && <ErrorMessage required />}
+      </div>
+      <div>
+        <Input label={"CVV"} register={register} required />
+        {errors["CVV"] && <ErrorMessage required />}
       </div>
       <div>
         <CountrySelect label={"Country"} register={register} required />
