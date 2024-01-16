@@ -11,9 +11,9 @@ import PageNotFound from "@/pages/404";
 import ContactUs from "@/pages/ContactUs";
 import ProductPage from "@/pages/ProductPage";
 import Account from "@/pages/account/Account";
-import ConfirmEmail from "@/pages/ConfirmEmail";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import ForgotPassword from "@/pages/ForgotPassword";
+import OrderDetails from "../pages/OrderDetails";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -28,8 +28,8 @@ const router = createBrowserRouter([
   { path: "/about", element: <About /> },
   { path: "*", element: <PageNotFound /> },
   { path: "/account", element: <Account /> },
-  { path: "/confirm_email/", element: <ConfirmEmail /> },
   { path: "/cart", element: <Cart /> },
+  { path: "/order_details/:order_number", element: <OrderDetails /> },
 ]);
 
 export default router;

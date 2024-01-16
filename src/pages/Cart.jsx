@@ -19,8 +19,24 @@ const Cart = () => {
   const { shoppingCart, subTotalPrice, shippingPrice, totalPrice } =
     useSelector((state) => state.shoppingCart);
 
-  const handlePutOrders = (userID, email, totalPrice, shoppingCart) => {
-    dispatch(putOrders(userID, email, totalPrice, shoppingCart));
+  const handlePutOrders = (
+    userID,
+    email,
+    totalPrice,
+    shoppingCart,
+    subTotalPrice,
+    shippingPrice
+  ) => {
+    dispatch(
+      putOrders(
+        userID,
+        email,
+        totalPrice,
+        shoppingCart,
+        subTotalPrice,
+        shippingPrice
+      )
+    );
   };
 
   useEffect(() => {
@@ -48,7 +64,14 @@ const Cart = () => {
         </div>
         <ButtonXL
           onClick={() =>
-            handlePutOrders({ userID, email, totalPrice, shoppingCart })
+            handlePutOrders({
+              userID,
+              email,
+              totalPrice,
+              shoppingCart,
+              subTotalPrice,
+              shippingPrice,
+            })
           }
         >
           PROCEED TO CHECKOUT

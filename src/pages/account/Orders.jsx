@@ -6,6 +6,7 @@ import { useUserID } from "@/hooks/useUserID";
 import { getOrders } from "@/store/orderSlice";
 import OrdersPagination from "@/components/Paginations/OrdersPagination";
 import { format } from "date-fns";
+import { formatDate } from "../../utils/formatDate";
 
 const Orders = () => {
   const { user } = useAuth0();
@@ -53,22 +54,22 @@ const Orders = () => {
               <div>Actions</div>
             </div>
             {filteredOrders?.map((order) => {
-              const formattedDate = format(
-                new Date(order.order_date),
-                "MMMM d,yyyy"
-              );
+              const { order_number, order_status, order_date, total } = order;
+              const formattedDate = formatDate(order_date);
 
               return (
                 <div
                   key={order.id}
                   className="grid grid-cols-5  py-6 border-b border-gray text-dark_gray"
                 >
-                  <div>{order.order_number}</div>
+                  <div>{order_number}</div>
                   <div>{formattedDate}</div>
-                  <div>{order.order_status}</div>
-                  <div>$ {order.total}</div>
+                  <div>{order_status}</div>
+                  <div>$ {total}</div>
                   <div className="body_large text-accent flex gap-2">
-                    <NavLink to={"/order_details"}>View Order</NavLink>
+                    <NavLink to={`/order_details/${order_number}`}>
+                      View Order
+                    </NavLink>
                     <p>|</p>
                     <NavLink>Download</NavLink>
                   </div>

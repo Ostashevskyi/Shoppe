@@ -31,7 +31,7 @@ export const getOrders = createAsyncThunk(
 export const putOrders = createAsyncThunk(
   "orders/putOrders",
   async (
-    { userID, email, totalPrice, shoppingCart },
+    { userID, email, totalPrice, shoppingCart, subTotalPrice, shippingPrice },
     { rejectWithValue, dispatch }
   ) => {
     try {
@@ -61,7 +61,9 @@ export const putOrders = createAsyncThunk(
         contact_phone: shippingAdresses[0].phone,
         user_id: userID,
         total: totalPrice,
-        products: shoppingCart,
+        products: JSON.stringify(shoppingCart),
+        subtotal_price: subTotalPrice,
+        shipping_price: shippingPrice,
       });
 
       if (status === 201) {
@@ -80,12 +82,33 @@ export const putOrders = createAsyncThunk(
   }
 );
 
+export const getOrderByNumber = createAsyncThunk(
+  "orders/getOrderByNumber",
+  async ({ order_number }, { rejectWithValue }) => {
+    try {
+      const { data, error } = await supabase
+        .from("orders")
+        .select()
+        .eq("order_number", order_number);
+
+      if (error) {
+        throw Error(error);
+      }
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const productsSlice = createSlice({
   name: "orders",
   initialState: {
     status: "",
     error: "",
     orders: [],
+    orderByNumber: null,
   },
   extraReducers: (builder) => {
     /// orders
@@ -99,6 +122,12 @@ const productsSlice = createSlice({
     });
     builder.addCase(getOrders.pending, (state) => {
       state.status = "pending";
+    });
+
+    /// order by number
+    builder.addCase(getOrderByNumber.fulfilled, (state, action) => {
+      state.orderByNumber = action.payload;
+      state.status = "fulfilled";
     });
   },
 });
