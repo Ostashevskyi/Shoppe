@@ -20,6 +20,7 @@ const product = gql`
       salePrice
       isDiscount
       title
+      slug
     }
   }
 `;

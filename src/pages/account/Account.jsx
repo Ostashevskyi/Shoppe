@@ -1,11 +1,7 @@
-import React, { useState, useMemo, useEffect } from "react";
-
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useNavigation } from "react-router-dom";
+import React, { useState, useMemo } from "react";
 
 import Orders from "@/pages/account/Orders";
 import Dashboard from "@/pages/account/Dashboard";
-import Downloads from "@/pages/account/Downloads";
 import Addresses from "@/pages/account/Addresses";
 import AccountDetails from "@/pages/account/AccountDetails";
 
@@ -21,10 +17,9 @@ const Account = () => {
   const buttons = [
     { id: 0, title: "Dashboard" },
     { id: 1, title: "Orders" },
-    { id: 2, title: "Downloads" },
-    { id: 3, title: "Addresses" },
-    { id: 4, title: "Account Details" },
-    { id: 5, title: "Logout" },
+    { id: 2, title: "Addresses" },
+    { id: 3, title: "Account Details" },
+    { id: 4, title: "Logout" },
   ];
 
   const handleClick = (e) => {
@@ -37,8 +32,7 @@ const Account = () => {
         return <Dashboard />;
       case "Orders":
         return <Orders />;
-      case "Downloads":
-        return <Downloads />;
+
       case "Addresses":
         return <Addresses />;
       case "Account Details":

@@ -70,8 +70,6 @@ const Orders = () => {
                     <NavLink to={`/order_details/${order_number}`}>
                       View Order
                     </NavLink>
-                    <p>|</p>
-                    <NavLink>Download</NavLink>
                   </div>
                 </div>
               );

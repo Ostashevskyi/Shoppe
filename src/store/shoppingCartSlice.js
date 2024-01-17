@@ -96,6 +96,7 @@ export const addShoppingCart = createAsyncThunk(
           user_id: userID,
           price: product.isDiscount ? product.salePrice : product.price,
           total_price: product.isDiscount ? product.salePrice : product.price,
+          slug: product.slug,
         })
         .select();
 

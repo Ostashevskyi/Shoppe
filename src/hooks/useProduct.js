@@ -18,6 +18,7 @@ const product = gql`
       stars
       tags
       title
+      slug
       shortDescription
       image {
         responsiveImage(imgixParams: { w: "540", h: "600" }) {

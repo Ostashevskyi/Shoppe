@@ -4,6 +4,7 @@ import Counter from "@/components/shared/Counter";
 import DeleteIcon from "../icons/Delete";
 import { useDispatch } from "react-redux";
 import { deleteShoppingCart } from "@/store/shoppingCartSlice";
+import { NavLink } from "react-router-dom";
 
 const CartCard = ({ productInfo, userID, id }) => {
   const { name } = productInfo;
@@ -19,7 +20,9 @@ const CartCard = ({ productInfo, userID, id }) => {
   return (
     <div className="flex gap-32 border-b pb-9 mb-9 border-gray">
       <div className="flex gap-10">
-        <img src={product?.image?.responsiveImage?.src} />
+        <NavLink to={`/products/${product?.slug}`}>
+          <img src={product?.image?.responsiveImage?.src} />
+        </NavLink>
         <div className="flex flex-col gap-3">
           <p className="heading3D max-w-[100px] "> {product?.title}</p>
           {product?.isDiscount ? (
