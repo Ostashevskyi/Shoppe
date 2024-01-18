@@ -8,7 +8,8 @@ import billingAddressesReducer from "@/store/billingAddressesSlice";
 import shippingAddressesReducer from "@/store/shippingAddressesSlice";
 import counterSlice from "@/store/counterSlice";
 import productsSlice from "@/store/productsSlice";
-import orderSlice from "./orderSlice";
+import orderSlice from "@/store/orderSlice";
+import reviewsSlice from "@/store/reviewsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -21,5 +22,6 @@ export const store = configureStore({
     counter: counterSlice,
     products: productsSlice,
     orders: orderSlice,
+    reviews: reviewsSlice,
   },
 });
