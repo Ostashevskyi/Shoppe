@@ -4,7 +4,6 @@ import Home from "@/pages/Home";
 import Blog from "@/pages/Blog";
 import Post from "@/pages/Post";
 import Cart from "@/pages/Cart";
-import Login from "@/pages/Login";
 import About from "@/pages/About";
 import Catalog from "@/pages/Catalog";
 import PageNotFound from "@/pages/404";
@@ -20,7 +19,6 @@ const router = createBrowserRouter([
   { path: "/catalog", element: <Catalog /> },
   { path: "/products/:item", element: <ProductPage /> },
   { path: "/contact-us", element: <ContactUs /> },
-  { path: "/login", element: <Login /> },
   { path: "/reset-password", element: <ForgotPassword /> },
   { path: "/blog", element: <Blog /> },
   { path: "/blog/:post", element: <Post /> },
