@@ -1,25 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import ReactStars from "react-stars";
 import parse from "html-react-parser";
 import { useParams } from "react-router-dom";
 
-import useProduct from "../hooks/useProduct";
-import useSimilarProducts from "../hooks/useSimilarProducts";
+import useProduct from "@/hooks/useProduct";
+import useSimilarProducts from "@/hooks/useSimilarProducts";
 
 import Wrapper from "@/components/Wrapper";
-import Counter from "@/components/shared/Counter";
 import MailIcon from "@/components/icons/MailIcon";
 import HeartIcon from "@/components/icons/HeartIcon";
-import { ButtonM } from "@/components/Buttons/ButtonM";
 import TwitterIcon from "@/components/icons/TwitterIcon";
-import ProductCard from "@/components/shared/ProductCard";
+import ProductCard from "@/components/Cards/ProductCard";
 import FacebookIcon from "@/components/icons/FacebookIcon";
 import InstagramIcon from "@/components/icons/InstagramIcon";
 import { AdditionalImage } from "@/components/Images/AdditionalImage";
+import AddToCartButton from "@/components/Buttons/AddToCartButton";
+import ProductReviewForm from "../components/Forms/ProductReviewForm";
+import { useDispatch, useSelector } from "react-redux";
+import { getReviews } from "../store/reviewsSlice";
+import { averageValue } from "../utils/averaneValue";
+import ReviewCard from "../components/Cards/ReviewCard";
+import { Rating } from "@smastrom/react-rating";
+import { STAR_STYLES } from "../utils/constants";
 
 const ProductPage = () => {
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState("description");
+  const [averageRating, setAverageRating] = useState(0);
+  const [reviewsLength, setReviewsLength] = useState(0);
 
   const { item } = useParams();
 
@@ -35,6 +43,23 @@ const ProductPage = () => {
 
   const similarProducts = info?.data;
   const allSimilarProducts = similarProducts?.allProducts;
+
+  const dispatch = useDispatch();
+
+  const { reviews } = useSelector((state) => state.reviews);
+
+  const reversedReviews = reviews?.slice().reverse();
+
+  useEffect(() => {
+    product?.title && dispatch(getReviews(product?.title));
+  }, [product]);
+
+  useEffect(() => {
+    const reviewsRatingArray = reviews?.map((review) => review.rating);
+    setAverageRating(averageValue(reviewsRatingArray));
+
+    setReviewsLength(reviews?.length);
+  }, [reviews]);
 
   return (
     <Wrapper>
@@ -78,20 +103,22 @@ const ProductPage = () => {
               )}
             </div>
             <div className="flex gap-6 items-center mb-5">
-              <ReactStars
-                count={5}
-                size={30}
-                edit={false}
-                value={product?.stars}
+              <Rating
+                itemStyles={STAR_STYLES}
+                value={averageRating}
+                style={{ maxWidth: 90 }}
+                readOnly
               />
-              <p className="heading5D text-dark_gray">1 customer review</p>
+              <p className="heading5D text-dark_gray">
+                {reviewsLength} customer{" "}
+                {reviewsLength > 1 ? "reviews" : "review"}
+              </p>
             </div>
             <p className="max-w-[484px] heading5D text-dark_gray mb-12">
               {product?.shortDescription}
             </p>
             <div className="flex items-center justify-between gap-6 mb-20">
-              <Counter />
-              <ButtonM disabled={!product?.isAvaliable}>Add to cart</ButtonM>
+              <AddToCartButton buttonType={"button"} product={product} />
             </div>
             <div className="flex items-center mb-9">
               <div className="pr-10 border-r-2 border-light_gray">
@@ -119,32 +146,64 @@ const ProductPage = () => {
         <div>
           <div className="flex gap-24 heading3D text-dark_gray mb-16">
             <button
-              className={`${isActive && "text-black"}`}
+              className={`${isActive === "description" && "text-black"}`}
               onClick={() => {
-                setIsActive(!isActive);
+                setIsActive("description");
               }}
             >
               Description
             </button>
             <button
-              className={`${!isActive && "text-black"}  `}
+              className={`${isActive === "addInfo" && "text-black"}  `}
               onClick={() => {
-                setIsActive(!isActive);
+                setIsActive("addInfo");
               }}
             >
               Additional information
             </button>
+            <button
+              className={`${isActive === "reviews" && "text-black"}  `}
+              onClick={() => {
+                setIsActive("reviews");
+              }}
+            >
+              Reviews({reviewsLength})
+            </button>
           </div>
-          <div className="heading5D text-dark_gray mb-24">
-            {isActive ? (
-              <p>{product?.description}</p>
-            ) : (
-              <div>
+          <div className="heading5D  mb-24">
+            {isActive === "description" && (
+              <p className="text-dark_gray">{product?.description}</p>
+            )}
+
+            {isActive === "addInfo" && (
+              <div className="text-dark_gray">
                 {parse(
                   product?.additionalInformation
                     ? product?.additionalInformation
                     : ""
                 )}
+              </div>
+            )}
+
+            {isActive === "reviews" && (
+              <div className="flex justify-between gap-20">
+                <div className="flex-1 max-h-[600px] overflow-y-scroll no-scrollbar overscroll-contain">
+                  <p className="mb-16 heading3D">
+                    {reviewsLength} {reviewsLength > 1 ? "Reviews " : "Review "}
+                    for {product?.title}
+                  </p>
+                  {reversedReviews?.map((review) => (
+                    <ReviewCard key={review.id} review={review} />
+                  ))}
+                </div>
+                <div>
+                  <p className="mb-2 heading3D text-black">Add a Review</p>
+                  <p className="mb-11 heading5D text-dark_gray">
+                    Your email address will not be published. Required fields
+                    are marked *
+                  </p>
+                  <ProductReviewForm productName={product?.title} />
+                </div>
               </div>
             )}
           </div>

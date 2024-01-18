@@ -13,10 +13,10 @@ import { supabase } from "@/database";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useUserID } from "@/hooks/useUserID";
 import { useDispatch } from "react-redux";
-import { getBillingAddresses } from "../../store/billingAddressesSlice";
-import { setIsBilling } from "../../store/closeFormsSlice";
+import { getShippingAddresses } from "../../store/shippingAddressesSlice";
+import { setIsShipping } from "../../store/closeFormsSlice";
 
-export const BillingForm = () => {
+export const ShippingForm = () => {
   const {
     register,
     handleSubmit,
@@ -29,11 +29,13 @@ export const BillingForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await supabase.from("billing_addresses").insert({
+      const response = await supabase.from("shipping_addresses").insert({
         preset_name: data["Preset name"],
         first_name: data["First name"],
         last_name: data["Last name"],
-        company_name: data["Company name"],
+        card_number: data["Card number"],
+        expiration_date: data["Expiration date"],
+        cvv: data["CVV"],
         country: data["Country"],
         street_address: data["Street Address"],
         postcode: data["Postcode / ZIP"],
@@ -47,8 +49,8 @@ export const BillingForm = () => {
       if (response.status === 201) {
         console.log("Form added correctly");
 
-        dispatch(getBillingAddresses(userID));
-        dispatch(setIsBilling(false));
+        dispatch(getShippingAddresses(userID));
+        dispatch(setIsShipping(false));
       } else {
         throw Error("Something went wrong");
       }
@@ -73,7 +75,18 @@ export const BillingForm = () => {
           {errors["Last name"] && <ErrorMessage required />}
         </div>
       </div>
-      <Input label={"Company name"} register={register} />
+      <div>
+        <Input label={"Card number"} register={register} required />
+        {errors["Card number"] && <ErrorMessage required />}
+      </div>
+      <div>
+        <Input label={"Expiration date"} register={register} required />
+        {errors["Expiration date"] && <ErrorMessage required />}
+      </div>
+      <div>
+        <Input label={"CVV"} register={register} required />
+        {errors["CVV"] && <ErrorMessage required />}
+      </div>
       <div>
         <CountrySelect label={"Country"} register={register} required />
         {errors["County"] && <ErrorMessage required />}

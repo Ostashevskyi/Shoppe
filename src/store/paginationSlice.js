@@ -3,22 +3,40 @@ import { createSlice } from "@reduxjs/toolkit";
 export const paginationSlice = createSlice({
   name: "pagination",
   initialState: {
-    activePage: 1,
-    totalSkip: 0,
+    activeBlogPage: 1,
+    totalBlogSkip: 0,
+
+    activeOrderPage: 1,
+    totalOrderMinEl: 0,
+    totalOrderMaxEl: 4,
   },
 
   reducers: {
-    onPageSkip: (state, action) => {
-      state.totalSkip = action.payload;
+    onBlogPageSkip: (state, action) => {
+      state.totalBlogSkip = action.payload;
     },
 
-    setActivePage: (state, action) => {
-      state.activePage = action.payload;
+    setActiveBlogPage: (state, action) => {
+      state.activeBlogPage = action.payload;
+    },
+
+    setTotalOrder: (state, action) => {
+      state.totalOrderMaxEl = action.payload.max;
+      state.totalOrderMinEl = action.payload.min;
+    },
+
+    setActiveOrderPage: (state, action) => {
+      state.activeOrderPage = action.payload;
     },
   },
 });
 
-export const { increaseSkip, decreaseSkip, onPageSkip, setActivePage } =
-  paginationSlice.actions;
+export const {
+  onBlogPageSkip,
+  setActiveOrderPage,
+  setActiveBlogPage,
+  onOrderPageSkip,
+  setTotalOrder,
+} = paginationSlice.actions;
 
 export default paginationSlice.reducer;

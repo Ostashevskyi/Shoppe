@@ -1,14 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 
-import { BillingForm } from "@/components/Forms/BillingForm";
+import { useSelector, useDispatch } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
+
+import { useUserID } from "@/hooks/useUserID";
+
+import { setIsBilling, setIsShipping } from "@/store/closeFormsSlice";
+
+import AddressesMain from "@/components/shared/AddressesMain";
+
+import { getBillingAddresses } from "@/store/billingAddressesSlice";
+import { getShippingAddresses } from "@/store/shippingAddressesSlice";
 
 const Addresses = () => {
-  const [isBilling, setIsBilling] = useState(false);
-  const [isShipping, setIsShipping] = useState(false);
+  const { isShipping, isBilling } = useSelector((state) => state.closeForm);
 
-  const setter = (set, val) => {
-    set(!val);
-  };
+  const { billingAddresses } = useSelector((state) => state.billingAddresses);
+  const { shippingAddresses } = useSelector((state) => state.shippingAddresses);
+
+  const dispatch = useDispatch();
+
+  const { user } = useAuth0();
+  const userID = useUserID(user);
+
+  useEffect(() => {
+    dispatch(getBillingAddresses(userID));
+    dispatch(getShippingAddresses(userID));
+  }, [dispatch]);
 
   return (
     <div>
@@ -16,60 +34,20 @@ const Addresses = () => {
         The following addresses will be used on the checkout page by default.
       </p>
       <div className="flex justify-between">
-        <div>
-          <p className="mb-6 heading3D">Billing Address</p>
-
-          {isBilling ? (
-            <div>
-              <BillingForm />
-              <button
-                className="body_large text-accent uppercase font-medium mt-4"
-                onClick={() => setter(setIsBilling, isBilling)}
-              >
-                Close
-              </button>
-            </div>
-          ) : (
-            <div>
-              <button
-                onClick={() => setter(setIsBilling, isBilling)}
-                className="body_large text-accent uppercase font-medium mb-3"
-              >
-                Add
-              </button>
-              <p className="body_medium text-dark_gray">
-                You have not set up this type of address yet.
-              </p>
-            </div>
-          )}
-        </div>
-        <div>
-          <p className="mb-6 heading3D">Shipping Address</p>
-
-          {isShipping ? (
-            <div>
-              <BillingForm />
-              <button
-                className="body_large text-accent uppercase font-medium mt-4"
-                onClick={() => setter(setIsShipping, isShipping)}
-              >
-                Close
-              </button>
-            </div>
-          ) : (
-            <div>
-              <button
-                onClick={() => setter(setIsShipping, isShipping)}
-                className="body_large text-accent uppercase font-medium mb-3"
-              >
-                Add
-              </button>
-              <p className="body_medium text-dark_gray">
-                You have not set up this type of address yet.
-              </p>
-            </div>
-          )}
-        </div>
+        <AddressesMain
+          condition={isBilling}
+          title="Billing Address"
+          conditionSetter={setIsBilling}
+          addresses={billingAddresses}
+          formType={"billing"}
+        />
+        <AddressesMain
+          condition={isShipping}
+          title="Shipping Address"
+          conditionSetter={setIsShipping}
+          addresses={shippingAddresses}
+          formType={"shipping"}
+        />
       </div>
     </div>
   );

@@ -1,24 +1,15 @@
 import { NavLink } from "react-router-dom";
 import { Image } from "react-datocms/image";
 
-import Search from "@/components/icons/SearchIcon";
-
 export const HoverImage = ({ data, slug }) => {
+  const { image } = data;
+  const { responsiveImage } = image;
+
   return (
     <div className="w-fit relative group overflow-hidden mb-6">
       <NavLink to={`/products/${slug}`}>
-        <Image data={data} />
+        <Image data={responsiveImage} />
       </NavLink>
-      <div
-        className="absolute bottom-0 w-full flex justify-between items-center
-          translate-y-20 transition-transform bg-white_50 py-5 px-8
-          group-hover:translate-y-0"
-      >
-        <button className="uppercase font-bold body_large active:opacity-70">
-          Add to cart
-        </button>
-        <Search />
-      </div>
     </div>
   );
 };

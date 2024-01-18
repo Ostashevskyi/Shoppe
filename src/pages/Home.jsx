@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useId } from "react";
 
 import useProducts from "@/hooks/useProducts";
 import useSliderImages from "@/hooks/useSliderImages";
@@ -6,16 +6,31 @@ import useSliderImages from "@/hooks/useSliderImages";
 import Wrapper from "@/components/Wrapper";
 import Slider from "@/components/shared/Slider";
 import { AccentLink } from "@/components/shared/Links";
-import ProductCard from "@/components/shared/ProductCard";
+import ProductCard from "@/components/Cards/ProductCard";
+import { useDispatch } from "react-redux";
+import { getProducts } from "../store/productsSlice";
+import { getShoppingCart } from "../store/shoppingCartSlice";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useUserID } from "@/hooks/useUserID";
+import { ordersNumberGenerator } from "../utils/ordersNumberGenerator";
 
 const Home = () => {
   const sliderImages = useSliderImages();
+  const { user } = useAuth0();
+  const userID = useUserID(user);
 
   const { data } = sliderImages;
 
   const products = useProducts();
   const product = products?.data;
   const allProducts = product?.allProducts;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts());
+    dispatch(getShoppingCart({ userID }));
+  }, [dispatch]);
 
   return (
     <Wrapper>

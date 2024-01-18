@@ -7,7 +7,7 @@ import Wrapper from "@/components/Wrapper";
 import useFilteredProducts from "@/hooks/useFilteredProducts";
 
 import RangeSlider from "@/components/shared/RangeSlider";
-import ProductCard from "@/components/shared/ProductCard";
+import ProductCard from "@/components/Cards/ProductCard";
 import { ToggleCatalog } from "@/components/shared/Toggle";
 import { SearchInput } from "@/components/Inputs/SearchInput";
 import { CatalogSelect } from "@/components/Selects/CatalogSelect";
