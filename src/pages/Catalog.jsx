@@ -13,16 +13,16 @@ import { SearchInput } from "@/components/Inputs/SearchInput";
 import { CatalogSelect } from "@/components/Selects/CatalogSelect";
 
 const Catalog = () => {
-  const { filterType, minPrice, maxPrice, onSale, inStock, title } =
+  const { catalogCategory, minPrice, maxPrice, onSale, inStock, catalogTitle } =
     useSelector((state) => state.filter);
 
   const { refetch } = useFilteredProducts({
-    type: filterType,
+    type: catalogCategory,
     min: minPrice,
     max: maxPrice,
     sale: onSale,
     stock: inStock,
-    title: title,
+    title: catalogTitle,
   });
 
   const [allProducts, setAllProducts] = useState();
@@ -31,12 +31,12 @@ const Catalog = () => {
     const fetchData = async () => {
       try {
         const { data } = await refetch({
-          type: filterType ? filterType : undefined,
+          type: catalogCategory ? catalogCategory : undefined,
           min: minPrice,
           max: maxPrice,
           sale: onSale,
           stock: inStock,
-          title: title ? title : "",
+          title: catalogTitle ? catalogTitle : "",
         });
 
         setAllProducts(data?.allProducts || []);
@@ -45,14 +45,22 @@ const Catalog = () => {
       }
     };
     fetchData();
-  }, [filterType, minPrice, maxPrice, onSale, inStock, refetch, title]);
+  }, [
+    catalogCategory,
+    minPrice,
+    maxPrice,
+    onSale,
+    inStock,
+    refetch,
+    catalogTitle,
+  ]);
 
   return (
     <Wrapper>
       <div className="mt-24 flex gap-9 mb-60">
         <aside>
           <p className="heading1D mb-9">Shop The Latest</p>
-          <SearchInput />
+          <SearchInput type="catalog" />
           <CatalogSelect />
           <RangeSlider />
           <ToggleCatalog label="On sale" />

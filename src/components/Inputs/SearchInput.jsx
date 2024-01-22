@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { setTitle } from "@/store/filterSlice";
+import { setCatalogTitle } from "@/store/filterSlice";
 import { useSearchParams } from "react-router-dom";
+import { setBlogTitle } from "../../store/filterSlice";
 
-export const SearchInput = () => {
+export const SearchInput = ({ type }) => {
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const [inputValue, setInputValue] = useState();
@@ -21,7 +22,10 @@ export const SearchInput = () => {
     }
 
     setSearchParams(searchParams);
-    dispatch(setTitle(inputValue));
+
+    type
+      ? dispatch(setCatalogTitle(inputValue))
+      : dispatch(setBlogTitle(inputValue));
   }, [inputValue]);
 
   const onSubmit = (e) => {

@@ -4,25 +4,28 @@ import { useDispatch, useSelector } from "react-redux";
 
 import usePosts from "@/hooks/usePosts";
 
-import { setFilterType } from "@/store/filterSlice";
+import { setBlogCategory } from "@/store/filterSlice";
 
 import { POSTS_ON_PAGE } from "@/utils/constants";
 
 import Wrapper from "@/components/Wrapper";
 import PostCard from "@/components/Cards/PostCard";
 import { SearchInput } from "@/components/Inputs/SearchInput";
-import BlogPagination from "../components/Paginations/BlogPagination";
+import BlogPagination from "@/components/Paginations/BlogPagination";
+import { useSearchParams } from "react-router-dom";
 
 const Blog = () => {
-  const { title, filterType } = useSelector((state) => state.filter);
+  const { blogTitle, blogCategory } = useSelector((state) => state.filter);
   const { totalBlogSkip } = useSelector((state) => state.pagination);
   const [allPosts, setAllPosts] = useState();
   const [countOfPosts, setCountOfPosts] = useState();
   const dispatch = useDispatch();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [activeBtn, setActiveBtn] = useState();
 
   const { refetch } = usePosts({
-    category: filterType,
-    title: title,
+    category: blogCategory,
+    title: blogTitle,
     first: POSTS_ON_PAGE,
     skip: totalBlogSkip,
   });
@@ -31,8 +34,8 @@ const Blog = () => {
     const fetchData = async () => {
       try {
         const { data } = await refetch({
-          title: title ? title : "",
-          category: filterType ? filterType : undefined,
+          title: blogTitle ? blogTitle : "",
+          category: blogCategory ? blogCategory : undefined,
           first: POSTS_ON_PAGE,
           skip: totalBlogSkip,
         });
@@ -44,12 +47,19 @@ const Blog = () => {
       }
     };
     fetchData();
-  }, [filterType, title, refetch, totalBlogSkip]);
+  }, [blogCategory, blogTitle, refetch, totalBlogSkip]);
 
-  const [activeBtn, setActiveBtn] = useState();
+  useEffect(() => {
+    setSearchParams();
+    dispatch(setBlogCategory(""));
+    setActiveBtn("");
+  }, []);
 
   const handleClick = (e) => {
-    dispatch(setFilterType(e.target.innerHTML));
+    searchParams.set("category", e.target.innerHTML);
+    setSearchParams(searchParams);
+
+    dispatch(setBlogCategory(e.target.innerHTML));
 
     activeBtn === e.target.name
       ? setActiveBtn("")
@@ -120,7 +130,9 @@ const Blog = () => {
             </div>
             {allPosts?.length === 0 && NotFoundMessage}
             <BlogPagination
-              count={filterType || title ? allPosts?.length : countOfPosts}
+              count={
+                blogCategory || blogTitle ? allPosts?.length : countOfPosts
+              }
             />
           </main>
         </div>
