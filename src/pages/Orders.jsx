@@ -5,8 +5,7 @@ import { NavLink } from "react-router-dom";
 import { useUserID } from "@/hooks/useUserID";
 import { getOrders } from "@/store/orderSlice";
 import OrdersPagination from "@/components/Paginations/OrdersPagination";
-import { format } from "date-fns";
-import { formatDate } from "../../utils/formatDate";
+import { formatDate } from "@/utils/formatDate";
 
 const Orders = () => {
   const { user } = useAuth0();
