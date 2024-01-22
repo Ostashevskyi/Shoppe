@@ -4,9 +4,11 @@ import Toggle from "react-toggle";
 
 import "react-toggle/style.css";
 import { setInStock, setOnSale } from "../../store/filterSlice";
+import { useSearchParams } from "react-router-dom";
 
 export const ToggleCatalog = ({ label }) => {
   const [isTrue, setIsTrue] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const dispatch = useDispatch();
 
@@ -20,6 +22,10 @@ export const ToggleCatalog = ({ label }) => {
         defaultChecked={isTrue}
         onChange={() => {
           setIsTrue(!isTrue);
+          !isTrue
+            ? searchParams.set(check ? "onSale" : "inStock", !isTrue)
+            : searchParams.delete(check ? "onSale" : "inStock");
+          setSearchParams(searchParams);
           dispatch(
             check ? dispatch(setOnSale(!isTrue)) : dispatch(setInStock(!isTrue))
           );

@@ -3,15 +3,20 @@ import { createSlice } from "@reduxjs/toolkit";
 export const filterSlice = createSlice({
   name: "filter",
   initialState: {
-    title: "",
+    // catalog
+    catalogTitle: "",
     minPrice: 0,
     maxPrice: 50,
-    filterType: "",
+    catalogCategory: "",
+
+    //blog
+    blogCategory: "",
+    blogTitle: "",
   },
 
   reducers: {
-    setTitle: (state, action) => {
-      state.title = action.payload;
+    setCatalogTitle: (state, action) => {
+      state.catalogTitle = action.payload;
     },
 
     setPrice: (state, action) => {
@@ -19,11 +24,11 @@ export const filterSlice = createSlice({
       state.maxPrice = action.payload.maxPrice;
     },
 
-    setFilterType: (state, action) => {
-      if (state.filterType === action.payload) {
-        state.filterType = "";
+    setCatalogCategory: (state, action) => {
+      if (state.catalogCategory === action.payload) {
+        state.catalogCategory = "";
       } else {
-        state.filterType = action.payload;
+        state.catalogCategory = action.payload;
       }
     },
 
@@ -42,10 +47,32 @@ export const filterSlice = createSlice({
         delete state.onSale;
       }
     },
+
+    // blog reducers
+
+    setBlogCategory: (state, action) => {
+      if (state.blogCategory === action.payload) {
+        state.blogCategory = "";
+      } else {
+        state.blogCategory = action.payload;
+      }
+    },
+
+    setBlogTitle: (state, action) => {
+      state.blogTitle = action.payload;
+    },
   },
 });
 
-export const { setTitle, setPrice, setFilterType, setInStock, setOnSale } =
-  filterSlice.actions;
+export const {
+  setTitle,
+  setPrice,
+  setBlogCategory,
+  setBlogTitle,
+  setCatalogCategory,
+  setCatalogTitle,
+  setInStock,
+  setOnSale,
+} = filterSlice.actions;
 
 export default filterSlice.reducer;
