@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useDispatch } from "react-redux";
 
 import { setFilterType } from "@/store/filterSlice";
+import { useSearchParams } from "react-router-dom";
 
 export const CatalogSelect = () => {
   const dispatch = useDispatch();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleChange = (e) => {
+    if (e.target.value === "") {
+      searchParams.delete("sortBy");
+    } else if (e.target.value) {
+      searchParams.set("sortBy", e.target.value);
+    }
+
+    setSearchParams(searchParams);
+
     dispatch(setFilterType(e.target.value));
   };
 
