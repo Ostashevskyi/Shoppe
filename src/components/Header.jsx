@@ -40,7 +40,7 @@ const Header = () => {
         <div className="ml-12">
           <ul className="flex gap-10 ">
             <li>
-              <HeaderLink to="#">
+              <HeaderLink to="/search">
                 <img src={searchIcon} alt="search" />
               </HeaderLink>
             </li>
