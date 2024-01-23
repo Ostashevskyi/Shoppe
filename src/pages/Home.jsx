@@ -1,18 +1,19 @@
-import React, { useEffect, useId } from "react";
+import React, { useEffect } from "react";
+
+import { useDispatch } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
 
 import useProducts from "@/hooks/useProducts";
+import { useUserID } from "@/hooks/useUserID";
 import useSliderImages from "@/hooks/useSliderImages";
+
+import { getProducts } from "@/store/productsSlice";
+import { getShoppingCart } from "@/store/shoppingCartSlice";
 
 import Wrapper from "@/components/Wrapper";
 import Slider from "@/components/shared/Slider";
-import { AccentLink } from "@/components/shared/Links";
 import ProductCard from "@/components/Cards/ProductCard";
-import { useDispatch } from "react-redux";
-import { getProducts } from "../store/productsSlice";
-import { getShoppingCart } from "../store/shoppingCartSlice";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useUserID } from "@/hooks/useUserID";
-import { ordersNumberGenerator } from "../utils/ordersNumberGenerator";
+import { AccentLink } from "@/components/Links/AccentLink";
 
 const Home = () => {
   const sliderImages = useSliderImages();
@@ -47,7 +48,7 @@ const Home = () => {
           >
             Shop The Latest
           </p>
-          <AccentLink>View All</AccentLink>
+          <AccentLink to="/catalog">View All</AccentLink>
         </div>
         <div
           className="flex justify-between flex-wrap 

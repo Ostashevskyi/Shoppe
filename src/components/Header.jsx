@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 import useLogo from "@/hooks/useLogo";
 
-import { HeaderLink } from "@/components/shared/Links";
+import { HeaderLink } from "@/components/Links/HeaderLink";
 
 import { searchIcon, userIcon, cartIcon } from "@/utils/icon_imports";
 
