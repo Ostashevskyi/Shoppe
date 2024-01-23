@@ -26,7 +26,8 @@ const Header = () => {
       </NavLink>
 
       <nav className="flex">
-        <section className="MOBILE-MENU flex lg:hidden xl:hidden xxl:hidden">
+        {/* HEADER MOBILE */}
+        <section className="flex lg:hidden xl:hidden xxl:hidden">
           <HeaderLink to="/cart">
             <img src={cartIcon} alt="cart" />
           </HeaderLink>
@@ -102,7 +103,8 @@ const Header = () => {
           </div>
         </section>
 
-        <div className="DESKTOP-MENU hidden lg:flex xl:flex xxl:flex mx-4">
+        {/* HEADER DESKTOP */}
+        <section className="hidden lg:flex xl:flex xxl:flex mx-4">
           <ul className="gap-16 flex text-base border-r-2 border-light_gray pr-12 ">
             {links.map((link) => {
               return (
@@ -131,7 +133,7 @@ const Header = () => {
               </li>
             </ul>
           </div>
-        </div>
+        </section>
       </nav>
     </header>
   );
