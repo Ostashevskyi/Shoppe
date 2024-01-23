@@ -18,6 +18,7 @@ import OrderDetails from "@/pages/OrderDetails";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import ForgotPassword from "@/pages/ForgotPassword";
 import AccountDetails from "@/pages/AccountDetails";
+import Search from "@/pages/Search";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -60,6 +61,7 @@ const router = createBrowserRouter([
 
   { path: "/cart", element: <Cart /> },
   { path: "/order_details/:order_number", element: <OrderDetails /> },
+  { path: "/search", element: <Search /> },
 ]);
 
 export default router;
