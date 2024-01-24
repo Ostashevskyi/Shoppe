@@ -64,7 +64,12 @@ const Header = () => {
                 <img src={data?.url} alt="logo" />
               </NavLink>
 
-              <div className="flex items-center gap-5 mb-2">
+              <div
+                className="flex items-center gap-5 mb-2"
+                onClick={() => {
+                  document.querySelector("body").classList.remove("fixed");
+                }}
+              >
                 <HeaderLink to="/cart">
                   <img src={cartIcon} alt="cart" />
                 </HeaderLink>

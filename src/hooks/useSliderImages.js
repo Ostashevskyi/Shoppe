@@ -21,6 +21,21 @@ const sliderImages = gql`
       sliderPrice
       sliderTitle
       id
+      mobileSliderImage {
+        responsiveImage {
+          alt
+          aspectRatio
+          base64
+          bgColor
+          height
+          sizes
+          src
+          srcSet
+          title
+          webpSrcSet
+          width
+        }
+      }
     }
   }
 `;
