@@ -8,10 +8,10 @@ const ProductCard = ({ product, small }) => {
   const SalePrice = useMemo(() => {
     return (
       <div className="flex items-center gap-4 mt-4">
-        <p className="text-errors line-through heading4D font-medium xs:text-sm">
+        <p className="text-errors line-through heading4D font-medium xs:text-sm sm:text-sm">
           $ {product.price.toFixed(2)}
         </p>
-        <p className="text-accent heading4D font-medium xs:text-sm">
+        <p className="text-accent heading4D font-medium xs:text-sm sm:text-sm">
           $ {product.salePrice?.toFixed(2)}
         </p>
       </div>
@@ -26,13 +26,17 @@ const ProductCard = ({ product, small }) => {
         } rounded-md absolute top-4 left-4 xs:top-1 xs:left-1 sm:top-1 sm:left-2 flex justify-center items-center`}
       >
         {!product.isAvaliable && (
-          <p className="text-white body_smallD font-medium xs:text-xs">Sold</p>
+          <p className="text-white body_smallD font-medium xs:text-xs sm:text-sm">
+            Sold
+          </p>
         )}
         {product.isNew && (
-          <p className="text-black body_smallD font-medium xs:text-xs">New</p>
+          <p className="text-black body_smallD font-medium xs:text-xs sm:text-sm">
+            New
+          </p>
         )}
         {product.isDiscount && (
-          <p className="text-white body_smallD font-medium xs:text-xs">
+          <p className="text-white body_smallD font-medium xs:text-xs sm:text-sm">
             -%{product.discount}
           </p>
         )}
@@ -42,7 +46,7 @@ const ProductCard = ({ product, small }) => {
 
   const Price = useMemo(() => {
     return (
-      <p className="text-accent heading4D font-medium mt-4 xs:text-sm">
+      <p className="text-accent heading4D font-medium mt-4 xs:text-sm sm:text-sm">
         $ {product["price"].toFixed(2)}
       </p>
     );
@@ -66,13 +70,13 @@ const ProductCard = ({ product, small }) => {
       <div>
         <NavLink
           to={`/products/${product.slug}`}
-          className="heading3D xs:text-base"
+          className="heading3D xs:text-[13px] sm:text-sm"
         >
           {product.title}
         </NavLink>
         {product.isDiscount && SalePrice}
         {!product.isAvaliable && (
-          <p className="text-accent heading4D font-medium mt-4 xs:text-sm">
+          <p className="text-accent heading4D font-medium mt-4 xs:text-sm sm:text-sm">
             Sold Out
           </p>
         )}
