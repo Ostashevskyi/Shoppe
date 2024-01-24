@@ -7,7 +7,7 @@ const PostCard = ({ post }) => {
   const formattedDate = formatDate(post.date);
 
   return (
-    <section className="max-w-[400px]">
+    <section className="max-w-[400px] xs:mb-6 sm:mb-6 md:mb-6 md:max-w-[355px] lg:max-w-[355px]">
       <Image data={post.image.responsiveImage} />
       <div className="mb-6">
         <p className="body_medium text-dark_gray mt-5 mb-1">
