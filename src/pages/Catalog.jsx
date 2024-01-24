@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from "react";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 
-import Wrapper from "@/components/Wrapper";
+import FilterIcon from "../components/icons/FilterIcon";
+import SearchBurgerForm from "../components/Forms/SearchBurgerForm";
 
 import useFilteredProducts from "@/hooks/useFilteredProducts";
 
-import RangeSlider from "@/components/shared/RangeSlider";
+import { setCatalogTitle, setCatalogCategory } from "@/store/filterSlice";
+
+import { calcScreenWidth } from "../utils/calcScreenWidth";
+
+import Wrapper from "@/components/Wrapper";
 import ProductCard from "@/components/Cards/ProductCard";
+import RangeSlider from "@/components/shared/RangeSlider";
 import { ToggleCatalog } from "@/components/shared/Toggle";
 import { SearchInput } from "@/components/Inputs/SearchInput";
 import { CatalogSelect } from "@/components/Selects/CatalogSelect";
-import { calcScreenWidth } from "../utils/calcScreenWidth";
-import FilterIcon from "../components/icons/FilterIcon";
 
 const Catalog = () => {
   const { catalogCategory, minPrice, maxPrice, onSale, inStock, catalogTitle } =
@@ -26,6 +31,13 @@ const Catalog = () => {
     stock: inStock,
     title: catalogTitle,
   });
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setCatalogCategory(""));
+    dispatch(setCatalogTitle(""));
+  }, []);
 
   const [allProducts, setAllProducts] = useState();
 
@@ -76,7 +88,7 @@ const Catalog = () => {
 
   return (
     <Wrapper>
-      <div className="mt-24 flex gap-9 mb-60 xs:flex-col sm:flex-col md:flex-col xs:mx-4 xs:mb xs:mb-20 sm:mb-20 sm:mx-4 md:mx-4 lg:mx-4">
+      <div className="mt-24 xs:mt-4 sm:mt-4 md:mt-4 flex gap-9 mb-60 xs:flex-col sm:flex-col md:flex-col xs:mx-4 xs:mb xs:mb-20 sm:mb-20 sm:mx-4 md:mx-4 lg:mx-4">
         <aside>
           {width > 768 ? (
             <>
@@ -89,6 +101,8 @@ const Catalog = () => {
             </>
           ) : (
             <>
+              <SearchBurgerForm />
+              <p className="heading3D mb-4 font-medium">Shop</p>
               <MobileFilter />
               {filterIsOpen && (
                 <div className="flex flex-col mt-10">
