@@ -1,6 +1,7 @@
 import searchIcon from "@/assets/images/icons/search.svg";
 import userIcon from "@/assets/images/icons/user.svg";
 import cartIcon from "@/assets/images/icons/cart.svg";
+import logoutIcon from "@/assets/images/icons/logout.svg";
 
 import facebookIcon from "@/assets/images/icons/socials/facebook.svg";
 import instagramIcon from "@/assets/images/icons/socials/instagram.svg";
@@ -20,4 +21,5 @@ export {
   twitterIcon,
   heartIcon,
   mailIcon,
+  logoutIcon,
 };
