@@ -5,7 +5,7 @@ export const AccentLink = ({ children, to }) => {
     <NavLink
       to={to}
       className="heading4D font-normal text-accent
-    hover:text-black"
+    hover:text-black xs:text-sm sm:text-base"
     >
       {children}
     </NavLink>

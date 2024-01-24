@@ -13,8 +13,8 @@ const Footer = () => {
   return (
     <footer>
       {/* FOOTER DESKTOP */}
-      <section className="hidden lg:flex md:flex xxl:flex border-t-2 border-t-light_gray pt-12">
-        <div className=" flex-wrap justify-between mb-12">
+      <section className="hidden lg:flex lg:mx-4 xl:flex xxl:flex flex-col border-t-2 border-t-light_gray pt-12">
+        <div className="flex flex-wrap justify-between mb-12">
           <div className="flex items-center gap-10  heading5D space-y-0 uppercase text-dark_gray">
             <NavLink to="/contact-us">Contact</NavLink>
             <NavLink to="/terms-of-services">Terms of services</NavLink>
@@ -52,7 +52,7 @@ const Footer = () => {
       </section>
 
       {/* FOOTER MOBILE */}
-      <section className="mx-4 mb-20">
+      <section className="lg:hidden xl:hidden xxl:hidden mx-4 mb-20">
         <div className="mb-7">
           <NewsletterInput />
         </div>

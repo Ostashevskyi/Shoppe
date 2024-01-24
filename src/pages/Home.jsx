@@ -36,24 +36,17 @@ const Home = () => {
   return (
     <Wrapper>
       <Slider data={data?.allSliders} />
-      <div className="mt-16 mb-64">
+      <div className="mt-16 mb-64 xs:mb-20 sm:mb-20">
         <div
           className="flex items-center justify-between mb-10
-          xs:mx-2
-        sm:px-5"
+          xs:mx-4 sm:mx-4 md:mx-4 lg:mx-4"
         >
-          <p
-            className="heading1D 
-          sm: heading2D"
-          >
-            Shop The Latest
-          </p>
+          <p className="heading1D xs:text-base sm:text-xl">Shop The Latest</p>
           <AccentLink to="/catalog">View All</AccentLink>
         </div>
         <div
           className="flex justify-between flex-wrap 
-          xs:mx-2
-        sm:justify-center"
+          xs:mx-4 sm:mx-4 md:mx-4 lg:mx-4"
         >
           {allProducts?.map((el, index) => {
             return <ProductCard key={index} product={el} />;
