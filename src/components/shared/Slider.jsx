@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import "swiper/css/bundle";
 import { Pagination } from "swiper/modules";
@@ -6,17 +6,10 @@ import { Image } from "react-datocms/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { SliderButton } from "@/components/Buttons/SliderButton";
+import { calcScreenWidth } from "../../utils/calcScreenWidth";
 
 const Slider = ({ data }) => {
-  const [width, setWidth] = useState(window.innerWidth);
-
-  const handleResize = () => {
-    setWidth(window.innerWidth);
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", handleResize, false);
-  }, []);
+  const width = calcScreenWidth();
 
   return (
     <div className="flex justify-center items-center md:px-4 lg:px-4">
