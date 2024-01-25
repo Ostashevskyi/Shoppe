@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
-
-import FilterIcon from "../components/icons/FilterIcon";
-import SearchBurgerForm from "../components/Forms/SearchBurgerForm";
 
 import useFilteredProducts from "@/hooks/useFilteredProducts";
 
 import { setCatalogTitle, setCatalogCategory } from "@/store/filterSlice";
 
-import { calcScreenWidth } from "../utils/calcScreenWidth";
+import { calcScreenWidth } from "@/utils/calcScreenWidth";
 
 import Wrapper from "@/components/Wrapper";
+import FilterIcon from "@/components/icons/FilterIcon";
 import ProductCard from "@/components/Cards/ProductCard";
 import RangeSlider from "@/components/shared/RangeSlider";
 import { ToggleCatalog } from "@/components/shared/Toggle";
@@ -101,7 +98,6 @@ const Catalog = () => {
             </>
           ) : (
             <>
-              <SearchBurgerForm />
               <p className="heading3D mb-4 font-medium">Shop</p>
               <MobileFilter />
               {filterIsOpen && (

@@ -1,8 +1,12 @@
 import React, { useState, useMemo, useEffect } from "react";
+
 import { useAuth0 } from "@auth0/auth0-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
+
+import { calcScreenWidth } from "@/utils/calcScreenWidth";
 
 import Wrapper from "@/components/Wrapper";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 const Account = () => {
   const [activeElement, setActiveElement] = useState("Dashboard");
@@ -33,6 +37,36 @@ const Account = () => {
     );
   }, []);
 
+  const width = calcScreenWidth();
+
+  const MobileButtons = () => {
+    return (
+      <div className="flex gap-12 border-b border-light_gray mb-10  xs:mx-4 ">
+        <Swiper
+          slidesPerView={width < 375 ? 2 : width > 767 ? 4 : 3}
+          className=""
+        >
+          <div className="flex">
+            {buttons.map((btn) => {
+              return (
+                <SwiperSlide key={btn.id} className="text-center ">
+                  <NavLink
+                    to={btn.url}
+                    className={`${
+                      activeElement === btn.meta && "border-b border-black pb-4"
+                    }`}
+                  >
+                    {btn.title}
+                  </NavLink>
+                </SwiperSlide>
+              );
+            })}
+          </div>
+        </Swiper>
+      </div>
+    );
+  };
+
   return (
     <Wrapper>
       <main className="mt-24 mb-52">
@@ -45,23 +79,28 @@ const Account = () => {
               </h1>
             )}
             <div>
-              <div className="flex gap-12 border-b border-light_gray mb-10">
-                {buttons.map((btn) => {
-                  return (
-                    <NavLink
-                      to={btn.url}
-                      key={btn.id}
-                      className={`${
-                        activeElement === btn.meta &&
-                        "border-b border-black pb-8 translate-y-px"
-                      }`}
-                    >
-                      {btn.title}
-                    </NavLink>
-                  );
-                })}
-              </div>
+              {width < 976 ? (
+                <MobileButtons />
+              ) : (
+                <div className="flex gap-12 border-b border-light_gray mb-10 xs:mx-4">
+                  {buttons.map((btn) => {
+                    return (
+                      <NavLink
+                        to={btn.url}
+                        key={btn.id}
+                        className={`${
+                          activeElement === btn.meta &&
+                          "border-b border-black pb-8 translate-y-px"
+                        }`}
+                      >
+                        {btn.title}
+                      </NavLink>
+                    );
+                  })}
+                </div>
+              )}
             </div>
+
             <div>
               <Outlet />
             </div>
