@@ -14,7 +14,6 @@ import Wrapper from "@/components/Wrapper";
 import PostCard from "@/components/Cards/PostCard";
 import FilterIcon from "@/components/icons/FilterIcon";
 import { SearchInput } from "@/components/Inputs/SearchInput";
-import SearchBurgerForm from "@/components/Forms/SearchBurgerForm";
 import BlogPagination from "@/components/Paginations/BlogPagination";
 
 const Blog = () => {
@@ -158,7 +157,6 @@ const Blog = () => {
             </>
           ) : (
             <>
-              <SearchBurgerForm />
               <p className="heading3D mb-4 font-medium">Blog</p>
               <MobileFilter />
               {filterIsOpen && (
