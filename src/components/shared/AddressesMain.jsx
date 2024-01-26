@@ -46,7 +46,7 @@ const AddressesMain = ({
               You have not set up this type of address yet.
             </p>
           ) : (
-            <fieldset className="flex flex-col gap-3 items-center justify-center">
+            <fieldset className="flex flex-col gap-3 xl:items-center justify-center max-w-[300px]">
               {addresses.map((el) => (
                 <FormCard key={el.id} address={el} formType={formType} />
               ))}
