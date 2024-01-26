@@ -41,7 +41,7 @@ const Account = () => {
 
   const MobileButtons = () => {
     return (
-      <div className="flex gap-12 border-b border-light_gray mb-10  xs:mx-4 ">
+      <div className="flex gap-12 border-b border-light_gray mb-10 xs:mx-4 sm:mx-4">
         <Swiper
           slidesPerView={width < 375 ? 2 : width > 767 ? 4 : 3}
           className=""
@@ -49,7 +49,7 @@ const Account = () => {
           <div className="flex">
             {buttons.map((btn) => {
               return (
-                <SwiperSlide key={btn.id} className="text-center ">
+                <SwiperSlide key={btn.id} className="text-center pb-4 ">
                   <NavLink
                     to={btn.url}
                     className={`${
@@ -82,7 +82,7 @@ const Account = () => {
               {width < 976 ? (
                 <MobileButtons />
               ) : (
-                <div className="flex gap-12 border-b border-light_gray mb-10 xs:mx-4">
+                <div className="flex gap-12 border-b border-light_gray mb-10 lg:mx-4">
                   {buttons.map((btn) => {
                     return (
                       <NavLink
@@ -100,7 +100,6 @@ const Account = () => {
                 </div>
               )}
             </div>
-
             <div>
               <Outlet />
             </div>
