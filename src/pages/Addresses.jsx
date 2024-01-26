@@ -29,11 +29,11 @@ const Addresses = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="xs:mx-4 sm:mx-4 md:mx-4">
       <p className="mb-11">
         The following addresses will be used on the checkout page by default.
       </p>
-      <div className="flex justify-between">
+      <div className="flex justify-between xs:flex-col sm:flex-col xs:gap-12 sm:gap-12 md:flex-col md:gap-12">
         <AddressesMain
           condition={isBilling}
           title="Billing Address"

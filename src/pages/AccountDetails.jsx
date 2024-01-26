@@ -12,7 +12,7 @@ const AccountDetails = () => {
   return (
     <main className="max-w-[503px] m-auto mt-10 mb-40">
       <h1 className="text-3xl font-medium text-center mb-9">Account Details</h1>
-      <div className="flex justify-center items-center gap-4">
+      <div className="flex justify-center items-center gap-4 xs:flex-col sm:flex-col ">
         <img src={user.picture} className="rounded-full" />
         <div>
           <p>

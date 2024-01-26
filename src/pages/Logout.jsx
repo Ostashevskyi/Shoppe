@@ -8,6 +8,7 @@ const Logout = () => {
       onClick={() =>
         logout({ logoutParams: { returnTo: window.location.origin } })
       }
+      className="mx-4"
     >
       Logout
     </button>
