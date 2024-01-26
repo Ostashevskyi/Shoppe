@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { useForm } from "react-hook-form";
 
@@ -15,6 +15,7 @@ import { useUserID } from "@/hooks/useUserID";
 import { useDispatch } from "react-redux";
 import { getBillingAddresses } from "../../store/billingAddressesSlice";
 import { setIsBilling } from "../../store/closeFormsSlice";
+import { calcScreenWidth } from "@/utils/calcScreenWidth";
 
 export const BillingForm = () => {
   const {
@@ -57,19 +58,37 @@ export const BillingForm = () => {
     }
   };
 
+  const width = calcScreenWidth();
+
+  const [isSmall, setIsSmall] = useState();
+
+  useEffect(() => {
+    width < 976 ? setIsSmall(false) : setIsSmall(true);
+  }, [width]);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-9">
       <div>
         <Input label={"Preset name"} register={register} required />
         {errors["Presrt name"] && <ErrorMessage required />}
       </div>
-      <div className="flex justify-between items-center gap-10">
+      <div className="flex justify-between gap-10 xs:flex-col sm:flex-col md:flex-col">
         <div>
-          <Input label={"First name"} register={register} required small />
+          <Input
+            label={"First name"}
+            register={register}
+            required
+            small={isSmall}
+          />
           {errors["First name"] && <ErrorMessage required />}
         </div>
         <div>
-          <Input label={"Last name"} register={register} required small />
+          <Input
+            label={"Last name"}
+            register={register}
+            required
+            small={isSmall}
+          />
           {errors["Last name"] && <ErrorMessage required />}
         </div>
       </div>
