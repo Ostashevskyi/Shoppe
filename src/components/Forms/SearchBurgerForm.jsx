@@ -1,5 +1,5 @@
 import React from "react";
-import SearchIcon from "../icons/SearchIcon";
+import SearchIcon from "@/components/icons/SearchIcon";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 

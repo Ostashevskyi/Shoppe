@@ -1,9 +1,10 @@
 import React from "react";
-import { formatDate } from "../../utils/formatDate";
-import { Rating, ThinRoundedStar } from "@smastrom/react-rating";
 
 import "@smastrom/react-rating/style.css";
-import { STAR_STYLES } from "../../utils/constants";
+import { Rating } from "@smastrom/react-rating";
+
+import { formatDate } from "@/utils/formatDate";
+import { STAR_STYLES } from "@/utils/constants";
 
 const ReviewCard = ({ review }) => {
   const formatedDate = formatDate(review.created_at);

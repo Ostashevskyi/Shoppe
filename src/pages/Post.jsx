@@ -1,12 +1,16 @@
 import React from "react";
-import Wrapper from "@/components/Wrapper";
-import { useParams } from "react-router-dom";
-import usePost from "@/hooks/usePost";
-import { formatDate } from "@/utils/formatDate";
+
 import parse from "html-react-parser";
-import FacebookIcon from "../components/icons/FacebookIcon";
-import InstagramIcon from "../components/icons/InstagramIcon";
-import TwitterIcon from "../components/icons/TwitterIcon";
+import { useParams } from "react-router-dom";
+
+import usePost from "@/hooks/usePost";
+
+import { formatDate } from "@/utils/formatDate";
+
+import Wrapper from "@/components/Wrapper";
+import TwitterIcon from "@/components/icons/TwitterIcon";
+import FacebookIcon from "@/components/icons/FacebookIcon";
+import InstagramIcon from "@/components/icons/InstagramIcon";
 
 const Post = () => {
   const { post } = useParams();

@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import "@smastrom/react-rating/style.css";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Rating } from "@smastrom/react-rating";
+
+import { useUserID } from "@/hooks/useUserID";
+
+import { putReviews } from "@/store/reviewsSlice";
+
+import { STAR_STYLES } from "@/utils/constants";
 import { EMAIL_PATTERN } from "@/utils/constants";
 
 import { Input } from "@/components/Inputs/Input";
 import { SubmitInput } from "@/components/Inputs/SubmitInput";
 import { ErrorMessage } from "@/components/shared/ErrorMessage";
-import { useDispatch } from "react-redux";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useUserID } from "@/hooks/useUserID";
-import { putReviews } from "@/store/reviewsSlice";
-import { Rating } from "@smastrom/react-rating";
-import { STAR_STYLES } from "../../utils/constants";
-
-import "@smastrom/react-rating/style.css";
 
 const ProductReviewForm = ({ productName }) => {
   const [starsRating, setStarsRating] = useState(1);

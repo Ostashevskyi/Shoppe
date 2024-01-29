@@ -1,9 +1,13 @@
 import React, { useEffect } from "react";
-import Wrapper from "@/components/Wrapper";
+
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrderByNumber } from "../store/orderSlice";
-import { formatDate } from "../utils/formatDate";
+
+import { getOrderByNumber } from "@/store/orderSlice";
+
+import { formatDate } from "@/utils/formatDate";
+
+import Wrapper from "@/components/Wrapper";
 
 const OrderDetails = () => {
   const { order_number } = useParams();

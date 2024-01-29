@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+
+import SearchBurgerForm from "./Forms/SearchBurgerForm";
 
 import useLogo from "@/hooks/useLogo";
 
-import { HeaderLink } from "@/components/Links/HeaderLink";
-
 import { searchIcon, userIcon, cartIcon } from "@/utils/icon_imports";
-import SearchBurgerForm from "./Forms/SearchBurgerForm";
 
-import LogoutIcon from "./icons/LogoutIcon";
-import UserIcon from "./icons/UserIcon";
-
-import { useAuth0 } from "@auth0/auth0-react";
-import LoginIcon from "./icons/LoginIcon";
+import UserIcon from "@/components/icons/UserIcon";
+import LoginIcon from "@/components/icons/LoginIcon";
+import LogoutIcon from "@/components/icons/LogoutIcon";
+import { HeaderLink } from "@/components/Links/HeaderLink";
 
 const Header = () => {
   const data = useLogo();

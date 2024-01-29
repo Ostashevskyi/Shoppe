@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveOrderPage, setTotalOrder } from "../../store/paginationSlice";
-import { ORDERS_ON_PAGE } from "../../utils/constants";
+
+import { setActiveOrderPage, setTotalOrder } from "@/store/paginationSlice";
+
+import { ORDERS_ON_PAGE } from "@/utils/constants";
+
 import { PaginationButton } from "@/components/Buttons/PaginationButton";
 
 const OrdersPagination = ({ count }) => {
@@ -42,7 +46,7 @@ const OrdersPagination = ({ count }) => {
       {items.map((num) => {
         return (
           <button
-            className={`w-[40px] h-[40px]  rounded-md border  ${
+            className={`w-[40px] h-[40px]  rounded-md border focus:scale-95 ${
               activeOrderPage === num + 1
                 ? "bg-black text-white"
                 : "bg-white text-black border-light_gray"

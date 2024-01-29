@@ -9,7 +9,6 @@ export const Input = ({
   small,
   value,
 }) => {
-  console.log(small);
   return (
     <div>
       <input

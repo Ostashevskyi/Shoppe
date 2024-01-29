@@ -22,21 +22,21 @@ export const ContactForm = () => {
 
   return (
     <form
-      className="flex flex-col gap-24 justify-center "
+      className="flex flex-col gap-24 justify-center xs:gap-11 sm:gap-11"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex justify-between flex-wrap">
-        <div>
+      <div className="flex lg:items-center justify-between gap-28 flex-wrap xs:gap-11 xs:flex-col sm:gap-11 sm:flex-col">
+        <div className="flex-1">
           <Input label={"First Name"} register={register} required />
           {errors["First Name"] && <ErrorMessage required />}
         </div>
-        <div>
+        <div className="flex-1">
           <Input label={"Last Name"} register={register} required />
           {errors["Last Name"] && <ErrorMessage required />}
         </div>
       </div>
-      <div className="flex justify-between flex-wrap">
-        <div>
+      <div className="flex lg:items-center justify-between gap-28 flex-wrap xs:flex-col xs:gap-11 sm:gap-11 sm:flex-col ">
+        <div className="xs:w-full flex-1">
           <Input
             label={"Email"}
             register={register}
@@ -46,7 +46,7 @@ export const ContactForm = () => {
           {errors["Email"]?.type === "required" && <ErrorMessage required />}
           {errors["Email"]?.type === "pattern" && <ErrorMessage />}
         </div>
-        <div>
+        <div className="xs:w-full flex-1">
           <InputSelect label={"Subject"} register={register} />
         </div>
       </div>
@@ -54,7 +54,7 @@ export const ContactForm = () => {
         <Input label={"Message"} register={register} required />
         {errors.Message && <ErrorMessage required />}
       </div>
-      <div className="flex justify-center min-w-[500px]">
+      <div className="flex justify-center lg:min-w-[500px] w-full">
         <SubmitInput label={"Send"} />
       </div>
     </form>

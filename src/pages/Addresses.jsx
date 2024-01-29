@@ -1,16 +1,15 @@
 import React, { useEffect } from "react";
 
-import { useSelector, useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useSelector, useDispatch } from "react-redux";
 
 import { useUserID } from "@/hooks/useUserID";
 
+import { getBillingAddresses } from "@/store/billingAddressesSlice";
 import { setIsBilling, setIsShipping } from "@/store/closeFormsSlice";
+import { getShippingAddresses } from "@/store/shippingAddressesSlice";
 
 import AddressesMain from "@/components/shared/AddressesMain";
-
-import { getBillingAddresses } from "@/store/billingAddressesSlice";
-import { getShippingAddresses } from "@/store/shippingAddressesSlice";
 
 const Addresses = () => {
   const { isShipping, isBilling } = useSelector((state) => state.closeForm);

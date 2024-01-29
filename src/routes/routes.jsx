@@ -7,6 +7,7 @@ import Cart from "@/pages/Cart";
 import About from "@/pages/About";
 import Orders from "@/pages/Orders";
 import Logout from "@/pages/Logout";
+import Search from "@/pages/Search";
 import Catalog from "@/pages/Catalog";
 import Account from "@/pages/Account";
 import PageNotFound from "@/pages/404";
@@ -16,16 +17,13 @@ import Dashboard from "@/pages/Dashboard";
 import ProductPage from "@/pages/ProductPage";
 import OrderDetails from "@/pages/OrderDetails";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
-import ForgotPassword from "@/pages/ForgotPassword";
 import AccountDetails from "@/pages/AccountDetails";
-import Search from "@/pages/Search";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
   { path: "/catalog", element: <Catalog /> },
   { path: "/products/:item", element: <ProductPage /> },
   { path: "/contact-us", element: <ContactUs /> },
-  { path: "/reset-password", element: <ForgotPassword /> },
   { path: "/blog", element: <Blog /> },
   { path: "/blog/:post", element: <Post /> },
   { path: "/privacy", element: <PrivacyPolicy /> },

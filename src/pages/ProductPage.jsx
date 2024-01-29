@@ -1,28 +1,32 @@
 import React, { useEffect, useState } from "react";
 
-import ReactStars from "react-stars";
 import parse from "html-react-parser";
 import { useParams } from "react-router-dom";
+import { Rating } from "@smastrom/react-rating";
+import { useDispatch, useSelector } from "react-redux";
 
 import useProduct from "@/hooks/useProduct";
 import useSimilarProducts from "@/hooks/useSimilarProducts";
 
+import { getReviews } from "@/store/reviewsSlice";
+
+import { STAR_STYLES } from "@/utils/constants";
+import { averageValue } from "@/utils/averaneValue";
+import { calcScreenWidth } from "@/utils/calcScreenWidth";
+
 import Wrapper from "@/components/Wrapper";
 import MailIcon from "@/components/icons/MailIcon";
 import HeartIcon from "@/components/icons/HeartIcon";
+import ReviewCard from "@/components/Cards/ReviewCard";
 import TwitterIcon from "@/components/icons/TwitterIcon";
 import ProductCard from "@/components/Cards/ProductCard";
 import FacebookIcon from "@/components/icons/FacebookIcon";
 import InstagramIcon from "@/components/icons/InstagramIcon";
-import { AdditionalImage } from "@/components/Images/AdditionalImage";
+import SimilarSlider from "@/components/Sliders/SimilarSlider";
+import ProductSlider from "@/components/Sliders/ProductSlider";
 import AddToCartButton from "@/components/Buttons/AddToCartButton";
-import ProductReviewForm from "../components/Forms/ProductReviewForm";
-import { useDispatch, useSelector } from "react-redux";
-import { getReviews } from "../store/reviewsSlice";
-import { averageValue } from "../utils/averaneValue";
-import ReviewCard from "../components/Cards/ReviewCard";
-import { Rating } from "@smastrom/react-rating";
-import { STAR_STYLES } from "../utils/constants";
+import ProductReviewForm from "@/components/Forms/ProductReviewForm";
+import { AdditionalImage } from "@/components/Images/AdditionalImage";
 
 const ProductPage = () => {
   const [isActive, setIsActive] = useState("description");
@@ -36,8 +40,7 @@ const ProductPage = () => {
   const product = data?.product;
 
   const images = product?.additionalImages;
-
-  // get similar images
+  const image = product?.image;
 
   const info = useSimilarProducts({ slug: item });
 
@@ -49,6 +52,10 @@ const ProductPage = () => {
   const { reviews } = useSelector((state) => state.reviews);
 
   const reversedReviews = reviews?.slice().reverse();
+
+  const allPhotos = images && [image, ...images];
+
+  const width = calcScreenWidth();
 
   useEffect(() => {
     product?.title && dispatch(getReviews(product?.title));
@@ -63,23 +70,29 @@ const ProductPage = () => {
 
   return (
     <Wrapper>
-      <main className="mt-32 mb-64">
-        <div className="flex gap-16 mb-32">
+      <main className="mt-32 mb-64 xs:mx-4 xs:mt-4 sm:mx-4 sm:mt-4 md:mx-4 md:mt-4 lg:mx-4 xs:mb-16 sm:mb-16 md:mb-16">
+        <div className="flex gap-16 mb-32 xs:flex-col sm:flex-col md:flex-col xs:mb-10 sm:mb-10">
           <div className="flex gap-10">
-            <div className="flex flex-col justify-between">
-              {images?.map((image, index) => {
-                return <AdditionalImage key={index} data={image} />;
-              })}
-            </div>
-            <div>
-              <img
-                src={product?.image?.responsiveImage?.src}
-                className="h-[600px]"
-              />
-            </div>
+            {width < 767 ? (
+              <ProductSlider products={allPhotos} />
+            ) : (
+              <>
+                <div className="flex flex-col justify-between max-w-[120px] ">
+                  {images?.map((image, index) => {
+                    return <AdditionalImage key={index} data={image} />;
+                  })}
+                </div>
+                <div>
+                  <img
+                    src={product?.image?.responsiveImage?.src}
+                    className="h-[600px]"
+                  />
+                </div>
+              </>
+            )}
           </div>
           <div>
-            <div className="flex flex-col gap-6 mb-16">
+            <div className="flex flex-col gap-6 mb-16 xs:mb-6">
               <p className="heading2D text-black">{product?.title}</p>
               {product?.isDiscount && (
                 <div className="flex items-center gap-4 mt-4">
@@ -117,7 +130,7 @@ const ProductPage = () => {
             <p className="max-w-[484px] heading5D text-dark_gray mb-12">
               {product?.shortDescription}
             </p>
-            <div className="flex items-center justify-between gap-6 mb-20">
+            <div className="mb-20 w-full md:w-[400px]">
               <AddToCartButton buttonType={"button"} product={product} />
             </div>
             <div className="flex items-center mb-9">
@@ -144,7 +157,7 @@ const ProductPage = () => {
           </div>
         </div>
         <div>
-          <div className="flex gap-24 heading3D text-dark_gray mb-16">
+          <div className="flex gap-24 heading3D text-dark_gray mb-16 xs:flex-col xs:items-start sm:flex-col sm:items-start xs:gap-6 sm:gap-6">
             <button
               className={`${isActive === "description" && "text-black"}`}
               onClick={() => {
@@ -186,15 +199,19 @@ const ProductPage = () => {
             )}
 
             {isActive === "reviews" && (
-              <div className="flex justify-between gap-20">
-                <div className="flex-1 max-h-[600px] overflow-y-scroll no-scrollbar overscroll-contain">
-                  <p className="mb-16 heading3D">
+              <div className="flex justify-between gap-20 xs:flex-col sm:flex-col md:flex-col">
+                <div className="max-h-[600px] overflow-y-scroll no-scrollbar overscroll-contain ">
+                  <p className="mb-16 heading3D xs:text-base">
                     {reviewsLength} {reviewsLength > 1 ? "Reviews " : "Review "}
                     for {product?.title}
                   </p>
-                  {reversedReviews?.map((review) => (
-                    <ReviewCard key={review.id} review={review} />
-                  ))}
+                  {reversedReviews.length ? (
+                    reversedReviews?.map((review) => (
+                      <ReviewCard key={review.id} review={review} />
+                    ))
+                  ) : (
+                    <p>Seems like nothing</p>
+                  )}
                 </div>
                 <div>
                   <p className="mb-2 heading3D text-black">Add a Review</p>
@@ -211,9 +228,13 @@ const ProductPage = () => {
         <div>
           <p className="heading2D mb-12">Similar Items</p>
           <div className="flex gap-12">
-            {allSimilarProducts?.map((product, index) => (
-              <ProductCard key={index} product={product} />
-            ))}
+            {width < 767 ? (
+              <SimilarSlider products={allSimilarProducts} />
+            ) : (
+              allSimilarProducts?.map((product, index) => (
+                <ProductCard key={index} product={product} />
+              ))
+            )}
           </div>
         </div>
       </main>

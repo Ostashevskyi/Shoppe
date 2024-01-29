@@ -1,6 +1,6 @@
 import React from "react";
+
 import { NavLink } from "react-router-dom";
-import { NewsletterInput } from "@/components/Inputs/NewsletterInput";
 
 import {
   facebookIcon,
@@ -8,6 +8,8 @@ import {
   linkedinIcon,
   twitterIcon,
 } from "@/utils/icon_imports";
+
+import { NewsletterInput } from "@/components/Inputs/NewsletterInput";
 
 const Footer = () => {
   return (

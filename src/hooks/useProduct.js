@@ -34,7 +34,7 @@ const product = gql`
       }
       additionalInformation(markdown: true)
       additionalImages {
-        responsiveImage(imgixParams: { w: "120", h: "120" }) {
+        responsiveImage(imgixParams: { w: "540", h: "600" }) {
           alt
           base64
           bgColor
