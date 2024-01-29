@@ -5,8 +5,9 @@ import { Pagination } from "swiper/modules";
 import { Image } from "react-datocms/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import { calcScreenWidth } from "@/utils/calcScreenWidth";
+
 import { SliderButton } from "@/components/Buttons/SliderButton";
-import { calcScreenWidth } from "../../utils/calcScreenWidth";
 
 const Slider = ({ data }) => {
   const width = calcScreenWidth();

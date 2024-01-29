@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { setCatalogTitle } from "@/store/filterSlice";
 import { useSearchParams } from "react-router-dom";
-import { setBlogTitle } from "../../store/filterSlice";
+
+import { setBlogTitle } from "@/store/filterSlice";
+import { setCatalogTitle } from "@/store/filterSlice";
 
 export const SearchInput = ({ type }) => {
   const dispatch = useDispatch();

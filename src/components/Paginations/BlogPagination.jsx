@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { onBlogPageSkip, setActiveBlogPage } from "@/store/paginationSlice";
 
-import { POSTS_ON_PAGE } from "../../utils/constants";
+import { POSTS_ON_PAGE } from "@/utils/constants";
 
 import { PaginationButton } from "@/components/Buttons/PaginationButton";
 
@@ -43,7 +43,7 @@ const BlogPagination = ({ count }) => {
       {items.map((num) => {
         return (
           <button
-            className={`w-[40px] h-[40px]  rounded-md border  ${
+            className={`w-[40px] h-[40px]  rounded-md border focus:scale-95  ${
               activeBlogPage === num + 1
                 ? "bg-black text-white"
                 : "bg-white text-black border-light_gray"

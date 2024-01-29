@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 
 import { useDispatch } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 
 import { setCatalogCategory } from "@/store/filterSlice";
-import { useSearchParams } from "react-router-dom";
 
 export const CatalogSelect = () => {
   const dispatch = useDispatch();

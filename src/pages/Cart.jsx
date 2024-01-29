@@ -1,13 +1,17 @@
 import React, { useEffect, useMemo } from "react";
-import Wrapper from "@/components/Wrapper";
-import { useDispatch, useSelector } from "react-redux";
-import { getShoppingCart } from "../store/shoppingCartSlice";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useUserID } from "@/hooks/useUserID";
-import CartCard from "../components/Cards/CartCard";
-import { ButtonXL } from "@/components/Buttons/ButtonXL";
+
 import { NavLink } from "react-router-dom";
-import { putOrders } from "../store/orderSlice";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { useUserID } from "@/hooks/useUserID";
+
+import { putOrders } from "@/store/orderSlice";
+import { getShoppingCart } from "../store/shoppingCartSlice";
+
+import Wrapper from "@/components/Wrapper";
+import CartCard from "@/components/Cards/CartCard";
+import { ButtonXL } from "@/components/Buttons/ButtonXL";
 
 const Cart = () => {
   const { user } = useAuth0();
@@ -114,7 +118,7 @@ const Cart = () => {
               Looks like you haven't made your choise yet...
             </p>
             <div className="xs:w-full sm:w-full w-[395px]">
-              <NavLink to={"/catalog"}>
+              <NavLink to={"/catalog"} className="focus:scale-95">
                 <ButtonXL>Back to Catalog</ButtonXL>
               </NavLink>
             </div>

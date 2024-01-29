@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
 
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
+
+import { supabase } from "@/database";
+
+import { useUserID } from "@/hooks/useUserID";
+
+import { setIsBilling } from "@/store/closeFormsSlice";
+import { getBillingAddresses } from "@/store/billingAddressesSlice";
 
 import { EMAIL_PATTERN } from "@/utils/constants";
+import { calcScreenWidth } from "@/utils/calcScreenWidth";
 
 import { Input } from "@/components/Inputs/Input";
 import { SubmitInput } from "@/components/Inputs/SubmitInput";
 import { ErrorMessage } from "@/components/shared/ErrorMessage";
 import { CountrySelect } from "@/components/Selects/CountrySelect";
-
-import { supabase } from "@/database";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useUserID } from "@/hooks/useUserID";
-import { useDispatch } from "react-redux";
-import { getBillingAddresses } from "../../store/billingAddressesSlice";
-import { setIsBilling } from "../../store/closeFormsSlice";
-import { calcScreenWidth } from "@/utils/calcScreenWidth";
 
 export const BillingForm = () => {
   const {

@@ -7,10 +7,10 @@ import { supabase } from "@/database";
 
 import { useUserID } from "@/hooks/useUserID";
 
-import DeleteIcon from "@/components/icons/Delete";
-
 import { deleteBillingAddress } from "@/store/billingAddressesSlice";
 import { deleteShippingAddress } from "@/store/shippingAddressesSlice";
+
+import DeleteIcon from "@/components/icons/Delete";
 
 const FormCard = ({ address, formType }) => {
   const { preset_name, isDefault, id } = address;

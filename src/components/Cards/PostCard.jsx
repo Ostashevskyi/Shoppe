@@ -1,6 +1,8 @@
 import React from "react";
-import { Image } from "react-datocms/image";
+
 import { NavLink } from "react-router-dom";
+import { Image } from "react-datocms/image";
+
 import { formatDate } from "@/utils/formatDate";
 
 const PostCard = ({ post }) => {

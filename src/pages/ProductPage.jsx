@@ -5,7 +5,8 @@ import { useParams } from "react-router-dom";
 import { Rating } from "@smastrom/react-rating";
 import { useDispatch, useSelector } from "react-redux";
 
-import ReviewCard from "../components/Cards/ReviewCard";
+import ReviewCard from "@/components/Cards/ReviewCard";
+import SimilarSlider from "@/components/Sliders/SimilarSlider";
 
 import useProduct from "@/hooks/useProduct";
 import useSimilarProducts from "@/hooks/useSimilarProducts";
@@ -27,7 +28,6 @@ import ProductSlider from "@/components/shared/ProductSlider";
 import AddToCartButton from "@/components/Buttons/AddToCartButton";
 import ProductReviewForm from "@/components/Forms/ProductReviewForm";
 import { AdditionalImage } from "@/components/Images/AdditionalImage";
-import SimilarSlider from "../components/Sliders/SimilarSlider";
 
 const ProductPage = () => {
   const [isActive, setIsActive] = useState("description");

@@ -1,10 +1,10 @@
 import React from "react";
-import { Image } from "react-datocms/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Scrollbar } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/scrollbar";
+import { Scrollbar } from "swiper/modules";
+import { Image } from "react-datocms/image";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const ProductSlider = ({ products }) => {
   return (

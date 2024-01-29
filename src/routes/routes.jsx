@@ -7,6 +7,7 @@ import Cart from "@/pages/Cart";
 import About from "@/pages/About";
 import Orders from "@/pages/Orders";
 import Logout from "@/pages/Logout";
+import Search from "@/pages/Search";
 import Catalog from "@/pages/Catalog";
 import Account from "@/pages/Account";
 import PageNotFound from "@/pages/404";
@@ -17,7 +18,6 @@ import ProductPage from "@/pages/ProductPage";
 import OrderDetails from "@/pages/OrderDetails";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import AccountDetails from "@/pages/AccountDetails";
-import Search from "@/pages/Search";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },

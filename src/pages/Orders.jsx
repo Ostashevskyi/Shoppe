@@ -1,12 +1,17 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
 import { NavLink } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch, useSelector } from "react-redux";
+
 import { useUserID } from "@/hooks/useUserID";
+
 import { getOrders } from "@/store/orderSlice";
-import OrdersPagination from "@/components/Paginations/OrdersPagination";
+
 import { formatDate } from "@/utils/formatDate";
 import { calcScreenWidth } from "@/utils/calcScreenWidth";
+
+import OrdersPagination from "@/components/Paginations/OrdersPagination";
 
 const Orders = () => {
   const { user } = useAuth0();

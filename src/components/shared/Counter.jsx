@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { supabase } from "@/database";
+
 import { useDispatch } from "react-redux";
+
+import { supabase } from "@/database";
+
 import { getShoppingCartSubTotal } from "@/store/shoppingCartSlice";
+
 import { calcScreenWidth } from "@/utils/calcScreenWidth";
 
 const Counter = ({ product, userID, id }) => {

@@ -1,11 +1,17 @@
 import React from "react";
-import useCartProduct from "../../hooks/useCartProduct";
-import Counter from "@/components/shared/Counter";
-import DeleteIcon from "../icons/Delete";
+
 import { useDispatch } from "react-redux";
-import { deleteShoppingCart } from "@/store/shoppingCartSlice";
 import { NavLink } from "react-router-dom";
+
+import useCartProduct from "@/hooks/useCartProduct";
+
+import DeleteIcon from "../icons/Delete";
+
+import { deleteShoppingCart } from "@/store/shoppingCartSlice";
+
 import { calcScreenWidth } from "@/utils/calcScreenWidth";
+
+import Counter from "@/components/shared/Counter";
 
 const CartCard = ({ productInfo, userID, id }) => {
   const { name } = productInfo;

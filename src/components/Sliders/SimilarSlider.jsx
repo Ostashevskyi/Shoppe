@@ -1,5 +1,7 @@
 import React from "react";
+
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import ProductCard from "@/components/Cards/ProductCard";
 
 const SimilarSlider = ({ products }) => {
