@@ -16,7 +16,6 @@ import Dashboard from "@/pages/Dashboard";
 import ProductPage from "@/pages/ProductPage";
 import OrderDetails from "@/pages/OrderDetails";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
-import ForgotPassword from "@/pages/ForgotPassword";
 import AccountDetails from "@/pages/AccountDetails";
 import Search from "@/pages/Search";
 
@@ -25,7 +24,6 @@ const router = createBrowserRouter([
   { path: "/catalog", element: <Catalog /> },
   { path: "/products/:item", element: <ProductPage /> },
   { path: "/contact-us", element: <ContactUs /> },
-  { path: "/reset-password", element: <ForgotPassword /> },
   { path: "/blog", element: <Blog /> },
   { path: "/blog/:post", element: <Post /> },
   { path: "/privacy", element: <PrivacyPolicy /> },

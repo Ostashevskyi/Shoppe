@@ -4,7 +4,7 @@ export const InputSelect = ({ label, register, required }) => {
   return (
     <select
       {...register(label, { required })}
-      className="border-b-2 border-gray pb-2 min-w-[400px] text-dark_gray placeholder:text-dark_gray focus:outline-none"
+      className="border-b-2 border-gray pb-2 w-full text-dark_gray placeholder:text-dark_gray focus:outline-none"
       defaultValue="Subject"
     >
       <option value="Subject" hidden>

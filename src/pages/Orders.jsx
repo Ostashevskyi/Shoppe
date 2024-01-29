@@ -16,6 +16,8 @@ const Orders = () => {
 
   const { orders } = useSelector((state) => state.orders);
 
+  const reversedOrders = orders?.slice().reverse();
+
   const { totalOrderMinEl, totalOrderMaxEl } = useSelector(
     (state) => state.pagination
   );
@@ -28,15 +30,13 @@ const Orders = () => {
 
   useEffect(() => {
     setFilteredOrders(
-      orders?.filter(
+      reversedOrders?.filter(
         (order, index) => index >= totalOrderMinEl && index <= totalOrderMaxEl
       )
     );
   }, [totalOrderMaxEl, totalOrderMinEl, orders]);
 
   const width = calcScreenWidth();
-
-  console.log(width);
 
   const OrderMobile = () => {
     return (
