@@ -30,7 +30,7 @@ const Account = () => {
 
   const noPermission = useMemo(() => {
     return (
-      <div>
+      <div className="mx-4">
         <h1>You have no permission</h1>
         <button onClick={() => loginWithPopup()}>Log in</button>
       </div>

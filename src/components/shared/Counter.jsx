@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { supabase } from "@/database";
 import { useDispatch } from "react-redux";
 import { getShoppingCartSubTotal } from "@/store/shoppingCartSlice";
+import { calcScreenWidth } from "@/utils/calcScreenWidth";
 
 const Counter = ({ product, userID, id }) => {
   const [quantity, setQuantity] = useState();
@@ -63,7 +64,34 @@ const Counter = ({ product, userID, id }) => {
     dispatch(getShoppingCartSubTotal({ userID }));
   }, []);
 
-  return (
+  const width = calcScreenWidth();
+
+  const MobileCounter = () => {
+    return (
+      <div className="flex gap-2 text-xs text-dark_gray">
+        <p>QTY:</p>
+        <button
+          onClick={() => {
+            decreaseQunatity(1);
+          }}
+          disabled={quantity === 1}
+          className="cursor-pointer"
+        >
+          -
+        </button>
+        <p>{quantity}</p>
+        <button
+          onClick={() => {
+            increaseQunatity(1);
+          }}
+        >
+          +
+        </button>
+      </div>
+    );
+  };
+
+  return width > 976 ? (
     <div className="flex gap-6 text-dark_gray bg-light_gray w-[102px] h-[53px] items-center justify-center rounded-md">
       <button
         onClick={() => {
@@ -83,6 +111,8 @@ const Counter = ({ product, userID, id }) => {
         +
       </button>
     </div>
+  ) : (
+    <MobileCounter />
   );
 };
 

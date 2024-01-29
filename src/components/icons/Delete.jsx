@@ -1,12 +1,12 @@
 import React from "react";
 
-const DeleteIcon = ({ fillColor }) => {
+const DeleteIcon = ({ fillColor, w, h }) => {
   return (
     <div className="cursor-pointer">
       <svg
         fill="#000000"
-        height="12px"
-        width="12px"
+        height={h}
+        width={w}
         version="1.1"
         id="Capa_1"
         xmlns="http://www.w3.org/2000/svg"
