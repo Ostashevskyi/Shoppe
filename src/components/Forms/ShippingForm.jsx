@@ -28,8 +28,6 @@ export const ShippingForm = () => {
   const userID = useUserID(user);
   const dispatch = useDispatch();
 
-  const width = calcScreenWidth();
-
   const onSubmit = async (data) => {
     try {
       const response = await supabase.from("shipping_addresses").insert({
@@ -61,6 +59,8 @@ export const ShippingForm = () => {
       console.log(error.message);
     }
   };
+
+  const width = calcScreenWidth();
 
   const [isSmall, setIsSmall] = useState();
 

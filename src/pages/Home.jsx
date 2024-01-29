@@ -45,8 +45,8 @@ const Home = () => {
           <AccentLink to="/catalog">View All</AccentLink>
         </div>
         <div
-          className="flex justify-between flex-wrap 
-          xs:mx-4 sm:mx-4 md:mx-4 lg:mx-4"
+          className="flex justify-between xs:justify-center xs:gap-6 flex-wrap 
+           sm:mx-4 md:mx-4 lg:mx-4"
         >
           {allProducts?.map((el, index) => {
             return <ProductCard key={index} product={el} />;
