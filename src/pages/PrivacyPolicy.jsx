@@ -4,8 +4,10 @@ import Wrapper from "@/components/Wrapper";
 const PrivacyPolicy = () => {
   return (
     <Wrapper>
-      <main className="max-w-[670px] m-auto mt-24 mb-60">
-        <p className="heading1D text-center mb-10">Privacy Policy</p>
+      <main className="max-w-[670px] m-auto mt-24 mb-60 xs:mx-4 sm:mx-4 md:mx-4 xs:mt-9 sm:mt-9 md:mt-9 xs:mb-24 sm:mb-24 md:mb-24">
+        <p className="heading1D lg:text-center xl:text-center xxl:text-center mb-10 xs:text-lg sm:text-lg md:text-lg  ">
+          Privacy Policy
+        </p>
         <p className="heading 5D mb-10">
           Duis rutrum dictum libero quis rutrum. Etiam sed neque aliquam,
           sollicitudin ante a, gravida arcu. Nam fringilla molestie velit, eget
