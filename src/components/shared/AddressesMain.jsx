@@ -2,7 +2,7 @@ import React from "react";
 
 import { useDispatch } from "react-redux";
 
-import { ShippingForm } from "@/Forms/ShippingForm";
+import { ShippingForm } from "@/components/Forms/ShippingForm";
 
 import FormCard from "@/components/Cards/BillingCard";
 import { BillingForm } from "@/components/Forms/BillingForm";

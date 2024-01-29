@@ -5,9 +5,6 @@ import { useParams } from "react-router-dom";
 import { Rating } from "@smastrom/react-rating";
 import { useDispatch, useSelector } from "react-redux";
 
-import ReviewCard from "@/components/Cards/ReviewCard";
-import SimilarSlider from "@/components/Sliders/SimilarSlider";
-
 import useProduct from "@/hooks/useProduct";
 import useSimilarProducts from "@/hooks/useSimilarProducts";
 
@@ -20,11 +17,13 @@ import { calcScreenWidth } from "@/utils/calcScreenWidth";
 import Wrapper from "@/components/Wrapper";
 import MailIcon from "@/components/icons/MailIcon";
 import HeartIcon from "@/components/icons/HeartIcon";
+import ReviewCard from "@/components/Cards/ReviewCard";
 import TwitterIcon from "@/components/icons/TwitterIcon";
 import ProductCard from "@/components/Cards/ProductCard";
 import FacebookIcon from "@/components/icons/FacebookIcon";
 import InstagramIcon from "@/components/icons/InstagramIcon";
-import ProductSlider from "@/components/shared/ProductSlider";
+import SimilarSlider from "@/components/Sliders/SimilarSlider";
+import ProductSlider from "@/components/Sliders/ProductSlider";
 import AddToCartButton from "@/components/Buttons/AddToCartButton";
 import ProductReviewForm from "@/components/Forms/ProductReviewForm";
 import { AdditionalImage } from "@/components/Images/AdditionalImage";

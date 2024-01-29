@@ -11,7 +11,7 @@ import { getProducts } from "@/store/productsSlice";
 import { getShoppingCart } from "@/store/shoppingCartSlice";
 
 import Wrapper from "@/components/Wrapper";
-import Slider from "@/components/shared/Slider";
+import Slider from "@/components/Sliders/Slider";
 import ProductCard from "@/components/Cards/ProductCard";
 import { AccentLink } from "@/components/Links/AccentLink";
 
