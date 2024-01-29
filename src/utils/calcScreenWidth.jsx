@@ -11,5 +11,7 @@ export const calcScreenWidth = () => {
     window.addEventListener("resize", handleResize, false);
   }, []);
 
+  console.log(width);
+
   return width;
 };

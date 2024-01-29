@@ -81,6 +81,10 @@
   bottom: -20px !important;
 }
 
+.product-slider {
+  padding-bottom: 20px !important;
+}
+
 @media (min-width: 320px) and (max-width: 424px) {
   .swiper-pagination-bullet-active {
     width: 10px !important;
