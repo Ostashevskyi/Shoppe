@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 import parse from "html-react-parser";
-import { useParams } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import { Rating } from "@smastrom/react-rating";
+import { NavLink, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import useProduct from "@/hooks/useProduct";
@@ -15,11 +16,11 @@ import { averageValue } from "@/utils/averaneValue";
 import { calcScreenWidth } from "@/utils/calcScreenWidth";
 
 import Wrapper from "@/components/Wrapper";
-import MailIcon from "@/components/icons/MailIcon";
-import HeartIcon from "@/components/icons/HeartIcon";
 import ReviewCard from "@/components/Cards/ReviewCard";
+import NotAllowed from "@/components/shared/NotAllowed";
 import TwitterIcon from "@/components/icons/TwitterIcon";
 import ProductCard from "@/components/Cards/ProductCard";
+import LinkedinIcon from "@/components/icons/LinkedinIcon";
 import FacebookIcon from "@/components/icons/FacebookIcon";
 import InstagramIcon from "@/components/icons/InstagramIcon";
 import SimilarSlider from "@/components/Sliders/SimilarSlider";
@@ -56,6 +57,8 @@ const ProductPage = () => {
   const allPhotos = images && [image, ...images];
 
   const width = calcScreenWidth();
+
+  const { isAuthenticated } = useAuth0();
 
   useEffect(() => {
     product?.title && dispatch(getReviews(product?.title));
@@ -131,17 +134,26 @@ const ProductPage = () => {
               {product?.shortDescription}
             </p>
             <div className="mb-20 w-full md:w-[400px]">
-              <AddToCartButton buttonType={"button"} product={product} />
+              {isAuthenticated ? (
+                <AddToCartButton buttonType={"button"} product={product} />
+              ) : (
+                <NotAllowed message={"add to the cart"} />
+              )}
             </div>
             <div className="flex items-center mb-9">
-              <div className="pr-10 border-r-2 border-light_gray">
-                <HeartIcon fillColor="gray" />
-              </div>
-              <div className="flex gap-6 items-center ml-10">
-                <MailIcon fillColor="gray" />
-                <FacebookIcon fillColor="gray" />
-                <InstagramIcon fillColor="gray" />
-                <TwitterIcon fillColor="gray" />
+              <div className="flex gap-6 items-center">
+                <NavLink to="https://www.linkedin.com/">
+                  <LinkedinIcon fillColor="gray" />
+                </NavLink>
+                <NavLink to="https://www.facebook.com/">
+                  <FacebookIcon fillColor="gray" />
+                </NavLink>
+                <NavLink to="https://www.instagram.com/">
+                  <InstagramIcon fillColor="gray" />
+                </NavLink>
+                <NavLink to="https://twitter.com/">
+                  <TwitterIcon fillColor="gray" />
+                </NavLink>
               </div>
             </div>
             <div className="heading5D">
@@ -210,17 +222,24 @@ const ProductPage = () => {
                       <ReviewCard key={review.id} review={review} />
                     ))
                   ) : (
-                    <p>Seems like nothing</p>
+                    <p>
+                      There seem to be no reviews yet. Be the first to review
+                      this product
+                    </p>
                   )}
                 </div>
-                <div>
-                  <p className="mb-2 heading3D text-black">Add a Review</p>
-                  <p className="mb-11 heading5D text-dark_gray">
-                    Your email address will not be published. Required fields
-                    are marked *
-                  </p>
-                  <ProductReviewForm productName={product?.title} />
-                </div>
+                {isAuthenticated ? (
+                  <div>
+                    <p className="mb-2 heading3D text-black">Add a Review</p>
+                    <p className="mb-11 heading5D text-dark_gray">
+                      Your email address will not be published. Required fields
+                      are marked *
+                    </p>
+                    <ProductReviewForm productName={product?.title} />
+                  </div>
+                ) : (
+                  <NotAllowed message={"review"} />
+                )}
               </div>
             )}
           </div>

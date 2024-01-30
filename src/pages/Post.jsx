@@ -1,7 +1,7 @@
 import React from "react";
 
 import parse from "html-react-parser";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 
 import usePost from "@/hooks/usePost";
 
@@ -52,9 +52,15 @@ const Post = () => {
             <p>Share</p>
             <div className="w-16 border-black border mt-1"></div>
             <div className="flex items-center gap-6">
-              <FacebookIcon fillColor={"#979797"} />
-              <InstagramIcon fillColor={"#979797"} />
-              <TwitterIcon fillColor={"#979797"} />
+              <NavLink to="https://www.facebook.com/">
+                <FacebookIcon fillColor="#979797" />
+              </NavLink>
+              <NavLink to="https://www.instagram.com/">
+                <InstagramIcon fillColor="#979797" />
+              </NavLink>
+              <NavLink to="https://twitter.com/">
+                <TwitterIcon fillColor="#979797" />
+              </NavLink>
             </div>
           </div>
         </div>
