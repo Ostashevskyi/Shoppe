@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useUserID } from "@/hooks/useUserID";
 
 import { putOrders } from "@/store/orderSlice";
-import { getShoppingCart } from "../store/shoppingCartSlice";
+import { getShoppingCart } from "@/store/shoppingCartSlice";
 
 import Wrapper from "@/components/Wrapper";
 import CartCard from "@/components/Cards/CartCard";
@@ -22,6 +22,8 @@ const Cart = () => {
 
   const { shoppingCart, subTotalPrice, shippingPrice, totalPrice } =
     useSelector((state) => state.shoppingCart);
+
+  const { error } = useSelector((state) => state.orders);
 
   const handlePutOrders = (
     userID,
@@ -80,9 +82,12 @@ const Cart = () => {
         >
           PROCEED TO CHECKOUT
         </ButtonXL>
+        {error && (
+          <p className="max-w-[284px] text-center mt-2 text-errors">{error}</p>
+        )}
       </section>
     );
-  }, [subTotalPrice]);
+  }, [subTotalPrice, error]);
 
   return (
     <Wrapper>

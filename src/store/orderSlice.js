@@ -51,6 +51,12 @@ export const putOrders = createAsyncThunk(
         (el) => el.isDefault
       );
 
+      if (!defaultBillingAddress.length || !defaultShippingAddress.length) {
+        throw Error(
+          "Can't create an order. First, you need to set the default shipping and billing addresses in your account"
+        );
+      }
+
       const { error, status } = await supabase.from("orders").insert({
         order_number: orderNumber,
         email: email,
@@ -128,6 +134,14 @@ const productsSlice = createSlice({
     builder.addCase(getOrderByNumber.fulfilled, (state, action) => {
       state.orderByNumber = action.payload;
       state.status = "fulfilled";
+    });
+
+    builder.addCase(putOrders.fulfilled, (state, action) => {
+      state.error = "";
+    });
+
+    builder.addCase(putOrders.rejected, (state, action) => {
+      state.error = action.payload;
     });
   },
 });

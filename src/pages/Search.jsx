@@ -53,8 +53,8 @@ const Search = () => {
 
   return (
     <Wrapper>
-      <main className="my-20">
-        <div className="mb-6">
+      <main className="my-20 xs:mx-4 sm:mx-4 md:mx-4 xs:my-6 sm:my-6 md:my-6">
+        <div className="mb-6 ">
           <input
             className="w-full border-b border-light_gray rounded-md py-5 px-2 focus:outline-none"
             type="text"
@@ -65,7 +65,7 @@ const Search = () => {
         </div>
 
         {searchParams.get("search") && (
-          <div className="flex gap-10 flex-col">
+          <div className="flex gap-10 flex-col ">
             {postRecords.length ? (
               <div>
                 <p className="heading2D mb-10">Posts ({postRecords.length}):</p>
@@ -84,7 +84,7 @@ const Search = () => {
                 <p className="heading2D">
                   Products ({productRecords.length}):{" "}
                 </p>
-                <div className="flex gap-10 flex-wrap">
+                <div className="flex gap-10 md:gap-9 xs:gap-1.5 sm:gap-8 flex-wrap ">
                   {productRecords.map((el) => (
                     <ProductCard product={el} />
                   ))}

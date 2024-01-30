@@ -25,7 +25,7 @@ const Post = () => {
 
   return (
     <Wrapper>
-      <main className="mt-24 max-w-[670px] m-auto">
+      <main className="mt-24 max-w-[670px] m-auto xs:mx-4 sm:mx-4">
         <div className="text-center">
           <p className="heading1D mb-4">{postData?.title}</p>
           <p className="heading5D text-dark_gray mb-10">
@@ -42,7 +42,7 @@ const Post = () => {
         >
           {parse(postData?.blogValue ? postData?.blogValue : "")}
         </div>
-        <div className="flex items-center heading5D justify-between mb-11">
+        <div className="flex items-center heading5D justify-between mb-11 xs:flex-col xs:items-start xs:gap-4 sm:flex-col sm:items-start sm:gap-4">
           <div className="flex items-center gap-2">
             <p>Tags</p>
             <div className="w-16 border-black border mt-1"></div>

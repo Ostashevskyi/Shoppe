@@ -73,7 +73,10 @@ export const ShippingForm = () => {
   console.log(isSmall);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-9">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col gap-9 lg:max-w-[450px]"
+    >
       <div>
         <Input label={"Preset name"} register={register} required />
         {errors["Presrt name"] && <ErrorMessage required />}

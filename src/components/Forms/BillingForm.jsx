@@ -74,7 +74,7 @@ export const BillingForm = () => {
         <Input label={"Preset name"} register={register} required />
         {errors["Presrt name"] && <ErrorMessage required />}
       </div>
-      <div className="flex justify-between gap-10 xs:flex-col sm:flex-col md:flex-col">
+      <div className="flex justify-between gap-10 xs:flex-col sm:flex-col md:flex-col lg:max-w-[450px]">
         <div>
           <Input
             label={"First name"}
