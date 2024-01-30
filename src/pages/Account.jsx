@@ -7,6 +7,7 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { calcScreenWidth } from "@/utils/calcScreenWidth";
 
 import Wrapper from "@/components/Wrapper";
+import NotAllowed from "@/components/shared/NotAllowed";
 
 const Account = () => {
   const [activeElement, setActiveElement] = useState("Dashboard");
@@ -105,7 +106,7 @@ const Account = () => {
             </div>
           </div>
         )}
-        {!isAuthenticated && !isLoading && noPermission}
+        {!isAuthenticated && !isLoading && <NotAllowed />}
       </main>
     </Wrapper>
   );

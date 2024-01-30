@@ -20,7 +20,6 @@ const Footer = () => {
           <div className="flex items-center gap-10  heading5D space-y-0 uppercase text-dark_gray">
             <NavLink to="/contact-us">Contact</NavLink>
             <NavLink to="/terms-of-services">Terms of services</NavLink>
-            <NavLink to="/shipping-and-returns">Shipping and returns</NavLink>
           </div>
           <div>
             <NewsletterInput />
@@ -37,16 +36,16 @@ const Footer = () => {
             </p>
           </div>
           <div className="flex gap-7">
-            <NavLink to="#">
+            <NavLink to="https://www.linkedin.com/">
               <img src={linkedinIcon} />
             </NavLink>
-            <NavLink to="#">
+            <NavLink to="https://www.facebook.com/">
               <img src={facebookIcon} />
             </NavLink>
-            <NavLink to="#">
+            <NavLink to="https://www.instagram.com/">
               <img src={instagramIcon} />
             </NavLink>
-            <NavLink to="#">
+            <NavLink to="https://twitter.com/">
               <img src={twitterIcon} />
             </NavLink>
           </div>
@@ -61,7 +60,6 @@ const Footer = () => {
         <div className="flex flex-col gap-2 body_smallD space-y-0 uppercase text-dark_gray mb-8">
           <NavLink to="/contact-us">Contact</NavLink>
           <NavLink to="/terms-of-services">Terms of services</NavLink>
-          <NavLink to="/shipping-and-returns">Shipping and returns</NavLink>
         </div>
         <div className="flex items-center gap-2 mb-8">
           <p>Follow us</p>
@@ -69,16 +67,16 @@ const Footer = () => {
             <p className="h-[1px] bg-black w-full"></p>
           </div>
           <div className="flex gap-7">
-            <NavLink to="#">
+            <NavLink to="https://www.linkedin.com/">
               <img src={linkedinIcon} />
             </NavLink>
-            <NavLink to="#">
+            <NavLink to="https://www.facebook.com/">
               <img src={facebookIcon} />
             </NavLink>
-            <NavLink to="#">
+            <NavLink to="https://www.instagram.com/">
               <img src={instagramIcon} />
             </NavLink>
-            <NavLink to="#">
+            <NavLink to="https://twitter.com/">
               <img src={twitterIcon} />
             </NavLink>
           </div>

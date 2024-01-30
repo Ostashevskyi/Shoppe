@@ -71,7 +71,7 @@ const Catalog = () => {
 
   const MobileFilter = () => {
     return (
-      <div>
+      <div className="xs:mx-4">
         <button
           className="flex gap-2 items-center"
           onClick={() => setFilterIsOpen(!filterIsOpen)}
@@ -85,7 +85,7 @@ const Catalog = () => {
 
   return (
     <Wrapper>
-      <div className="mt-24 xs:mt-4 sm:mt-4 md:mt-4 flex gap-9 mb-60 xs:flex-col sm:flex-col md:flex-col xs:mx-4 xs:mb xs:mb-20 sm:mb-20 sm:mx-4 md:mx-4 lg:mx-4">
+      <div className="mt-24 xs:mt-4 sm:mt-4 md:mt-4 flex gap-9 mb-60 xs:flex-col sm:flex-col md:flex-col xs:mb xs:mb-20 sm:mb-20 sm:mx-4 md:mx-4 lg:mx-4">
         <aside>
           {width > 768 ? (
             <>
@@ -98,10 +98,10 @@ const Catalog = () => {
             </>
           ) : (
             <>
-              <p className="heading3D mb-4 font-medium">Shop</p>
+              <p className="heading3D mb-4 font-medium xs:mx-4">Shop</p>
               <MobileFilter />
               {filterIsOpen && (
-                <div className="flex flex-col mt-10">
+                <div className="flex flex-col mt-10 xs:mx-4">
                   <SearchInput type="catalog" />
                   <CatalogSelect />
                   <RangeSlider />
@@ -113,7 +113,7 @@ const Catalog = () => {
           )}
         </aside>
 
-        <main className="flex flex-wrap justify-between ">
+        <main className="flex flex-wrap justify-between xs:gap-5 xs:justify-center ">
           {allProducts?.map((el, index) => {
             return <ProductCard product={el} key={index} small />;
           })}

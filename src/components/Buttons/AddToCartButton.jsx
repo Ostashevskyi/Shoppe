@@ -8,7 +8,7 @@ import { useUserID } from "@/hooks/useUserID";
 import { addShoppingCart, getShoppingCart } from "@/store/shoppingCartSlice";
 
 const AddToCartButton = ({ product }) => {
-  const { user } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
   const userID = useUserID(user);
 
   const [isInCart, setIsInCart] = useState(false);
