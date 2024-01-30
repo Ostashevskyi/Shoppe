@@ -59,7 +59,12 @@ const Blog = () => {
   }, [blogCategory, blogTitle, refetch, totalBlogSkip]);
 
   const handleClick = (e) => {
-    searchParams.set("category", e.target.innerHTML);
+    if (searchParams.has("category")) {
+      searchParams.delete("category");
+    } else {
+      searchParams.set("category", e.target.innerHTML);
+    }
+
     setSearchParams(searchParams);
 
     dispatch(setBlogCategory(e.target.innerHTML));

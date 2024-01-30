@@ -27,16 +27,7 @@ const Account = () => {
     { id: 4, title: "Logout", meta: "logout", url: "logout" },
   ];
 
-  const { isAuthenticated, isLoading, loginWithPopup } = useAuth0();
-
-  const noPermission = useMemo(() => {
-    return (
-      <div className="mx-4">
-        <h1>You have no permission</h1>
-        <button onClick={() => loginWithPopup()}>Log in</button>
-      </div>
-    );
-  }, []);
+  const { isAuthenticated, isLoading } = useAuth0();
 
   const width = calcScreenWidth();
 
@@ -71,7 +62,7 @@ const Account = () => {
   return (
     <Wrapper>
       <main className="mt-24 mb-52 xs:mb-20 sm:mb-20 md:mb-20">
-        {isLoading && <p>Loading...</p>}
+        {isLoading && <p className="mx-4">Loading...</p>}
         {isAuthenticated && !isLoading && (
           <div>
             {activeElement === "account" && (
@@ -106,7 +97,11 @@ const Account = () => {
             </div>
           </div>
         )}
-        {!isAuthenticated && !isLoading && <NotAllowed />}
+        {!isAuthenticated && !isLoading && (
+          <div className="mx-4">
+            <NotAllowed />
+          </div>
+        )}
       </main>
     </Wrapper>
   );
