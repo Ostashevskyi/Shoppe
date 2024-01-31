@@ -7,8 +7,9 @@ import SearchBurgerForm from "./Forms/SearchBurgerForm";
 
 import useLogo from "@/hooks/useLogo";
 
-import { searchIcon, userIcon, cartIcon } from "@/utils/icon_imports";
+import { searchIcon, userIcon } from "@/utils/icon_imports";
 
+import CartIcon from "@/components/icons/CartIcon";
 import UserIcon from "@/components/icons/UserIcon";
 import LoginIcon from "@/components/icons/LoginIcon";
 import LogoutIcon from "@/components/icons/LogoutIcon";
@@ -29,16 +30,16 @@ const Header = () => {
 
   return (
     <header>
-      <div className="mt-12 pb-4 xl:border-b-2 xl:border-light_gray lg:border-b-2 lg:border-light_gray xxl:border-b-2 xxl:border-light_gray flex justify-between items-center px-4 ">
+      <div className="pt-12 pb-4 lg:mx-4 xl:border-b-2 xl:border-light_gray lg:border-b-2 lg:border-light_gray xxl:border-b-2 xxl:border-light_gray flex justify-between items-center px-4 ">
         <NavLink to="/">
           <img src={data?.url} alt="logo" />
         </NavLink>
 
-        <nav className="flex">
+        <nav className="flex text-text">
           {/* HEADER MOBILE */}
-          <section className="flex lg:hidden xl:hidden xxl:hidden">
+          <section className="flex lg:hidden xl:hidden xxl:hidden bg-backgroud">
             <HeaderLink to="/cart">
-              <img src={cartIcon} alt="cart" />
+              <CartIcon />
             </HeaderLink>
             <div
               className="HAMBURGER-ICON space-y-2 ml-4"
@@ -47,12 +48,16 @@ const Header = () => {
                 document.querySelector("body").classList.add("fixed");
               }}
             >
-              <span className="block rounded-md h-0.5 w-8 animate-pulse bg-gray-600 border"></span>
-              <span className="block rounded-md h-0.5 w-8 animate-pulse bg-gray-600 border"></span>
-              <span className="block rounded-md h-0.5 w-6 text-right animate-pulse bg-gray-600 border"></span>
+              <span className="block rounded-md h-0.5 w-8 bg-gray-600 border"></span>
+              <span className="block rounded-md h-0.5 w-8 bg-gray-600 border"></span>
+              <span className="block rounded-md h-0.5 w-6 text-right bg-gray-600 border"></span>
             </div>
 
-            <div className={isNavOpen ? "showMenuNav px-4" : "hideMenuNav"}>
+            <div
+              className={
+                isNavOpen ? "showMenuNav px-4 bg-black" : "hideMenuNav"
+              }
+            >
               <div className="flex mt-4 justify-between">
                 <NavLink
                   to="/"
@@ -71,7 +76,7 @@ const Header = () => {
                   }}
                 >
                   <HeaderLink to="/cart">
-                    <img src={cartIcon} alt="cart" />
+                    <CartIcon />
                   </HeaderLink>
                   <svg
                     className="h-8 w-8 text-gray-600"
@@ -167,7 +172,7 @@ const Header = () => {
                 </li>
                 <li>
                   <HeaderLink to="/cart">
-                    <img src={cartIcon} alt="cart" />
+                    <CartIcon />
                   </HeaderLink>
                 </li>
                 <li>

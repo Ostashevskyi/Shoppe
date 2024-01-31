@@ -89,7 +89,7 @@ const Catalog = () => {
         <aside>
           {width > 768 ? (
             <>
-              <p className="heading1D mb-9">Shop The Latest</p>
+              <p className="heading1D mb-9 text-text">Shop The Latest</p>
               <SearchInput type="catalog" />
               <CatalogSelect />
               <RangeSlider />
@@ -118,7 +118,7 @@ const Catalog = () => {
             return <ProductCard product={el} key={index} small />;
           })}
           {!allProducts?.length && (
-            <p className="mx-4">
+            <p className="mx-4 text-text">
               Oops, we're sorry, but we can't find the product you're looking
               for {":("}
             </p>

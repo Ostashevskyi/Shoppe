@@ -46,7 +46,7 @@ export const SearchInput = ({ type }) => {
         onChange={(e) => {
           setInputValue(e.target.value);
         }}
-        className="min-w-[180px] focus:outline-none placeholder:text-dark_gray text-dark_gray"
+        className="min-w-[180px] focus:outline-none placeholder:text-dark_gray text-dark_gray bg-transparent"
       />
       <input
         type="submit"

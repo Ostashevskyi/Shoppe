@@ -76,7 +76,7 @@ const Blog = () => {
 
   const NotFoundMessage = useMemo(() => {
     return (
-      <div className="flex flex-col items-center justify-center gap-10">
+      <div className="flex flex-col items-center justify-center gap-10 text-text">
         <p>Ooops</p>
         <p>Seems like we didn't found any items</p>
       </div>
@@ -103,7 +103,7 @@ const Blog = () => {
   const Categories = () => {
     return (
       <>
-        <p className="mt-14 mb-5 heading4D">Categories</p>
+        <p className="mt-14 mb-5 heading4D text-text">Categories</p>
         <ul className="flex flex-col gap-2 text-dark_gray">
           <li>
             <button
@@ -151,12 +151,12 @@ const Blog = () => {
       <div
         className={`flex ${
           !allPosts?.length && "gap-96"
-        } gap-10 mt-24  xs:flex-col sm:flex-col md:flex-col xs:mx-4 xs:mb xs:mb-20 sm:mb-20 sm:mx-4 md:mx-4 lg:mx-4 xs:mt-4 sm:mt-4 md:mt-4`}
+        } gap-10 mt-24 mb-60 xs:flex-col sm:flex-col md:flex-col xs:mx-4 xs:mb xs:mb-20 sm:mb-20 sm:mx-4 md:mx-4 lg:mx-4 xs:mt-4 sm:mt-4 md:mt-4`}
       >
         <aside>
           {width > 768 ? (
             <>
-              <p className="mb-9 heading1D">Blog</p>
+              <p className="mb-9 heading1D text-text">Blog</p>
               <SearchInput />
               <Categories />
             </>
@@ -173,7 +173,7 @@ const Blog = () => {
             </>
           )}
         </aside>
-        <main className="mb-60 xs:mb-20 sm:mb-20">
+        <main>
           <div className="flex flex-wrap xl:gap-12 xxl:gap-12 xs:justify-between sm:justify-between md:justify-between lg:justify-between mb-16">
             {allPosts?.map((post, index) => {
               return <PostCard key={index} post={post} />;

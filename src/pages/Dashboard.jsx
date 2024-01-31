@@ -6,7 +6,7 @@ const Dashboard = () => {
   const { user } = useAuth0();
 
   return (
-    <div className="flex gap-4 ml-4 ">
+    <div className="flex gap-4 ml-4 text-text">
       <p>Hello {user.nickname}</p>
     </div>
   );

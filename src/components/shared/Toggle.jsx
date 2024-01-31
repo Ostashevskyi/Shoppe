@@ -16,7 +16,7 @@ export const ToggleCatalog = ({ label }) => {
   const check = label === "On sale";
 
   return (
-    <div className="flex items-center justify-between mb-10">
+    <div className="flex items-center justify-between mb-10 text-text">
       <label>{label}</label>
       <Toggle
         icons={false}

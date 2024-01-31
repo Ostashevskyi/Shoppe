@@ -51,7 +51,7 @@ const Cart = () => {
 
   const price = useMemo(() => {
     return (
-      <section className="xs:bg-light_gray py-4 px-4 rounded-md sm:bg-light_gray">
+      <section className="xs:bg-light_gray py-4 rounded-md sm:bg-light_gray text-text">
         <p className="mt-9 mb-11 heading2D">Cart totals</p>
 
         <div className="grid grid-cols-1 grid-rows-2 gap-x-32 gap-y-5 pb-9 mb-10 border-b border-gray ">
@@ -94,7 +94,7 @@ const Cart = () => {
       <main className="mb-48 mx-4">
         {shoppingCart?.length ? (
           <div>
-            <p className="heading1D mt-24 mb-16 text-center xs:text-base xs:text-left xs:mt-6 xs:mb-2 sm:text-base sm:text-left sm:mt-6 sm:mb-2 md:text-lg md:text-left md:mt-6 md:mb-2 ">
+            <p className="heading1D mt-24 mb-16 text-text text-center xs:text-base xs:text-left xs:mt-6 xs:mb-2 sm:text-base sm:text-left sm:mt-6 sm:mb-2 md:text-lg md:text-left md:mt-6 md:mb-2 ">
               Shopping Cart
             </p>
             <div className="flex justify-between xs:flex-col sm:flex-col ">
@@ -118,7 +118,7 @@ const Cart = () => {
               src="/empty_cart.webp"
               alt="emptyCart"
             />
-            <p className="heading2D font-bold mb-4">Empty Cart</p>
+            <p className="heading2D font-bold mb-4 text-text">Empty Cart</p>
             <p className="heading4D text-gray mb-5">
               Looks like you haven't made your choise yet...
             </p>

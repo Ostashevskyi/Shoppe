@@ -53,10 +53,10 @@ const Search = () => {
 
   return (
     <Wrapper>
-      <main className="my-20 xs:mx-4 sm:mx-4 md:mx-4 xs:my-6 sm:my-6 md:my-6">
-        <div className="mb-6 ">
+      <main className="mt-20 mb-[40%] xs:mx-4 sm:mx-4 md:mx-4 lg:mx-4 xs:mb-60 sm:mb-60  ">
+        <div className="mb-6 border-b border-light_gray">
           <input
-            className="w-full border-b border-light_gray rounded-md py-5 px-2 focus:outline-none"
+            className="w-full  rounded-md py-5 px-2 bg-transparent focus:outline-none text-text"
             type="text"
             placeholder="Search..."
             value={search}
@@ -68,8 +68,10 @@ const Search = () => {
           <div className="flex gap-10 flex-col ">
             {postRecords.length ? (
               <div>
-                <p className="heading2D mb-10">Posts ({postRecords.length}):</p>
-                <div className="flex flex-wrap gap-6">
+                <p className="heading2D mb-10 text-text">
+                  Posts ({postRecords.length}):
+                </p>
+                <div className="flex flex-wrap gap-6 lg:justify-center lg:gap-12">
                   {postRecords.map((el) => (
                     <PostCard post={el} />
                   ))}
@@ -81,7 +83,7 @@ const Search = () => {
 
             {productRecords.length ? (
               <>
-                <p className="heading2D">
+                <p className="heading2D text-text">
                   Products ({productRecords.length}):{" "}
                 </p>
                 <div className="flex gap-10 md:gap-9 xs:gap-1.5 sm:gap-8 flex-wrap ">
