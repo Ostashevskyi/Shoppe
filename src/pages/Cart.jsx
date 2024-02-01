@@ -12,7 +12,7 @@ import { getShoppingCart } from "@/store/shoppingCartSlice";
 import Wrapper from "@/components/Wrapper";
 import CartCard from "@/components/Cards/CartCard";
 import { ButtonXL } from "@/components/Buttons/ButtonXL";
-import getTheme from "../utils/GetTheme";
+import getTheme from "@/utils/getTheme";
 
 const Cart = () => {
   const { user } = useAuth0();
