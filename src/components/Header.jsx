@@ -14,7 +14,7 @@ import LogoutIcon from "@/components/icons/LogoutIcon";
 import { HeaderLink } from "@/components/Links/HeaderLink";
 import ThemeChangeButton from "@/components/Buttons/ThemeChangeButton";
 import SearchIcon from "@/components/icons/SearchIcon";
-import getTheme from "@/utils/GetTheme";
+import getTheme from "@/utils/getTheme";
 
 const Header = () => {
   const theme = getTheme();

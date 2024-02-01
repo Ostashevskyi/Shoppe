@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setTheme } from "../../store/themeSlice";
-import getTheme from "../../utils/GetTheme";
+import { setTheme } from "@/store/themeSlice";
+import getTheme from "@/utils/getTheme";
 
 const ThemeChangeButton = () => {
   const userTheme = localStorage.getItem("theme");

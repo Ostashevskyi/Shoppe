@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 import useCartProduct from "@/hooks/useCartProduct";
 
-import DeleteIcon from "../icons/Delete";
+import DeleteIcon from "@/components/icons/Delete";
 
 import { deleteShoppingCart } from "@/store/shoppingCartSlice";
 

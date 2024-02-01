@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import MultiRangeSlider from "multi-range-slider-react";
 
 import { setPrice } from "@/store/filterSlice";
-import getTheme from "@/utils/GetTheme";
+import getTheme from "@/utils/getTheme";
 
 const RangeSlider = () => {
   const [minPrice, setMinPrice] = useState(0);
