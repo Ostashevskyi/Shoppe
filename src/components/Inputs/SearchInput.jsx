@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 
+import SearchIcon from "@/icons/SearchIcon";
+
 import { setBlogTitle } from "@/store/filterSlice";
 import { setCatalogTitle } from "@/store/filterSlice";
 
@@ -48,10 +50,7 @@ export const SearchInput = ({ type }) => {
         }}
         className="min-w-[180px] focus:outline-none placeholder:text-dark_gray text-dark_gray bg-transparent"
       />
-      <input
-        type="submit"
-        className="bg-search bg-center bg-no-repeat text-transparent cursor-pointer"
-      />
+      <SearchIcon />
     </form>
   );
 };

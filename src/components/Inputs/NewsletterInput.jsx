@@ -1,5 +1,7 @@
 import React from "react";
 
+import ArrowIcon from "@/icons/ArrowIcon";
+
 export const NewsletterInput = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,10 +17,7 @@ export const NewsletterInput = () => {
         required
         className="xs:min-w-[200px] sm:min-w-[200px] lg:min-w-[250px] xl:min-w-[250px] md:min-w-[250px] xxl:min-w-[250px] xs:text-xs sm:text-xs focus:outline-none placeholder:text-dark_gray text-dark_gray bg-transparent"
       />
-      <input
-        type="submit"
-        className="bg-arrow bg-center bg-no-repeat text-transparent bg-transparent "
-      />
+      <ArrowIcon />
     </form>
   );
 };

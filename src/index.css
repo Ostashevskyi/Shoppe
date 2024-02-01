@@ -122,10 +122,13 @@
   border-radius: 0% !important;
   margin: -4px 0px !important;
   box-shadow: none !important;
+  border: none !important;
 }
 
 .bar-left,
-.bar-right {
+.bar-right,
+.bar-inner {
+  border: none !important;
   box-shadow: none !important;
   border-radius: 0% !important;
   padding: 0px !important;
