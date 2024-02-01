@@ -21,6 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Provider store={store}>
         <Auth0ProviderWithHistory>
           <RouterProvider router={router} />
+          <SpeedInsights />
         </Auth0ProviderWithHistory>
       </Provider>
     </ApolloProvider>
