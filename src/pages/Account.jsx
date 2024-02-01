@@ -34,18 +34,19 @@ const Account = () => {
   const MobileButtons = () => {
     return (
       <div className="flex gap-12 border-b border-light_gray mb-10 xs:mx-4 sm:mx-4">
-        <Swiper
-          slidesPerView={width < 375 ? 2 : width > 767 ? 4 : 3}
-          className=""
-        >
+        <Swiper slidesPerView={width < 375 ? 2 : width > 767 ? 4 : 3}>
           <div className="flex">
             {buttons.map((btn) => {
               return (
-                <SwiperSlide key={btn.id} className="text-center pb-4 ">
+                <SwiperSlide
+                  key={btn.id}
+                  className="text-center pb-4 text-text"
+                >
                   <NavLink
                     to={btn.url}
                     className={`${
-                      activeElement === btn.meta && "border-b border-black pb-4"
+                      activeElement === btn.meta &&
+                      "border-b border-text pb-4 text-text"
                     }`}
                   >
                     {btn.title}
@@ -61,12 +62,12 @@ const Account = () => {
 
   return (
     <Wrapper>
-      <main className="mt-24 mb-52 xs:mb-20 sm:mb-20 md:mb-20">
-        {isLoading && <p className="mx-4">Loading...</p>}
+      <main className="mt-24 mb-[25%] xs:mb-36 sm:mb-36 md:mb-36 xs:mt-14 sm:mt-14 md:mt-14">
+        {isLoading && <p className="mx-4 text-text">Loading...</p>}
         {isAuthenticated && !isLoading && (
           <div>
             {activeElement === "account" && (
-              <h1 className="text-center mb-16 text-3xl font-medium">
+              <h1 className="text-center mb-16 text-3xl font-medium text-text">
                 My Account
               </h1>
             )}
@@ -74,7 +75,7 @@ const Account = () => {
               {width < 976 ? (
                 <MobileButtons />
               ) : (
-                <div className="flex gap-12 border-b border-light_gray mb-10 lg:mx-4">
+                <div className="flex gap-12 border-b border-light_gray mb-10 lg:mx-4 text-text">
                   {buttons.map((btn) => {
                     return (
                       <NavLink
@@ -82,7 +83,7 @@ const Account = () => {
                         key={btn.id}
                         className={`${
                           activeElement === btn.meta &&
-                          "border-b border-black pb-8 translate-y-px"
+                          "border-b border-text pb-8 translate-y-px"
                         }`}
                       >
                         {btn.title}

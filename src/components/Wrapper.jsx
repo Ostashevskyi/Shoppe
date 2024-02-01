@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 const Wrapper = ({ children }) => {
   return (
-    <main className="center">
+    <main className="center bg-backgroud  flex flex-col">
       <Header />
       {children}
       <Footer />

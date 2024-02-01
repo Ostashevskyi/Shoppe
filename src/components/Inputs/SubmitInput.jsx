@@ -5,7 +5,7 @@ export const SubmitInput = ({ label }) => {
     <input
       type="submit"
       value={label}
-      className="bg-black w-full flex min-h-[53px] rounded-md text-white uppercase justify-center items-center"
+      className="bg-white_to_black w-full flex min-h-[53px] border border-button rounded-md text-text uppercase justify-center items-center hover:bg-button hover:text-white_to_black "
     />
   );
 };

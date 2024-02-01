@@ -28,7 +28,7 @@ export const CatalogSelect = () => {
 
   return (
     <select
-      className="py-4 pl-2 pr-44 border border-gray rounded-md"
+      className="py-4 pl-2 pr-44 border border-gray rounded-md bg-backgroud focus:outline-none text-text"
       defaultValue={
         searchParams.get("sortBy") ? searchParams.get("sortBy") : "Sort By"
       }
@@ -37,10 +37,18 @@ export const CatalogSelect = () => {
       <option value="Sort By" disabled hidden>
         Sort by
       </option>
-      <option value="">None</option>
-      <option value="necklace">Necklace</option>
-      <option value="earrings">Earrings</option>
-      <option value="pin">Pins</option>
+      <option value="" className="bg-background text-text">
+        None
+      </option>
+      <option value="necklace" className="bg-background text-text">
+        Necklace
+      </option>
+      <option value="earrings" className="bg-background text-text">
+        Earrings
+      </option>
+      <option value="pin" className="bg-background text-text">
+        Pins
+      </option>
     </select>
   );
 };

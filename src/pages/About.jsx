@@ -12,7 +12,7 @@ const About = () => {
 
   return (
     <Wrapper>
-      <main className="max-w-[670px] m-auto mt-24 mb-60 xs:mb-20 sm:mb-20 md:mb-20">
+      <main className="max-w-[670px] m-auto mt-24 mb-60 xs:mb-20 sm:mb-20 md:mb-20 text-text">
         <section className="text-center mb-11">
           <p className="heading1D mb-6">About</p>
           <p className="heading3D">Who we are and why we do what we do!</p>

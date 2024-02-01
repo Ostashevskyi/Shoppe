@@ -77,7 +77,7 @@ const Catalog = () => {
           onClick={() => setFilterIsOpen(!filterIsOpen)}
         >
           <FilterIcon />
-          <p>Filters</p>
+          <p className="text-text">Filters</p>
         </button>
       </div>
     );
@@ -89,7 +89,7 @@ const Catalog = () => {
         <aside>
           {width > 768 ? (
             <>
-              <p className="heading1D mb-9">Shop The Latest</p>
+              <p className="heading1D mb-9 text-text">Shop The Latest</p>
               <SearchInput type="catalog" />
               <CatalogSelect />
               <RangeSlider />
@@ -98,7 +98,9 @@ const Catalog = () => {
             </>
           ) : (
             <>
-              <p className="heading3D mb-4 font-medium xs:mx-4">Shop</p>
+              <p className="heading3D mb-4 font-medium xs:mx-4 text-text">
+                Shop
+              </p>
               <MobileFilter />
               {filterIsOpen && (
                 <div className="flex flex-col mt-10 xs:mx-4">
@@ -118,7 +120,7 @@ const Catalog = () => {
             return <ProductCard product={el} key={index} small />;
           })}
           {!allProducts?.length && (
-            <p className="mx-4">
+            <p className="mx-4 text-text">
               Oops, we're sorry, but we can't find the product you're looking
               for {":("}
             </p>

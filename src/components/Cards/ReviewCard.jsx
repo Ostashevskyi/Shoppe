@@ -10,7 +10,7 @@ const ReviewCard = ({ review }) => {
   const formatedDate = formatDate(review.created_at);
 
   return (
-    <div className="pb-9 border-b border-gray mb-6 w-full">
+    <div className="pb-9 border-b border-gray mb-6 w-full text-text">
       <div className="flex gap-4 mb-4 items-baseline">
         <p className="heading3D">{review.username}</p>
         <p className="body_medium text-dark_gray">{formatedDate}</p>
