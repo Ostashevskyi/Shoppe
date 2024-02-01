@@ -41,9 +41,7 @@ const Header = () => {
           {/* HEADER MOBILE */}
           <section className="flex lg:hidden xl:hidden xxl:hidden bg-backgroud">
             <div className="flex gap-4 items-center">
-              <div className="max-w-[21px] max-h-[21px]">
-                <ThemeChangeButton />
-              </div>
+              <ThemeChangeButton />
               <HeaderLink to="/cart">
                 <CartIcon />
               </HeaderLink>
@@ -173,6 +171,9 @@ const Header = () => {
             </ul>
             <div className="ml-12">
               <ul className="flex gap-10 ">
+                <li>
+                  <ThemeChangeButton />
+                </li>
                 <li>
                   <HeaderLink to="/search">
                     <SearchIcon />

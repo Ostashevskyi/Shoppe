@@ -38,7 +38,10 @@ const ThemeChangeButton = () => {
   };
 
   return (
-    <button className="text-text" onClick={() => themeSwitch()}>
+    <button
+      className="text-text max-w-[21px] max-h-[21px]"
+      onClick={() => themeSwitch()}
+    >
       {theme === "dark" ? <img src="/moon.png" /> : <img src="/sun.png" />}
     </button>
   );
