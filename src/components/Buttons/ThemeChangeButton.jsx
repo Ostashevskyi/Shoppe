@@ -1,6 +1,9 @@
 import React from "react";
+
 import { useDispatch } from "react-redux";
+
 import { setTheme } from "@/store/themeSlice";
+
 import getTheme from "@/utils/getTheme";
 
 const ThemeChangeButton = () => {

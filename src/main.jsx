@@ -7,6 +7,8 @@ import { RouterProvider } from "react-router-dom";
 
 import Auth0ProviderWithHistory from "@/auth/client";
 
+import { SpeedInsights } from "@vercel/speed-insights/react";
+
 import { client } from "@/cms/index.js";
 
 import "@/index.css";
