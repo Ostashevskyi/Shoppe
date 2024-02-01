@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 
-import SearchIcon from "@/icons/SearchIcon";
+import SearchIcon from "@/components/icons/SearchIcon";
 
 import { setBlogTitle } from "@/store/filterSlice";
 import { setCatalogTitle } from "@/store/filterSlice";

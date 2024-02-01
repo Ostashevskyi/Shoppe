@@ -1,6 +1,6 @@
 import React from "react";
 
-import ArrowIcon from "@/icons/ArrowIcon";
+import ArrowIcon from "@/components/icons/ArrowIcon";
 
 export const NewsletterInput = () => {
   const handleSubmit = (e) => {
