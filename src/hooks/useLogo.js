@@ -1,8 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
 
 const logo = gql`
-  query MyQuery {
-    upload(filter: { title: { eq: "MainLogo" } }) {
+  query MyQuery($title: String) {
+    upload(filter: { title: { eq: $title } }) {
       url
       id
       height
@@ -11,8 +11,8 @@ const logo = gql`
   }
 `;
 
-const useLogo = () => {
-  const { data } = useQuery(logo);
+const useLogo = (title) => {
+  const { data } = useQuery(logo, { variables: { title } });
 
   return data?.upload;
 };

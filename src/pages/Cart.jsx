@@ -12,10 +12,13 @@ import { getShoppingCart } from "@/store/shoppingCartSlice";
 import Wrapper from "@/components/Wrapper";
 import CartCard from "@/components/Cards/CartCard";
 import { ButtonXL } from "@/components/Buttons/ButtonXL";
+import getTheme from "../utils/GetTheme";
 
 const Cart = () => {
   const { user } = useAuth0();
   const email = user?.email;
+
+  const theme = getTheme();
 
   const userID = useUserID(user);
   const dispatch = useDispatch();
@@ -113,11 +116,20 @@ const Cart = () => {
           </div>
         ) : (
           <div className="flex flex-col items-center mt-12 mx-4">
-            <img
-              className="w-full h-auto max-w-sm"
-              src="/empty_cart.webp"
-              alt="emptyCart"
-            />
+            {theme === "dark" ? (
+              <img
+                className="w-full h-auto max-w-sm"
+                src="/empty_cart_dark.webp"
+                alt="emptyCart"
+              />
+            ) : (
+              <img
+                className="w-full h-auto max-w-sm"
+                src="/empty_cart.webp"
+                alt="emptyCart"
+              />
+            )}
+
             <p className="heading2D font-bold mb-4 text-text">Empty Cart</p>
             <p className="heading4D text-gray mb-5">
               Looks like you haven't made your choise yet...

@@ -94,7 +94,7 @@ const Blog = () => {
           onClick={() => setFilterIsOpen(!filterIsOpen)}
         >
           <FilterIcon />
-          <p>Filters</p>
+          <p className="text-text">Filters</p>
         </button>
       </div>
     );
@@ -162,7 +162,7 @@ const Blog = () => {
             </>
           ) : (
             <>
-              <p className="heading3D mb-4 font-medium">Blog</p>
+              <p className="heading3D mb-4 font-medium text-text">Blog</p>
               <MobileFilter />
               {filterIsOpen && (
                 <div className="mt-10">

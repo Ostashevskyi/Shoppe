@@ -2,12 +2,10 @@ import React from "react";
 
 import { NavLink } from "react-router-dom";
 
-import {
-  facebookIcon,
-  instagramIcon,
-  linkedinIcon,
-  twitterIcon,
-} from "@/utils/icon_imports";
+import TwitterIcon from "@/components/icons/TwitterIcon";
+import InstagramIcon from "@/components/icons/InstagramIcon";
+import FacebookIcon from "@/components/icons/FacebookIcon";
+import LinkedinIcon from "@/components/icons/LinkedinIcon";
 
 import { NewsletterInput } from "@/components/Inputs/NewsletterInput";
 
@@ -28,7 +26,7 @@ const Footer = () => {
         <div className="flex justify-between mb-20">
           <div>
             <p className="heading5D text-dark_gray">
-              © 2023 Shelly.
+              © 2024 Shelly.
               <NavLink to={"/privacy"} className="ml-2">
                 Terms of use and privacy policy
               </NavLink>
@@ -37,16 +35,16 @@ const Footer = () => {
           </div>
           <div className="flex gap-7">
             <NavLink to="https://www.linkedin.com/">
-              <img src={linkedinIcon} />
+              <LinkedinIcon />
             </NavLink>
             <NavLink to="https://www.facebook.com/">
-              <img src={facebookIcon} />
+              <FacebookIcon />
             </NavLink>
             <NavLink to="https://www.instagram.com/">
-              <img src={instagramIcon} />
+              <InstagramIcon />
             </NavLink>
             <NavLink to="https://twitter.com/">
-              <img src={twitterIcon} />
+              <TwitterIcon />
             </NavLink>
           </div>
         </div>
@@ -68,22 +66,22 @@ const Footer = () => {
           </div>
           <div className="flex gap-7">
             <NavLink to="https://www.linkedin.com/">
-              <img src={linkedinIcon} />
+              <LinkedinIcon />
             </NavLink>
             <NavLink to="https://www.facebook.com/">
-              <img src={facebookIcon} />
+              <FacebookIcon />
             </NavLink>
             <NavLink to="https://www.instagram.com/">
-              <img src={instagramIcon} />
+              <InstagramIcon />
             </NavLink>
             <NavLink to="https://twitter.com/">
-              <img src={twitterIcon} />
+              <TwitterIcon />
             </NavLink>
           </div>
         </div>
         <div>
           <p className="heading5D text-dark_gray">
-            © 2023 Shelly.
+            © 2024 Shelly.
             <NavLink to={"/privacy"} className="ml-2">
               Terms of use and privacy policy
             </NavLink>

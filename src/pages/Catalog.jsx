@@ -77,7 +77,7 @@ const Catalog = () => {
           onClick={() => setFilterIsOpen(!filterIsOpen)}
         >
           <FilterIcon />
-          <p>Filters</p>
+          <p className="text-text">Filters</p>
         </button>
       </div>
     );
@@ -98,7 +98,9 @@ const Catalog = () => {
             </>
           ) : (
             <>
-              <p className="heading3D mb-4 font-medium xs:mx-4">Shop</p>
+              <p className="heading3D mb-4 font-medium xs:mx-4 text-text">
+                Shop
+              </p>
               <MobileFilter />
               {filterIsOpen && (
                 <div className="flex flex-col mt-10 xs:mx-4">

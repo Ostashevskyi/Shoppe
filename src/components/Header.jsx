@@ -7,16 +7,18 @@ import SearchBurgerForm from "./Forms/SearchBurgerForm";
 
 import useLogo from "@/hooks/useLogo";
 
-import { searchIcon, userIcon } from "@/utils/icon_imports";
-
 import CartIcon from "@/components/icons/CartIcon";
 import UserIcon from "@/components/icons/UserIcon";
 import LoginIcon from "@/components/icons/LoginIcon";
 import LogoutIcon from "@/components/icons/LogoutIcon";
 import { HeaderLink } from "@/components/Links/HeaderLink";
+import ThemeChangeButton from "@/components/Buttons/ThemeChangeButton";
+import SearchIcon from "@/components/icons/SearchIcon";
+import getTheme from "@/utils/GetTheme";
 
 const Header = () => {
-  const data = useLogo();
+  const theme = getTheme();
+  const logo = theme === "dark" ? useLogo("MainLogoDark") : useLogo("MainLogo");
 
   const links = [
     { id: 0, title: "Shop", link: "/catalog" },
@@ -32,25 +34,30 @@ const Header = () => {
     <header>
       <div className="pt-12 pb-4 lg:mx-4 xl:border-b-2 xl:border-light_gray lg:border-b-2 lg:border-light_gray xxl:border-b-2 xxl:border-light_gray flex justify-between items-center px-4 ">
         <NavLink to="/">
-          <img src={data?.url} alt="logo" />
+          <img src={logo?.url} alt="logo" />
         </NavLink>
 
         <nav className="flex text-text">
           {/* HEADER MOBILE */}
           <section className="flex lg:hidden xl:hidden xxl:hidden bg-backgroud">
-            <HeaderLink to="/cart">
-              <CartIcon />
-            </HeaderLink>
-            <div
-              className="HAMBURGER-ICON space-y-2 ml-4"
-              onClick={() => {
-                setIsNavOpen((prev) => !prev);
-                document.querySelector("body").classList.add("fixed");
-              }}
-            >
-              <span className="block rounded-md h-0.5 w-8 bg-gray-600 border"></span>
-              <span className="block rounded-md h-0.5 w-8 bg-gray-600 border"></span>
-              <span className="block rounded-md h-0.5 w-6 text-right bg-gray-600 border"></span>
+            <div className="flex gap-4 items-center">
+              <div className="max-w-[21px] max-h-[21px]">
+                <ThemeChangeButton />
+              </div>
+              <HeaderLink to="/cart">
+                <CartIcon />
+              </HeaderLink>
+              <div
+                className="HAMBURGER-ICON space-y-1.5 "
+                onClick={() => {
+                  setIsNavOpen((prev) => !prev);
+                  document.querySelector("body").classList.add("fixed");
+                }}
+              >
+                <span className="block rounded-md h-0.5 w-8 bg-gray-600 border"></span>
+                <span className="block rounded-md h-0.5 w-8 bg-gray-600 border"></span>
+                <span className="block rounded-md h-0.5 w-6 text-right bg-gray-600 border"></span>
+              </div>
             </div>
 
             <div
@@ -66,7 +73,7 @@ const Header = () => {
                     document.querySelector("body").classList.remove("fixed");
                   }}
                 >
-                  <img src={data?.url} alt="logo" />
+                  <img src={logo?.url} alt="logo" />
                 </NavLink>
 
                 <div
@@ -114,6 +121,7 @@ const Header = () => {
                     </li>
                   );
                 })}
+                <ThemeChangeButton />
               </ul>
               <ul className="flex flex-col gap-5">
                 <li
@@ -167,7 +175,7 @@ const Header = () => {
               <ul className="flex gap-10 ">
                 <li>
                   <HeaderLink to="/search">
-                    <img src={searchIcon} alt="search" />
+                    <SearchIcon />
                   </HeaderLink>
                 </li>
                 <li>
@@ -177,7 +185,7 @@ const Header = () => {
                 </li>
                 <li>
                   <HeaderLink to="/account">
-                    <img src={userIcon} alt="user" />
+                    <UserIcon />
                   </HeaderLink>
                 </li>
               </ul>

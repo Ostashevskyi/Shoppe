@@ -34,10 +34,7 @@ const Account = () => {
   const MobileButtons = () => {
     return (
       <div className="flex gap-12 border-b border-light_gray mb-10 xs:mx-4 sm:mx-4">
-        <Swiper
-          slidesPerView={width < 375 ? 2 : width > 767 ? 4 : 3}
-          className=""
-        >
+        <Swiper slidesPerView={width < 375 ? 2 : width > 767 ? 4 : 3}>
           <div className="flex">
             {buttons.map((btn) => {
               return (
@@ -66,7 +63,7 @@ const Account = () => {
   return (
     <Wrapper>
       <main className="mt-24 mb-[25%] xs:mb-20 sm:mb-20 md:mb-20 xs:mt-14 sm:mt-14 md:mt-14">
-        {isLoading && <p className="mx-4">Loading...</p>}
+        {isLoading && <p className="mx-4 text-text">Loading...</p>}
         {isAuthenticated && !isLoading && (
           <div>
             {activeElement === "account" && (
