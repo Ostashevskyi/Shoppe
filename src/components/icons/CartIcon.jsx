@@ -1,7 +1,7 @@
 import React from "react";
-import getTheme from "../../utils/GetTheme";
+import getTheme from "@/utils/GetTheme";
 
-const CartIcon = ({ fillColor }) => {
+const CartIcon = () => {
   const theme = getTheme();
 
   return (

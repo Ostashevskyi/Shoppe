@@ -1,5 +1,5 @@
 import React from "react";
-import getTheme from "../../utils/GetTheme";
+import getTheme from "@/utils/GetTheme";
 
 const InstagramIcon = () => {
   const theme = getTheme();
