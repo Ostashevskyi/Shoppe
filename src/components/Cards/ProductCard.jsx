@@ -31,7 +31,7 @@ const ProductCard = ({ product, small }) => {
           </p>
         )}
         {product.isNew && (
-          <p className="text-black body_smallD font-medium xs:text-xs sm:text-sm">
+          <p className="text-text body_smallD font-medium xs:text-xs sm:text-sm">
             New
           </p>
         )}
@@ -70,7 +70,7 @@ const ProductCard = ({ product, small }) => {
       <div>
         <NavLink
           to={`/products/${product.slug}`}
-          className="heading3D xs:text-[13px] sm:text-sm"
+          className="heading3D xs:text-[13px] sm:text-sm text-text"
         >
           {product.title}
         </NavLink>

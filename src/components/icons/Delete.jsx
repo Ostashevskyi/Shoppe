@@ -1,10 +1,12 @@
 import React from "react";
+import getTheme from "@/utils/getTheme";
 
-const DeleteIcon = ({ fillColor, w, h }) => {
+const DeleteIcon = ({ w, h }) => {
+  const theme = getTheme();
   return (
     <div className="cursor-pointer">
       <svg
-        fill="#000000"
+        fill={theme === "dark" ? "#ffffff" : "#000000"}
         height={h}
         width={w}
         version="1.1"

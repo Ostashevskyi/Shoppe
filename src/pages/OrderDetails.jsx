@@ -41,7 +41,7 @@ const OrderDetails = () => {
         const product = JSON.parse(products);
 
         return (
-          <main className="mt-24 flex justify-between mb-60 mx-4 xs:flex-col xs:mt-10 xs:mb-24 sm:flex-col sm:mt-10 sm:mb-24 md:flex-col md:mb-24">
+          <main className="mt-24 flex justify-between mb-60 mx-4 xs:flex-col xs:mt-10 xs:mb-24 sm:flex-col sm:mt-10 sm:mb-24 md:flex-col md:mb-24 text-text">
             <section>
               <p className="mb-7 heading2D ">Order Details</p>
               <div className="flex gap-32 heading5D xs:flex-col xs:gap-10 sm:gap-10">

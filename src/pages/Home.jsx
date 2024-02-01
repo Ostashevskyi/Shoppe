@@ -41,7 +41,9 @@ const Home = () => {
           className="flex items-center justify-between mb-10
           xs:mx-4 sm:mx-4 md:mx-4 lg:mx-4"
         >
-          <p className="heading1D xs:text-base sm:text-xl">Shop The Latest</p>
+          <p className="heading1D xs:text-base sm:text-xl text-text">
+            Shop The Latest
+          </p>
           <AccentLink to="/catalog">View All</AccentLink>
         </div>
         <div

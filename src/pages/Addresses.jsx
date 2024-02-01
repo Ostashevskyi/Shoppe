@@ -28,7 +28,7 @@ const Addresses = () => {
   }, [dispatch]);
 
   return (
-    <div className="xs:mx-4 sm:mx-4 md:mx-4 lg:mx-4">
+    <div className="xs:mx-4 sm:mx-4 md:mx-4 lg:mx-4 text-text">
       <p className="mb-11">
         The following addresses will be used on the checkout page by default.
       </p>

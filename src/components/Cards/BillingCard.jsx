@@ -73,7 +73,7 @@ const FormCard = ({ address, formType }) => {
           );
         }}
       >
-        <DeleteIcon fillColor={"none"} w={10} h={10} />
+        <DeleteIcon w={10} h={10} />
       </button>
     </div>
   );

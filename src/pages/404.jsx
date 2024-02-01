@@ -8,7 +8,7 @@ import { ButtonXS } from "@/components/Buttons/ButtonXS";
 const PageNotFound = () => {
   return (
     <Wrapper>
-      <main className="my-60 text-center">
+      <main className="my-60 text-center text-text">
         <h1 className="uppercase text-3xl font-medium mb-6">404 Error</h1>
         <p className="heading3D text-dark_gray mb-16">
           This page not found; <br /> back to home and start again

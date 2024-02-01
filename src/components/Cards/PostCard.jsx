@@ -15,7 +15,7 @@ const PostCard = ({ post }) => {
         <p className="body_medium text-dark_gray mt-5 mb-1">
           {post.category} - {formattedDate}
         </p>
-        <NavLink to={post.slug} className="heading3D mb-3">
+        <NavLink to={post.slug} className="heading3D mb-3 text-text">
           {post.title}
         </NavLink>
         <p className="heading5D text-dark_gray">{post.shortDescription}...</p>

@@ -10,6 +10,7 @@ import counterSlice from "@/store/counterSlice";
 import productsSlice from "@/store/productsSlice";
 import orderSlice from "@/store/orderSlice";
 import reviewsSlice from "@/store/reviewsSlice";
+import themeSlice from "./themeSlice";
 
 export const store = configureStore({
   reducer: {
@@ -23,5 +24,6 @@ export const store = configureStore({
     products: productsSlice,
     orders: orderSlice,
     reviews: reviewsSlice,
+    theme: themeSlice,
   },
 });

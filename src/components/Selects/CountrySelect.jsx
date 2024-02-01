@@ -18,7 +18,7 @@ export const CountrySelect = ({ label, register, required }) => {
   return (
     <select
       {...register(label, { required })}
-      className="border-b-2 border-gray pb-2 xl:min-w-[400px] lg:min-w-[400px] xxl:min-w-[400px] w-full text-dark_gray placeholder:text-dark_gray focus:outline-none"
+      className="border-b-2 border-gray pb-2 bg-transparent xl:min-w-[400px] lg:min-w-[400px] xxl:min-w-[400px] w-full text-dark_gray placeholder:text-dark_gray focus:outline-none"
       defaultValue="Country"
     >
       <option value="Country" hidden>
@@ -26,7 +26,7 @@ export const CountrySelect = ({ label, register, required }) => {
       </option>
       {!!countryArr?.length &&
         countryArr.map(({ label, value }) => (
-          <option key={value} value={value}>
+          <option key={value} value={value} className="bg-backgroud">
             {label}
           </option>
         ))}

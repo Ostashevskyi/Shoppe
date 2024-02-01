@@ -96,7 +96,7 @@ const ProductPage = () => {
           </div>
           <div>
             <div className="flex flex-col gap-6 mb-16 xs:mb-6">
-              <p className="heading2D text-black">{product?.title}</p>
+              <p className="heading2D text-text">{product?.title}</p>
               {product?.isDiscount && (
                 <div className="flex items-center gap-4 mt-4">
                   <p className="text-errors line-through heading4D font-medium">
@@ -158,11 +158,11 @@ const ProductPage = () => {
             </div>
             <div className="heading5D">
               <div className="flex gap-4 items-center ">
-                <p className="mr-4">SKU:</p>
+                <p className="mr-4 text-text">SKU:</p>
                 <p className=" text-dark_gray">{product?.sku}</p>
               </div>
               <div className="flex gap-4 items-center ">
-                <p className="mr-4">Categories:</p>
+                <p className="mr-4 text-text">Categories:</p>
                 <p className="text-dark_gray">{product?.tags}</p>
               </div>
             </div>
@@ -171,7 +171,7 @@ const ProductPage = () => {
         <div>
           <div className="flex gap-24 heading3D text-dark_gray mb-16 xs:flex-col xs:items-start sm:flex-col sm:items-start xs:gap-6 sm:gap-6">
             <button
-              className={`${isActive === "description" && "text-black"}`}
+              className={`${isActive === "description" && "text-gray"}`}
               onClick={() => {
                 setIsActive("description");
               }}
@@ -179,7 +179,7 @@ const ProductPage = () => {
               Description
             </button>
             <button
-              className={`${isActive === "addInfo" && "text-black"}  `}
+              className={`${isActive === "addInfo" && "text-gray"}  `}
               onClick={() => {
                 setIsActive("addInfo");
               }}
@@ -187,7 +187,7 @@ const ProductPage = () => {
               Additional information
             </button>
             <button
-              className={`${isActive === "reviews" && "text-black"}  `}
+              className={`${isActive === "reviews" && "text-gray"}  `}
               onClick={() => {
                 setIsActive("reviews");
               }}
@@ -195,7 +195,7 @@ const ProductPage = () => {
               Reviews({reviewsLength})
             </button>
           </div>
-          <div className="heading5D  mb-24">
+          <div className="heading5D mb-24">
             {isActive === "description" && (
               <p className="text-dark_gray">{product?.description}</p>
             )}
@@ -213,7 +213,7 @@ const ProductPage = () => {
             {isActive === "reviews" && (
               <div className="flex justify-between gap-20 xs:flex-col sm:flex-col md:flex-col">
                 <div className="max-h-[600px] overflow-y-scroll no-scrollbar overscroll-contain ">
-                  <p className="mb-16 heading3D xs:text-base">
+                  <p className="mb-16 heading3D xs:text-base text-text">
                     {reviewsLength} {reviewsLength > 1 ? "Reviews " : "Review "}
                     for {product?.title}
                   </p>
@@ -222,7 +222,7 @@ const ProductPage = () => {
                       <ReviewCard key={review.id} review={review} />
                     ))
                   ) : (
-                    <p>
+                    <p className="text-text">
                       There seem to be no reviews yet. Be the first to review
                       this product
                     </p>
@@ -230,7 +230,7 @@ const ProductPage = () => {
                 </div>
                 {isAuthenticated ? (
                   <div>
-                    <p className="mb-2 heading3D text-black">Add a Review</p>
+                    <p className="mb-2 heading3D text-text">Add a Review</p>
                     <p className="mb-11 heading5D text-dark_gray">
                       Your email address will not be published. Required fields
                       are marked *
@@ -245,7 +245,7 @@ const ProductPage = () => {
           </div>
         </div>
         <div>
-          <p className="heading2D mb-12">Similar Items</p>
+          <p className="heading2D mb-12 text-text">Similar Items</p>
           <div className="flex gap-12">
             {width < 767 ? (
               <SimilarSlider products={allSimilarProducts} />

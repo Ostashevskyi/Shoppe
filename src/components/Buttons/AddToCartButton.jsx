@@ -24,8 +24,9 @@ const AddToCartButton = ({ product }) => {
   useEffect(() => {
     shoppingCart?.forEach((el) => {
       el.name === product?.title && setIsInCart(true);
-      setIsDisabled(isInCart || !product?.isAvaliable);
     });
+
+    setIsDisabled(isInCart || !product?.isAvaliable);
   }, [shoppingCart, product, isDisabled, isInCart]);
 
   const handleClick = async () => {
@@ -38,13 +39,18 @@ const AddToCartButton = ({ product }) => {
         className={`${
           isDisabled &&
           "bg-gray border-none text-dark_gray hover:bg-gray cursor-default"
-        } w-full h-[53px] justify-center items-center uppercase body_large border font-semibold border-black rounded-md focus:scale-95
-    ${!isDisabled && "hover:bg-black hover:text-white  active:opacity-80"}
+        } 
+        w-full h-[53px] justify-center bg-white_to_black text-text  items-center uppercase body_large border font-semibold border-button rounded-md focus:scale-95 hover:bg-text hover:text-white_to_black
+    ${!isDisabled && "hover:bg-black hover:text-white active:opacity-80"}
      `}
         disabled={isDisabled}
         onClick={() => handleClick()}
       >
-        {isInCart ? "In cart" : "Add to cart"}
+        {isInCart
+          ? "In cart"
+          : !product?.isAvaliable
+          ? "Sold out"
+          : "Add to cart"}
       </button>
     </div>
   );

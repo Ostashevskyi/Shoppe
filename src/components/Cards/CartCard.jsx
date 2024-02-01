@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 import useCartProduct from "@/hooks/useCartProduct";
 
-import DeleteIcon from "../icons/Delete";
+import DeleteIcon from "@/components/icons/Delete";
 
 import { deleteShoppingCart } from "@/store/shoppingCartSlice";
 
@@ -37,7 +37,7 @@ const CartCard = ({ productInfo, userID, id }) => {
         </NavLink>
         <div className="flex xl:gap-32 xxl:gap-32 lg:gap-32 xs:flex-col xs:justify-between sm:flex-col sm:justify-between md:flex-col md:justify-between ">
           <div className="flex flex-col gap-3 xs:gap-1 sm:gap-1 md:gap-1">
-            <p className="heading3D max-w-[100px] xs:text-xs sm:text-sm md:text-sm">
+            <p className="heading3D max-w-[100px] xs:text-xs sm:text-sm md:text-sm text-text">
               {product?.title}
             </p>
             <p className="heading3D xs:text-xs xs:min-w-[85px] sm:min-w-[100px] sm:text-sm md:text-sm text-dark_gray">
