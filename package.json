@@ -16,6 +16,7 @@
     "@reduxjs/toolkit": "^2.0.1",
     "@smastrom/react-rating": "^1.4.0",
     "@supabase/supabase-js": "^2.39.1",
+    "@vercel/speed-insights": "^1.0.9",
     "date-fns": "^2.30.0",
     "graphql": "^16.8.1",
     "graphql-hooks": "^6.3.2",
