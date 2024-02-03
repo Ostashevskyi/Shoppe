@@ -33,6 +33,8 @@ const AddToCartButton = ({ product }) => {
     dispatch(addShoppingCart({ userID, product }));
   };
 
+  console.log(isDisabled);
+
   return (
     <div>
       <button
@@ -40,8 +42,11 @@ const AddToCartButton = ({ product }) => {
           isDisabled &&
           "bg-gray border-none text-dark_gray hover:bg-gray cursor-default"
         } 
-        w-full h-[53px] justify-center bg-white_to_black text-text  items-center uppercase body_large border font-semibold border-button rounded-md focus:scale-95 hover:bg-text hover:text-white_to_black
-    ${!isDisabled && "hover:bg-black hover:text-white active:opacity-80"}
+        w-full h-[53px] justify-center items-center uppercase body_large border font-semibold border-button rounded-md focus:scale-95 hover:bg-text hover:text-white_to_black
+    ${
+      !isDisabled &&
+      "bg-black text-text hover:bg-black hover:text-white active:opacity-80"
+    }
      `}
         disabled={isDisabled}
         onClick={() => handleClick()}
