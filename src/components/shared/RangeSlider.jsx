@@ -37,8 +37,6 @@ const RangeSlider = () => {
     }
   }, [theme]);
 
-  console.log(colors);
-
   const handleInput = (e) => {
     setMinPrice(e.minValue);
     setMaxPrice(e.maxValue);

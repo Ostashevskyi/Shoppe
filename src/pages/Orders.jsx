@@ -80,7 +80,7 @@ const Orders = () => {
   return (
     <div>
       {!orders.length ? (
-        <div className="flex xs:mx-4 xs:flex-col gap-2 justify-between text-text px-10 py-5 xs:py-2 xs:px-4 sm:py-2 sm:px-4 md:mx-4 bg-light_gray border-t-2 border-accent">
+        <div className="flex xs:mx-4 xs:flex-col gap-2 lg:mx-4 justify-between text-text px-10 py-5 xs:py-2 xs:px-4 sm:py-2 sm:mx-4 md:mx-4 bg-light_gray border-t-2 border-accent">
           <p className="heading5D">No orders has been made yet</p>
           <NavLink to="/catalog" className="uppercase body_large text-accent">
             Browse product

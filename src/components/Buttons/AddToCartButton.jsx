@@ -45,7 +45,7 @@ const AddToCartButton = ({ product }) => {
         w-full h-[53px] justify-center items-center uppercase body_large border font-semibold border-button rounded-md focus:scale-95 hover:bg-text hover:text-white_to_black
     ${
       !isDisabled &&
-      "bg-black text-text hover:bg-black hover:text-white active:opacity-80"
+      " text-text hover:bg-black hover:text-white active:opacity-80"
     }
      `}
         disabled={isDisabled}

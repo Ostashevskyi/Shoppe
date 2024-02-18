@@ -49,6 +49,7 @@ export default {
       addVariant("child-h1", "& > h1");
       addVariant("child-h4", "& > h4");
       addVariant("child-div", "& > div");
+      addVariant("child-a", "& > a");
     },
   ],
 };

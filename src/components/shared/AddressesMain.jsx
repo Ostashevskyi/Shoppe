@@ -28,7 +28,7 @@ const AddressesMain = ({
         <div>
           {formType === "billing" ? <BillingForm /> : <ShippingForm />}
           <button
-            className="body_large text-accent uppercase font-medium mt-4"
+            className="body_large text-accent uppercase font-medium mt-4 hover:opacity-75"
             onClick={() => toggleForm(conditionSetter, false)}
           >
             Close
@@ -38,7 +38,7 @@ const AddressesMain = ({
         <div>
           <button
             onClick={() => toggleForm(conditionSetter, true)}
-            className="body_large text-accent uppercase font-medium mb-3"
+            className="body_large text-accent uppercase font-medium mb-3 hover:opacity-75"
           >
             Add
           </button>

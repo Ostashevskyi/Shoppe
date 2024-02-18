@@ -11,7 +11,7 @@ import { NewsletterInput } from "@/components/Inputs/NewsletterInput";
 
 const Footer = () => {
   return (
-    <footer className="mt-auto">
+    <footer className="mt-auto flex-shrink-0">
       {/* FOOTER DESKTOP */}
       <section className="hidden lg:flex lg:mx-4 xl:flex xxl:flex flex-col border-t-2 border-t-light_gray pt-12">
         <div className="flex flex-wrap justify-between mb-12">

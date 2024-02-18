@@ -6,11 +6,10 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const Wrapper = ({ children }) => {
   return (
-    <main className="center bg-backgroud  flex flex-col">
+    <main className="center bg-backgroud flex flex-col">
       <Header />
       {children}
       <SpeedInsights />
-
       <Footer />
     </main>
   );

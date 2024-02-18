@@ -54,7 +54,7 @@ const Cart = () => {
 
   const price = useMemo(() => {
     return (
-      <section className="xs:bg-light_gray py-4 rounded-md sm:bg-light_gray text-text">
+      <section className="xs:bg-light_gray py-4 px-4 rounded-md sm:bg-light_gray text-text">
         <p className="mt-9 mb-11 heading2D">Cart totals</p>
 
         <div className="grid grid-cols-1 grid-rows-2 gap-x-32 gap-y-5 pb-9 mb-10 border-b border-gray ">

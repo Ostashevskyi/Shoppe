@@ -62,7 +62,7 @@ const Account = () => {
 
   return (
     <Wrapper>
-      <main className="mt-24 mb-[25%] xs:mb-36 sm:mb-36 md:mb-36 xs:mt-14 sm:mt-14 md:mt-14">
+      <main className="mt-24 mb-[35%] xs:mb-48 sm:mb-56  md:mb-48 xs:mt-14 sm:mt-14 md:mt-14">
         {isLoading && <p className="mx-4 text-text">Loading...</p>}
         {isAuthenticated && !isLoading && (
           <div>
